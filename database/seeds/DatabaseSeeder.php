@@ -18,5 +18,6 @@ class DatabaseSeeder extends Seeder
         $this->call(MachineSeeder::class);
         $this->call(TenderSectionSeeder::class);
         $this->call(TenderSeeder::class);
+        $this->call(PermissionSeeder::class);
     }
 }

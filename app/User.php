@@ -16,7 +16,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-       'isEnabled', 'name', 'email', 'department_id', 'password',
+        'isEnabled', 'name', 'email', 'department_id', 'password',
     ];
 
     /**
@@ -40,5 +40,10 @@ class User extends Authenticatable
     public function department()
     {
         return $this->belongsTo(Department::class);
+    }
+
+    public function permissions()
+    {
+        return $this->belongsToMany(Permission::class)->withTimestamps();
     }
 }
