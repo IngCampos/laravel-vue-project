@@ -1,23 +1,14 @@
+/* File with less resources, just for login view.*/
 // Import Custom SB Admin 2 Variables (Overrides Default Bootstrap Variables)
 @import "variables";
 
 // Bootstrap
 @import "~bootstrap/scss/bootstrap";
 
-// Fontawesome
-@import "~@fortawesome/fontawesome-free/css/all.min.css";
-
 // Import Custom SB Admin 2 Mixins and Components
-@import "mixins";
 @import "global";
 @import "utilities";
 
 // Custom Components
-@import "dropdowns";
-@import "navs";
 @import "buttons";
-@import "cards";
-@import "charts";
 @import "login";
-@import "error";
-@import "footer";

@@ -6,6 +6,12 @@
 
 require('./bootstrap');
 
+// Import Functions(Jquery) of SB Admin 2.
+require('./sb-admin-2');
+
+// Import Jquery easy for Smooth scrolling of SB Admin 2.
+require("jquery-easing");
+
 // Import Sweetalert
 import VueSweetalert2 from 'vue-sweetalert2'
 import 'sweetalert2/src/sweetalert2.scss'
