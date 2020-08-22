@@ -15,7 +15,10 @@ use Illuminate\Support\Facades\Route;
 
 // Routes for people in general
 Route::get('/', function () {
-    return view('index');
+    return view('welcome');
+});
+Route::get('/home', function () {
+    return view('home');
 })->middleware(['auth', 'is.enabled']);
 
 Auth::routes();
@@ -24,7 +27,7 @@ Auth::routes();
 Route::prefix('admin')->middleware(['auth', 'is.enabled'])->group(
     function () {
         // Routes in general for any user authenticated
-        Route::view('settings', 'userconfig')->name('userconfig');
+        Route::view('settings', 'settings')->name('settings');
         Route::post('/update_password', 'UserConfigController@updatepassword')->name('update_password');
 
         //Routes for data in forms
