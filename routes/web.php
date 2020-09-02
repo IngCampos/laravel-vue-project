@@ -45,7 +45,7 @@ Route::prefix('admin')->middleware(['auth', 'is.enabled'])->group(
         Route::middleware(['has.permission:1'])->group(
             function () {
                 $route = "/admin/";
-                Route::view('permissions', $route . 'permissions')->name('permissions');
+                Route::view('permissions', $route . 'permission')->name('permissions');
                 Route::view('users', $route . 'user')->name('users');
                 Route::view('statistics/system', $route . 'statistics_system')->name('statistics_system');
                 Route::view('statistics/business', $route . 'statistics_website')->name('statistics_business');

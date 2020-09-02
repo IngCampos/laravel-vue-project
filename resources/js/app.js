@@ -6,6 +6,9 @@
 
 require('./bootstrap');
 
+// Import functions for sorting array objects
+require('./ordenation-functions');
+
 // Import Functions(Jquery) of SB Admin 2.
 require('./sb-admin-2');
 
@@ -60,6 +63,12 @@ var a = './components/admin/'
 Vue.component('user-element', require(a + 'user/UserElement.vue').default);
 Vue.component('user-content', require(a + 'user/UserContent.vue').default);
 Vue.component('user-creation', require(a + 'user/UserCreation.vue').default);
+
+// Components for permission(for users) panel
+Vue.component('permission-element', require(a + 'permission/PermissionElement.vue').default);
+Vue.component('permission-section', require(a + 'permission/PermissionSection.vue').default);
+Vue.component('permission-content', require(a + 'permission/PermissionContent.vue').default);
+Vue.component('permission-creation', require(a + 'permission/PermissionCreation.vue').default);
 
 const app = new Vue({
     el: '#app',
