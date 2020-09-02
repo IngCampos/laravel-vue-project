@@ -13,7 +13,7 @@ class DataFormController extends Controller
 {
     //This controller is made in order to get specific data for sweetalerts option forms
 
-    public function data_users(Request $request)
+    public function data_user(Request $request)
     {
         // Data for sweetalert
         $users = User::orderBy('name', 'asc')->get();
@@ -22,7 +22,7 @@ class DataFormController extends Controller
         }
         return $data;
     }
-    public function data_departments(Request $request)
+    public function data_department(Request $request)
     {
         // Data for sweetalert
         foreach (Department::get() as $department) {
@@ -31,13 +31,13 @@ class DataFormController extends Controller
         return  $data;
     }
 
-    public function data_dates_complaints()
+    public function data_dates_complaint()
     {
         // Data for Vue2-pickdate, the dates allowed to select are between the last complaint and the present day
         return [explode(' ', Carbon::now())[0], explode(' ', Complaint::orderBy('created_at')->first()->created_at)[0]];
     }
 
-    public function data_tender_sections()
+    public function data_tender_section()
     {
         // Data for tender section form
         $tender_sections = Tender_section::orderBy('year', 'desc')->orderBy('number', 'asc')->get();

@@ -42,6 +42,7 @@ class UserController extends Controller
     {
         $user = new User();
         $user->name = $request->name;
+        $user->email = $request->email;
         $user->department_id = $request->department_id;
         $user->isEnabled = true;
         $user->password = Hash::make($request->name);
@@ -65,6 +66,7 @@ class UserController extends Controller
             $user->password = Hash::make($request->password);
         } else {
             $user->name = $request->name;
+            $user->email = $request->email;
             $user->department_id = $request->department_id;
         }
         $user->update();

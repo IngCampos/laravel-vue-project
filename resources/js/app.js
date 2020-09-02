@@ -55,6 +55,12 @@ Vue.component('datePicker', DatePicker)
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
+// Components for user panel
+var a = './components/admin/'
+Vue.component('user-element', require(a + 'user/UserElement.vue').default);
+Vue.component('user-content', require(a + 'user/UserContent.vue').default);
+Vue.component('user-creation', require(a + 'user/UserCreation.vue').default);
+
 const app = new Vue({
     el: '#app',
     methods: {
