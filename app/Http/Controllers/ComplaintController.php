@@ -16,7 +16,7 @@ class ComplaintController extends Controller
     {
         $complaints = Complaint::orderBy('created_at', 'desc')->paginate(10);
         for ($i = 0; $i < count($complaints); $i++) {
-            $complaints[$i]->type;
+            $complaints[$i]->complaint_type;
         }
         return [
             'pagination' => [

@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Complaint extends Model
 {
-    public function type()
+    public function complaint_type()
     {
         return $this->belongsTo(Complaint_type::class);
     }

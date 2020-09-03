@@ -66,7 +66,7 @@ Route::prefix('admin')->middleware(['auth', 'is.enabled'])->group(
         // Routes for Complaint Administrator.
         Route::middleware(['has.permission:2'])->group(
             function () {
-                Route::view('complaints', 'complaints')->name('complaints');
+                Route::view('complaints', 'permission/complaint')->name('complaints');
                 Route::resource('api/complaint', 'ComplaintController')->only([
                     'index', 'destroy'
                 ]);

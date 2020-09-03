@@ -70,6 +70,11 @@ Vue.component('permission-section', require(a + 'permission/PermissionSection.vu
 Vue.component('permission-content', require(a + 'permission/PermissionContent.vue').default);
 Vue.component('permission-creation', require(a + 'permission/PermissionCreation.vue').default);
 
+var p = './components/permission/'
+// Components for complaint panel
+Vue.component('complaint-element', require(p + 'complaint/ComplaintElement.vue').default);
+Vue.component('complaint-content', require(p + 'complaint/ComplaintContent.vue').default);
+
 const app = new Vue({
     el: '#app',
     methods: {
