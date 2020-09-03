@@ -74,6 +74,9 @@ var p = './components/permission/'
 // Components for complaint panel
 Vue.component('complaint-element', require(p + 'complaint/ComplaintElement.vue').default);
 Vue.component('complaint-content', require(p + 'complaint/ComplaintContent.vue').default);
+// Components for machine panel - status
+Vue.component('machine-state-element', require(p + 'machine_state/MachineStateElement.vue').default);
+Vue.component('machine-state-content', require(p + 'machine_state/MachineStateContent.vue').default);
 
 const app = new Vue({
     el: '#app',

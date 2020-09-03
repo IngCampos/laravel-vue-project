@@ -27,9 +27,9 @@
                 </a>
                 @endif
                 @if(Auth::user()->permissions->where('pivot.permission_id','4')!="[]")
-                <a class="collapse-item" href="{{route('machines')}}">
+                <a class="collapse-item" href="{{route('machine_state')}}">
                     <i class="fas fa-cogs"></i>
-                    <span>{{ __('Machines status') }}</span>
+                    <span>{{ __('Machines state') }}</span>
                 </a>
                 @endif
                 @if(Auth::user()->permissions->where('pivot.permission_id','5')!="[]")

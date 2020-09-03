@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Machine extends Model
 {
-    public function state()
+    public function machine_state()
     {
         return $this->belongsTo(Machine_state::class);
     }

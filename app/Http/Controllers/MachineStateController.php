@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Machine;
 use Illuminate\Http\Request;
 
-class MachineController extends Controller
+class MachineStateController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,9 +14,9 @@ class MachineController extends Controller
      */
     public function index()
     {
-        $machines = Machine::orderBy('name', 'asc')->get();;
+        $machines = Machine::orderBy('user_agent', 'asc')->get();;
         for ($i = 0; $i < count($machines); $i++) {
-            $machines[$i]->state;
+            $machines[$i]->machine_state;
         }
         return $machines;
     }
@@ -33,7 +33,7 @@ class MachineController extends Controller
         $machine = Machine::find($id);
         $machine->machine_state_id = $request->machine_state_id;
         $machine->update();
-        $machine->state;
+        $machine->machine_state;
         return $machine;
     }
 }

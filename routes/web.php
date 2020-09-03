@@ -84,8 +84,8 @@ Route::prefix('admin')->middleware(['auth', 'is.enabled'])->group(
         // Routes for Machine Monitor.
         Route::middleware(['has.permission:4'])->group(
             function () {
-                Route::view('machines', 'machines')->name('machines');
-                Route::resource('api/machine', 'MachineStateController')->only([
+                Route::view('machine_state', 'permission/machine_state')->name('machine_state');
+                Route::resource('api/machine_state', 'MachineStateController')->only([
                     'index', 'update'
                 ]);
             }
