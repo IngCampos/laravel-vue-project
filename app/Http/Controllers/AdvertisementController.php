@@ -29,7 +29,7 @@ class AdvertisementController extends Controller
         $advertisement = new Advertisement();
         $advertisement->order = $request->order;
         $this->upload_file($request->file, $request->image_source);
-        $advertisement->image_source = $request->image_source;
+        $advertisement->image_source = '/storage/ads/' . $request->image_source;
         $advertisement->link = $request->link;
         $advertisement->save();
         return $advertisement;
@@ -85,7 +85,7 @@ class AdvertisementController extends Controller
     {
         // array to get just the name file, not the path.
         $exploded = explode('/', $image_source);
-        Storage::disk('public')->delete('/carrousel/' . end($exploded));
+        Storage::disk('public')->delete('/ads/' . end($exploded));
     }
 
     protected function upload_file($file, $image_source)
@@ -93,6 +93,6 @@ class AdvertisementController extends Controller
         // the array is split, the second place is the base64 code for saving well.
         $exploded = explode(',', $file);
         $decoded = base64_decode($exploded[1]);
-        Storage::disk('public')->put('/carrousel/' . $image_source, $decoded, 'public');
+        Storage::disk('public')->put('/ads/' . $image_source, $decoded, 'public');
     }
 }

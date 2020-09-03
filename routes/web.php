@@ -75,7 +75,7 @@ Route::prefix('admin')->middleware(['auth', 'is.enabled'])->group(
         // Routes for Advertisement Manager.
         Route::middleware(['has.permission:3'])->group(
             function () {
-                Route::view('advertisements', 'advertisements')->name('advertisements');
+                Route::view('advertisements', 'permission/advertisement')->name('advertisements');
                 Route::resource('api/advertisement', 'AdvertisementController')->except([
                     'show', 'edit', 'create'
                 ]);

@@ -74,6 +74,9 @@ var p = './components/permission/'
 // Components for complaint panel
 Vue.component('complaint-element', require(p + 'complaint/ComplaintElement.vue').default);
 Vue.component('complaint-content', require(p + 'complaint/ComplaintContent.vue').default);
+// Components for advertisement panel
+Vue.component('advertisement-element', require(p + 'advertisement/AdvertisementElement.vue').default);
+Vue.component('advertisement-content', require(p + 'advertisement/AdvertisementContent.vue').default);
 // Components for machine panel - status
 Vue.component('machine-state-element', require(p + 'machine_state/MachineStateElement.vue').default);
 Vue.component('machine-state-content', require(p + 'machine_state/MachineStateContent.vue').default);
@@ -151,12 +154,11 @@ const app = new Vue({
             this.$swal.showLoading();
         },
         SetCurrentDate() {
-            axios.get("/date").then(response => {
+            axios.get("api/date").then(response => {
                 this.CurrentDate.setHours(0, 0, 0, 0);
                 this.CurrentDate.setFullYear(response.data[0]);
                 this.CurrentDate.setMonth(response.data[1] - 1);
                 this.CurrentDate.setDate(response.data[2]);
-                console.log(this.CurrentDate);
             });
         },
         Strong_password(password) {
