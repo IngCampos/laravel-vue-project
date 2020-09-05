@@ -32,7 +32,7 @@ class TenderSectionController extends Controller
     public function store(Request $request)
     {
         $tender_section = new Tender_section();
-        $tender_section->isFederal = ($request->isFederal == 'true' ? true : false);
+        $tender_section->isInternational = ($request->isInternational == 'true' ? true : false);
         $tender_sections = Tender_section::where('year', $request->year)->orderBy('number', 'asc')->get();
         if (count($tender_sections) == 0) $tender_section->number = 1;
         else {
@@ -61,9 +61,10 @@ class TenderSectionController extends Controller
      */
     public function update(Request $request, $id)
     {
+        // return $request;
         $tender_section = Tender_section::find($id);
         $tender_section->year = $request->year;
-        $tender_section->isFederal = $request->isFederal;
+        $tender_section->isInternational = $request->isInternational;
         $tender_section->update();
         return $tender_section;
     }

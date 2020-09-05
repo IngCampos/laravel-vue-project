@@ -23,7 +23,7 @@ class TenderController extends Controller
         $tender->tender_section_id = $request->tender_section_id;
         if ($request->internal_file == 1) {
             $this->upload_file($request->file, $request->name_file);
-            $tender->link = env('APP_URL') . '/storage/tenders/' . $request->name_file;
+            $tender->link = '/storage/tenders/' . $request->name_file;
         } else {
             $tender->link = $request->link;
         }

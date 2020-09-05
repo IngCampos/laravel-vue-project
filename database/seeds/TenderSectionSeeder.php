@@ -11,6 +11,6 @@ class TenderSectionSeeder extends Seeder
      */
     public function run()
     {
-        factory(App\Tender_section::class, 10)->create();
+        factory(App\Tender_section::class, 5)->create();
     }
 }

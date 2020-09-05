@@ -42,7 +42,7 @@ class DataFormController extends Controller
         // Data for tender section form
         $tender_sections = Tender_section::orderBy('year', 'desc')->orderBy('number', 'asc')->get();
         for ($i = 0; $i < count($tender_sections); $i++) {
-            $data[$tender_sections[$i]->id] = "Public tender" . ($tender_sections[$i]->isInternational ? 'International' : 'National') . " 00" . $tender_sections[$i]->number . -$tender_sections[$i]->year;
+            $data[$tender_sections[$i]->id] = "Public tender " . ($tender_sections[$i]->isInternational ? 'International' : 'National') . " 00" . $tender_sections[$i]->number . -$tender_sections[$i]->year;
         }
         return $data;
     }

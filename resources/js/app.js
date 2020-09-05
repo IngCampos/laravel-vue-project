@@ -80,6 +80,11 @@ Vue.component('advertisement-content', require(p + 'advertisement/AdvertisementC
 // Components for machine panel - status
 Vue.component('machine-state-element', require(p + 'machine_state/MachineStateElement.vue').default);
 Vue.component('machine-state-content', require(p + 'machine_state/MachineStateContent.vue').default);
+// Components for tenders panel
+Vue.component('tender-element', require(p + 'tender/TenderElement.vue').default);
+Vue.component('tender-section', require(p + 'tender/TenderSection.vue').default);
+Vue.component('tender-content', require(p + 'tender/TenderContent.vue').default);
+Vue.component('tender-creation-section', require(p + 'tender/TenderCreationSection.vue').default);
 
 const app = new Vue({
     el: '#app',

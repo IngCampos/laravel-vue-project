@@ -93,7 +93,7 @@ Route::prefix('admin')->middleware(['auth', 'is.enabled'])->group(
         // Routes for Tender Administrator.
         Route::middleware(['has.permission:5'])->group(
             function () {
-                Route::view('tenders', 'tenders')->name('tenders');
+                Route::view('tenders', 'permission/tender')->name('tenders');
                 Route::resource('api/tender', 'TenderController')->except([
                     'index', 'edit', 'create'
                 ]);
