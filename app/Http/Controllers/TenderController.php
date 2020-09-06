@@ -52,6 +52,7 @@ class TenderController extends Controller
      */
     public function update(Request $request, Tender $tender)
     {
+        // TODO: Use $tender parameters insted of Tender::find(id)
         $tender = Tender::find($tender->id);
         $tender->name = $request->name;
         $tender->update();

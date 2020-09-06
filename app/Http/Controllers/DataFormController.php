@@ -13,6 +13,8 @@ class DataFormController extends Controller
 {
     //This controller is made in order to get specific data for sweetalerts option forms
 
+    // TODO: Use the resource edit in each Controller instead of using this Controller.
+
     public function data_user(Request $request)
     {
         // Data for sweetalert

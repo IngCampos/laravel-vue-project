@@ -65,6 +65,7 @@ Vue.component('user-content', require(a + 'user/UserContent.vue').default);
 Vue.component('user-creation', require(a + 'user/UserCreation.vue').default);
 
 // Components for statistics panel
+// TODO: Delete all the following components, and get the data from the view directly. Axios is not necessary(just for Complaint section).
 Vue.component('detail-user', require(a + 'statistic/User.vue').default);
 Vue.component('detail-permission', require(a + 'statistic/Permission.vue').default);
 Vue.component('detail-complaint', require(a + 'statistic/Complaint.vue').default);
@@ -97,6 +98,7 @@ Vue.component('tender-section', require(p + 'tender/TenderSection.vue').default)
 Vue.component('tender-content', require(p + 'tender/TenderContent.vue').default);
 Vue.component('tender-creation-section', require(p + 'tender/TenderCreationSection.vue').default);
 
+//TODO: rename the name of the components for a simple name instead. With the folder is not necessary specific the section.
 const app = new Vue({
     el: '#app',
     methods: {

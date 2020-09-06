@@ -15,6 +15,7 @@ class AdvertisementController extends Controller
      */
     public function index()
     {
+        // TODO: Get the data from the index from the view(all Controllers and Views), not from Axios(the HTTP client).
         return Advertisement::orderBy('order', 'asc')->get();
     }
 
@@ -26,6 +27,7 @@ class AdvertisementController extends Controller
      */
     public function store(Request $request)
     {
+        // TODO: Use the functions all() as possible in order to have clean code
         $advertisement = new Advertisement();
         $advertisement->order = $request->order;
         $this->upload_file($request->file, $request->image_source);
@@ -44,6 +46,7 @@ class AdvertisementController extends Controller
      */
     public function update(Request $request, $id)
     {
+        // TODO: Improve the PHP code
         //The function just update one value, the link or the order
         $advertisement = Advertisement::find($id);
         if (isset($request->order)) {

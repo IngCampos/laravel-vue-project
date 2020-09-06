@@ -73,7 +73,6 @@ export default {
         });
     },
     Add(data) {
-      console.log(data);
       this.$root.BasicLoading();
       axios.post("api/user", data).then(
         (response) => {

@@ -20,6 +20,7 @@
           :machine="machine"
           @update="Update(index, machine.id, ...arguments)"
         ></machine-state-element>
+        <!-- TODO: Create a special component for the pagination -->
       </tbody>
     </table>
   </div>

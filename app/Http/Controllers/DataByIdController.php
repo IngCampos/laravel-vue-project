@@ -12,6 +12,7 @@ class DataByIdController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+    // TODO: Try to use the Controller User and Department instead of using this one.
     public function user_id($id)
     {
         $user = User::find($id);
