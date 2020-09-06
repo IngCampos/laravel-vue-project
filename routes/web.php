@@ -33,7 +33,7 @@ Route::prefix('admin')->middleware(['auth', 'is.enabled'])->group(
         //Routes for data in forms
         Route::get('api/data_user', 'DataFormController@data_user');
         Route::get('api/data_department', 'DataFormController@data_department');
-        Route::get('api/data_dates_complaint', 'DataFormController@data_dates_complaint');
+        Route::get('statistics/data_dates_complaint', 'DataFormController@data_dates_complaint');
         Route::get('api/data_tender_section', 'DataFormController@data_tender_section');
         Route::get('api/date', 'DataFormController@date');
 
@@ -47,14 +47,14 @@ Route::prefix('admin')->middleware(['auth', 'is.enabled'])->group(
                 $route = "/admin/";
                 Route::view('permissions', $route . 'permission')->name('permissions');
                 Route::view('users', $route . 'user')->name('users');
-                Route::view('statistics/system', $route . 'statistics_system')->name('statistics_system');
-                Route::view('statistics/business', $route . 'statistics_website')->name('statistics_business');
-                Route::get('details/user', 'StatisticsController@details_user');
-                Route::get('details/permission', 'StatisticsController@details_permission');
-                Route::get('details/complaint/{dates}', 'StatisticsController@details_complaint');
-                Route::get('details/machine', 'StatisticsController@details_machine');
-                Route::get('details/advertisement', 'StatisticsController@details_advertisement');
-                Route::get('details/tender', 'StatisticsController@details_tender');
+                Route::view('statistics/system', $route . 'statistic/system')->name('statistics_system');
+                Route::view('statistics/business', $route . 'statistic/business')->name('statistics_business');
+                Route::get('statistics/detail_user', 'StatisticsController@detail_user');
+                Route::get('statistics/detail_permission', 'StatisticsController@detail_permission');
+                Route::get('statistics/detail_complaint/{dates}', 'StatisticsController@detail_complaint');
+                Route::get('statistics/detail_machine', 'StatisticsController@detail_machine');
+                Route::get('statistics/detail_advertisement', 'StatisticsController@detail_advertisement');
+                Route::get('statistics/detail_tender', 'StatisticsController@detail_tender');
                 Route::resource('api/user', 'UserController')->except([
                     'show', 'edit', 'create'
                 ]);

@@ -16,7 +16,7 @@ use Carbon\Carbon;
 
 class StatisticsController extends Controller
 {
-    public function details_user()
+    public function detail_user()
     {
         $data['total'] = User::all()->count();
         foreach (Department::all() as $department) {
@@ -25,7 +25,7 @@ class StatisticsController extends Controller
         return $data;
     }
 
-    public function details_permission()
+    public function detail_permission()
     {
         $data['total'] = 0;
         foreach (Permission::all() as $permission) {
@@ -35,7 +35,7 @@ class StatisticsController extends Controller
         return $data;
     }
 
-    public function details_complaint($dates)
+    public function detail_complaint($dates)
     {
         $date = explode(',', $dates);
         $data['total'] = Complaint::whereBetween('created_at', [$date[0], $date[1] . ' 23:59:59'])->count();
@@ -47,7 +47,7 @@ class StatisticsController extends Controller
         return $data;
     }
 
-    public function details_machine()
+    public function detail_machine()
     {
         $data['total'] = Machine::all()->count();
         $data['machine_states'] = [];
@@ -58,14 +58,14 @@ class StatisticsController extends Controller
         return $data;
     }
 
-    public function details_advertisement()
+    public function detail_advertisement()
     {
         $data['total'] = Advertisement::all()->count();
         $data['with_link'] = Advertisement::where('link', '!=', '')->count();
         return $data;
     }
 
-    public function details_tender()
+    public function detail_tender()
     {
         $data['total'] = Tender::all()->count();
         $data['internal_file'] = Tender::where('internal_file', 1)->count();

@@ -64,6 +64,17 @@ Vue.component('user-element', require(a + 'user/UserElement.vue').default);
 Vue.component('user-content', require(a + 'user/UserContent.vue').default);
 Vue.component('user-creation', require(a + 'user/UserCreation.vue').default);
 
+// Components for statistics panel
+Vue.component('detail-user', require(a + 'statistic/User.vue').default);
+Vue.component('detail-permission', require(a + 'statistic/Permission.vue').default);
+Vue.component('detail-complaint', require(a + 'statistic/Complaint.vue').default);
+Vue.component('detail-machine', require(a + 'statistic/Machine.vue').default);
+Vue.component('detail-advertisement', require(a + 'statistic/Advertisement.vue').default);
+Vue.component('detail-tender', require(a + 'statistic/Tender.vue').default);
+
+Vue.component('card-statistic', require('./components/CardStatistic.vue').default);
+Vue.component('progress-bar', require('./components/ProgressBar.vue').default);
+
 // Components for permission(for users) panel
 Vue.component('permission-element', require(a + 'permission/PermissionElement.vue').default);
 Vue.component('permission-section', require(a + 'permission/PermissionSection.vue').default);
