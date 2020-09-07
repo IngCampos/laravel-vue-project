@@ -28,7 +28,7 @@ Route::prefix('admin')->middleware(['auth', 'is.enabled'])->group(
     function () {
         // Routes in general for any user authenticated
         Route::view('settings', 'settings')->name('settings');
-        Route::post('/update_password', 'UserConfigController@updatepassword')->name('update_password');
+        Route::post('api/update_password', 'UserConfigController@updatepassword')->name('update_password');
 
         //Routes for data in forms
         Route::get('api/data_user', 'DataFormController@data_user');

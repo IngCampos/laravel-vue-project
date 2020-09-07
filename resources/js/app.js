@@ -99,6 +99,8 @@ Vue.component('tender-content', require(p + 'tender/TenderContent.vue').default)
 Vue.component('tender-creation-section', require(p + 'tender/TenderCreationSection.vue').default);
 
 //TODO: rename the name of the components for a simple name instead. With the folder is not necessary specific the section.
+Vue.component('update-password', require('./components/UpdatePassword.vue').default);
+
 const app = new Vue({
     el: '#app',
     methods: {
