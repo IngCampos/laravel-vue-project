@@ -94,7 +94,7 @@ export default {
     axios.get("api/data_user").then((response) => {
       this.users_form = response.data;
     });
-    axios.get("api/permission").then((response) => {
+    axios.get("api/permission/create").then((response) => {
       this.permissions = response.data;
       for (let index = 0; index < this.permissions.length; index++) {
         this.permissions_form[index] = this.permissions[index].name;

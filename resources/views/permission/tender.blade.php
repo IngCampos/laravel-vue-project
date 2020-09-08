@@ -7,7 +7,7 @@
     </div>
     <div class="card">
         <div class="card-body">
-            <tender-content></tender-content>
+            <tender-content data="{{$tender_sections}}"></tender-content>
         </div>
     </div>
 </div>

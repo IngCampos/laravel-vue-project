@@ -20,7 +20,9 @@ class TenderSectionController extends Controller
         for ($i = 0; $i < count($tender_sections); $i++) {
             $tender_sections[$i]->tenders = Tender_section::find($tender_sections[$i]->id)->tenders;
         }
-        return $tender_sections;
+        return view('permission.tender', [
+            'tender_sections' =>  $tender_sections
+        ]);
     }
 
     /**

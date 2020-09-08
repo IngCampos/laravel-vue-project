@@ -7,7 +7,7 @@
     </div>
     <div class="card">
         <div class="card-body">
-            <advertisement-content></advertisement-content>
+            <advertisement-content data="{{$advertisements}}"></advertisement-content>
         </div>
     </div>
 </div>

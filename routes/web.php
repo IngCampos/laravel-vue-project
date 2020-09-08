@@ -45,7 +45,7 @@ Route::prefix('admin')->middleware(['auth', 'is.enabled'])->group(
         Route::middleware(['has.permission:1'])->group(
             function () {
                 $route = "/admin/";
-                Route::view('permissions', $route . 'permission')->name('permissions');
+                Route::get('permissions', 'PermissionController@index')->name('permissions');
                 Route::view('users', $route . 'user')->name('users');
                 Route::view('statistics/system', $route . 'statistic/system')->name('statistics_system');
                 Route::view('statistics/business', $route . 'statistic/business')->name('statistics_business');
@@ -59,7 +59,7 @@ Route::prefix('admin')->middleware(['auth', 'is.enabled'])->group(
                     'show', 'edit', 'create'
                 ]);
                 Route::resource('api/permission', 'PermissionController')->except([
-                    'update', 'edit', 'create'
+                    'index', 'update', 'edit'
                 ]);
             }
         );
@@ -75,9 +75,9 @@ Route::prefix('admin')->middleware(['auth', 'is.enabled'])->group(
         // Routes for Advertisement Manager.
         Route::middleware(['has.permission:3'])->group(
             function () {
-                Route::view('advertisements', 'permission/advertisement')->name('advertisements');
+                Route::get('advertisements', 'AdvertisementController@index')->name('advertisements');
                 Route::resource('api/advertisement', 'AdvertisementController')->except([
-                    'show', 'edit', 'create'
+                    'index', 'show', 'edit', 'create'
                 ]);
             }
         );
@@ -93,12 +93,12 @@ Route::prefix('admin')->middleware(['auth', 'is.enabled'])->group(
         // Routes for Tender Administrator.
         Route::middleware(['has.permission:5'])->group(
             function () {
-                Route::view('tenders', 'permission/tender')->name('tenders');
+                Route::get('tenders', 'TenderSectionController@index')->name('tenders');
                 Route::resource('api/tender', 'TenderController')->except([
                     'index', 'edit', 'create'
                 ]);
                 Route::resource('api/tender_section', 'TenderSectionController')->except([
-                    'show', 'edit', 'create'
+                    'index', 'show', 'edit', 'create'
                 ]);
             }
         );

@@ -16,7 +16,9 @@ class AdvertisementController extends Controller
     public function index()
     {
         // TODO: Get the data from the index from the view(all Controllers and Views), not from Axios(the HTTP client).
-        return Advertisement::orderBy('order', 'asc')->get();
+        return view('permission.advertisement', [
+            'advertisements' =>  Advertisement::orderBy('order', 'asc')->get()
+        ]);
     }
 
     /**

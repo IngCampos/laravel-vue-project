@@ -26,6 +26,7 @@
 
 <script>
 export default {
+  props: ["data"],
   methods: {
     Creation(new_user, permission_id) {
       this.permissions[permission_id].users.push(new_user);
@@ -33,13 +34,7 @@ export default {
     },
   },
   created() {
-    axios.get("api/permission").then((response) => {
-      response.data.forEach((element) => {
-        axios.get(`api/permission/${element.id}`).then((response) => {
-          this.permissions.push({ info: element, users: response.data });
-        });
-      });
-    });
+    this.permissions = JSON.parse(this.data);
   },
   data() {
     return {

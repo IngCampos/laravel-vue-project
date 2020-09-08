@@ -14,9 +14,31 @@ class PermissionController extends Controller
      */
     public function index()
     {
-        return Permission::get();
+        $data = [];
+        foreach (Permission::get() as $permission) {
+            $users = $permission->users()->get();
+            for ($i = 0; $i < count($users); $i++) {
+                $users[$i]->department;
+            }
+            array_push($data, (object) [
+                'info' => $permission,
+                'users' => $users,
+            ]);
+        }
+        return view('admin.permission', [
+            'permissions' =>  json_encode($data)
+        ]);
     }
 
+    /**
+     * Show the form to create a new permission.
+     *
+     * @return Response
+     */
+    public function create()
+    {
+        return Permission::get();
+    }
     /**
      * Store a newly created resource in storage.
      *
@@ -34,21 +56,6 @@ class PermissionController extends Controller
             return $return;
         } else
             return abort(409); // if the permission is set, it return an error 409
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        $permissions = Permission::find($id)->users()->get();
-        for ($i = 0; $i < count($permissions); $i++) {
-            $permissions[$i]->department;
-        }
-        return $permissions;
     }
 
     /**

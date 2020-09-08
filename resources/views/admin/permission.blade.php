@@ -7,7 +7,7 @@
     </div>
     <div class="card">
         <div class="card-body">
-            <permission-content></permission-content>
+            <permission-content data="{{$permissions}}"></permission-content>
         </div>
     </div>
 </div>

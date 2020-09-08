@@ -28,6 +28,7 @@
 
 <script>
 export default {
+  props: ["data"],
   methods: {
     Delete(index, id) {
       this.$swal
@@ -73,24 +74,23 @@ export default {
     },
   },
   created() {
+    var dataParseJson = JSON.parse(this.data);
     var extraelements = 0;
     this.$root.SetCurrentDate();
-    axios.get("api/advertisement").then((response) => {
-      for (var i = 0; i < 7; i++) {
-        this.elements.push({ id: null, order: i + 1 });
-      }
-      for (var i = 0; i < response.data.length; i++) {
-        if (response.data[i].order < 8)
-          this.elements[response.data[i].order - 1] = response.data[i];
-        else extraelements++;
-      }
-      //if the database has elements with order attribute up to 7, those elements are going to be excluded
-      if (extraelements > 0)
-        this.$root.InfoMessage(
-          "Wrong data base.",
-          "There are many element that reach the limit."
-        );
-    });
+    for (var i = 0; i < 7; i++) {
+      this.elements.push({ id: null, order: i + 1 });
+    }
+    for (var i = 0; i < dataParseJson.length; i++) {
+      if (dataParseJson[i].order < 8)
+        this.elements[dataParseJson[i].order - 1] = dataParseJson[i];
+      else extraelements++;
+    }
+    //if the database has elements with order attribute up to 7, those elements are going to be excluded
+    if (extraelements > 0)
+      this.$root.InfoMessage(
+        "Wrong data base.",
+        "There are many element that reach the limit."
+      );
   },
   data() {
     return {

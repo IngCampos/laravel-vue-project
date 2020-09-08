@@ -41,6 +41,7 @@
 
 <script>
 export default {
+  props: ["data"],
   methods: {
     Create_internal_file() {
       this.$swal
@@ -252,9 +253,7 @@ export default {
     },
   },
   created() {
-    axios.get("api/tender_section").then((response) => {
-      this.sections = response.data;
-    });
+    this.sections = JSON.parse(this.data);
     axios.get("api/data_tender_section").then((response) => {
       this.name_sections = response.data;
     });
