@@ -20,7 +20,7 @@
                     <h6 class="m-0 font-weight-bold text-primary">Advertisements.</h6>
                 </div>
                 <div class="card-body">
-                    <detail-advertisement></detail-advertisement>
+                    <basic-statistic :data="{{$advertisements}}"></basic-statistic>
                 </div>
             </div>
             <div class="card shadow">
@@ -28,7 +28,7 @@
                     <h6 class="m-0 font-weight-bold text-primary">Machine state.</h6>
                 </div>
                 <div class="card-body">
-                    <detail-machine></detail-machine>
+                    <basic-statistic-download :data="{{$machines}}" :file_name="'Machine State'" column_name_type="'State'"></basic-statistic-download>
                 </div>
             </div>
         </div>
@@ -38,7 +38,7 @@
                     <h6 class="m-0 font-weight-bold text-primary">Tenders.</h6>
                 </div>
                 <div class="card-body">
-                    <detail-tender></detail-tender>
+                    <basic-statistic-download :data="{{$tenders}}" :file_name="'Tender Section'" :column_name_type="'Section'"></basic-statistic-download>
                 </div>
             </div>
         </div>

@@ -12,7 +12,7 @@
                     <h6 class="m-0 font-weight-bold text-primary">Users and departments.</h6>
                 </div>
                 <div class="card-body">
-                    <detail-user></detail-user>
+                    <basic-statistic :data="{{$users}}"></basic-statistic>
                 </div>
             </div>
         </div>
@@ -22,7 +22,7 @@
                     <h6 class="m-0 font-weight-bold text-primary">Users and permissions.</h6>
                 </div>
                 <div class="card-body">
-                    <detail-permission></detail-permission>
+                    <basic-statistic :data="{{$permissions}}"></basic-statistic>
                 </div>
             </div>
         </div>

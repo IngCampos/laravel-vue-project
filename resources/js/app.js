@@ -65,14 +65,11 @@ Vue.component('user-content', require(a + 'user/UserContent.vue').default);
 Vue.component('user-creation', require(a + 'user/UserCreation.vue').default);
 
 // Components for statistics panel
-// TODO: Delete all the following components, and get the data from the view directly. Axios is not necessary(just for Complaint section).
-Vue.component('detail-user', require(a + 'statistic/User.vue').default);
-Vue.component('detail-permission', require(a + 'statistic/Permission.vue').default);
 Vue.component('detail-complaint', require(a + 'statistic/Complaint.vue').default);
-Vue.component('detail-machine', require(a + 'statistic/Machine.vue').default);
-Vue.component('detail-advertisement', require(a + 'statistic/Advertisement.vue').default);
-Vue.component('detail-tender', require(a + 'statistic/Tender.vue').default);
 
+// templates for statistics panel
+Vue.component('basic-statistic', require('./components/BasicStatistic.vue').default);
+Vue.component('basic-statistic-download', require('./components/BasicStatisticDownload.vue').default);
 Vue.component('card-statistic', require('./components/CardStatistic.vue').default);
 Vue.component('progress-bar', require('./components/ProgressBar.vue').default);
 

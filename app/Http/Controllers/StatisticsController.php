@@ -16,23 +16,23 @@ use Carbon\Carbon;
 
 class StatisticsController extends Controller
 {
-    public function detail_user()
+    public function system()
     {
-        $data['total'] = User::all()->count();
+        $users['total'] = User::all()->count();
         foreach (Department::all() as $department) {
-            $data['department_types'][$department->name] = Department::find($department->id)->users()->count();
+            $users['types'][$department->name] = Department::find($department->id)->users()->count();
         }
-        return $data;
-    }
 
-    public function detail_permission()
-    {
-        $data['total'] = 0;
+        $permissions['total'] = 0;
         foreach (Permission::all() as $permission) {
-            $data['permission_types'][$permission->name] = Permission::find($permission->id)->users()->count();
-            $data['total'] +=  Permission::find($permission->id)->users()->count();
+            $permissions['types'][$permission->name] = Permission::find($permission->id)->users()->count();
+            $permissions['total'] +=  Permission::find($permission->id)->users()->count();
         }
-        return $data;
+
+        return view('admin/statistic/system', [
+            'users' => json_encode($users),
+            'permissions' => json_encode($permissions)
+        ]);
     }
 
     public function detail_complaint($dates)
@@ -47,35 +47,30 @@ class StatisticsController extends Controller
         return $data;
     }
 
-    public function detail_machine()
+    public function business()
     {
-        $data['total'] = Machine::all()->count();
-        $data['machine_states'] = [];
+        $machines['total'] = Machine::all()->count();
+        $machines['types'] = [];
         foreach (Machine_state::all() as $machine_state) {
-            array_push($data['machine_states'], (object) ['State' => $machine_state->name, "Amount" => Machine_state::find($machine_state->id)->machines()->count()]);
+            $machines['types'][$machine_state->name] = Machine_state::find($machine_state->id)->machines()->count();
         }
-        $data['date'] = Carbon::now();
-        return $data;
-    }
 
-    public function detail_advertisement()
-    {
-        $data['total'] = Advertisement::all()->count();
-        $data['with_link'] = Advertisement::where('link', '!=', '')->count();
-        return $data;
-    }
+        $advertisements['total'] = Advertisement::all()->count();
+        $advertisements['types'] = [];
+        $advertisements['types']["With link"] = Advertisement::where('link', '!=', '')->count();
+        $advertisements['types']["Without link"] = $advertisements['total'] - $advertisements['types']["With link"];
 
-    public function detail_tender()
-    {
-        $data['total'] = Tender::all()->count();
-        $data['internal_file'] = Tender::where('internal_file', 1)->count();
-        $data['external_file'] = Tender::where('internal_file', 0)->count();
-        $data['tender_sections'] = [];
+        $tenders['total'] = Tender::all()->count();
+        $tenders['types'] = [];
         foreach (Tender_section::orderBy('year', 'desc')->orderBy('number', 'asc')->get() as $tender_section) {
-            array_push($data['tender_sections'], (object) ['Name' => "Public tender " . ($tender_section->isInternational ? "International" : "National") . " 00" .
-                $tender_section->number . "-" . $tender_section->year, "Amount" => Tender_section::find($tender_section->id)->tenders()->count()]);
+            $tenders['types']["Public tender " . ($tender_section->isInternational ? "International" : "National") . " 00" .
+                $tender_section->number . "-" . $tender_section->year] = Tender_section::find($tender_section->id)->tenders()->count();
         }
-        $data['date'] = Carbon::now();
-        return $data;
+
+        return view('admin/statistic/business', [
+            'machines' => json_encode($machines),
+            'advertisements' => json_encode($advertisements),
+            'tenders' => json_encode($tenders)
+        ]);
     }
 }

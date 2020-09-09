@@ -47,14 +47,9 @@ Route::prefix('admin')->middleware(['auth', 'is.enabled'])->group(
                 $route = "/admin/";
                 Route::get('permissions', 'PermissionController@index')->name('permissions');
                 Route::view('users', $route . 'user')->name('users');
-                Route::view('statistics/system', $route . 'statistic/system')->name('statistics_system');
-                Route::view('statistics/business', $route . 'statistic/business')->name('statistics_business');
-                Route::get('statistics/detail_user', 'StatisticsController@detail_user');
-                Route::get('statistics/detail_permission', 'StatisticsController@detail_permission');
+                Route::get('statistics/system', 'StatisticsController@system')->name('statistics_system');
+                Route::get('statistics/business', 'StatisticsController@business')->name('statistics_business');
                 Route::get('statistics/detail_complaint/{dates}', 'StatisticsController@detail_complaint');
-                Route::get('statistics/detail_machine', 'StatisticsController@detail_machine');
-                Route::get('statistics/detail_advertisement', 'StatisticsController@detail_advertisement');
-                Route::get('statistics/detail_tender', 'StatisticsController@detail_tender');
                 Route::resource('api/user', 'UserController')->except([
                     'show', 'edit', 'create'
                 ]);
