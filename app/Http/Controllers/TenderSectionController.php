@@ -33,6 +33,12 @@ class TenderSectionController extends Controller
      */
     public function store(Request $request)
     {
+        // TODO: Error in store a section
+        $request->validate([
+            'isInternational' => 'required|boolean',
+            'year' => 'required|size:4'
+        ]);
+
         $tender_section = new Tender_section();
         $tender_section->isInternational = ($request->isInternational == 'true' ? true : false);
         $tender_sections = Tender_section::where('year', $request->year)->orderBy('number', 'asc')->get();
@@ -63,6 +69,11 @@ class TenderSectionController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $request->validate([
+            'isInternational' => 'required|boolean',
+            'year' => 'required|size:4'
+        ]);
+
         // return $request;
         $tender_section = Tender_section::find($id);
         $tender_section->year = $request->year;

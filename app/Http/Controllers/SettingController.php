@@ -18,11 +18,14 @@ class SettingController extends Controller
     }
     public function update(Request $request)
     {
-        if ($request->password == $request->password && $request->password != "") {
-            $user = User::find(Auth::user()->id);
-            $user->password = Hash::make($request->password);
-            $user->update();
-        }
+        $request->validate([
+            'password' => 'required|min:8|max:30|same:password_confirmation',
+            'password_confirmation' => 'required',
+        ]);
+
+        $user = User::find(Auth::user()->id);
+        $user->password = Hash::make($request->password);
+        $user->update();
         return back();
     }
 }

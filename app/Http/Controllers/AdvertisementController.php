@@ -28,6 +28,11 @@ class AdvertisementController extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate([
+            'order' => 'size:1|unique:advertisements',
+            'link' => 'active_url|nullable',
+        ]);
+
         // TODO: Use the functions all() as possible in order to have clean code
         $advertisement = new Advertisement();
         $advertisement->order = $request->order;
@@ -47,6 +52,10 @@ class AdvertisementController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $request->validate([
+            'order' => 'size:1'
+        ]);
+
         // TODO: Improve the PHP code
         //The function just update one value, the link or the order
         $advertisement = Advertisement::find($id);
@@ -65,6 +74,9 @@ class AdvertisementController extends Controller
             $advertisement->order = $request->order;
             $advertisement->update();
         } else {
+            $request->validate([
+                'link' => 'active_url|nullable'
+            ]);
             $advertisement->update($request->all());
         }
         return $advertisement;

@@ -50,12 +50,19 @@
                             <input class="form-control col-md-7" type="password" name="password" required minlength="8" maxlength="30" />
                         </div>
                         <div class="form-group col-12 col-lg-6 row">
-                            <label for="password2" class="col-md-5 col-form-label">Repeat password:</label>
-                            <input class="form-control col-md-7" type="password" name="password2" required minlength="8" maxlength="30" />
+                            <label for="password_confirmation" class="col-md-5 col-form-label">Repeat password:</label>
+                            <input class="form-control col-md-7" type="password" name="password_confirmation" required minlength="8" maxlength="30" />
                         </div>
                         <center class="col-12">
                             <input type="submit" value="Update" class="btn btn-success" onclick="return confirm('Are you sure to update the password?')" />
                         </center>
+                        @if($errors->any())
+                        <div class="col-12">
+                            @foreach($errors->all() as $error)
+                            - {{ $error }} <br>
+                            @endforeach
+                        </div>
+                        @endif
                     </form>
                 </div>
             </div>

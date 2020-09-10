@@ -17,6 +17,12 @@ class TenderController extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate([
+            'internal_file' => 'required|boolean',
+            'name' => 'required',
+            'tender_section_id' => 'required'
+        ]);
+
         $tender = new Tender();
         $tender->internal_file = $request->internal_file;
         $tender->name = $request->name;
@@ -25,6 +31,9 @@ class TenderController extends Controller
             $this->upload_file($request->file, $request->name_file);
             $tender->link = '/storage/tenders/' . $request->name_file;
         } else {
+            $request->validate([
+                'link' => 'required|active_url'
+            ]);
             $tender->link = $request->link;
         }
         $tender->save();
@@ -52,6 +61,10 @@ class TenderController extends Controller
      */
     public function update(Request $request, Tender $tender)
     {
+        $request->validate([
+            'name' => 'required'
+        ]);
+
         // TODO: Use $tender parameters insted of Tender::find(id)
         $tender = Tender::find($tender->id);
         $tender->name = $request->name;

@@ -196,6 +196,7 @@ export default {
           data.image_source +
           "<br><strong>Size: </strong>" +
           Math.round(size) +
+          // TODO: Validate the size image
           " KB"
       );
       axios.post("api/advertisement", data).then(

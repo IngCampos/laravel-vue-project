@@ -40,6 +40,12 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate([
+            'name' => 'required',
+            'email' => 'required|email',
+            'department_id' => 'required'
+        ]);
+
         $user = new User();
         $user->name = $request->name;
         $user->email = $request->email;
@@ -63,8 +69,16 @@ class UserController extends Controller
         $user = User::find($id);
         //The function just update password or the others values(together)
         if (isset($request->password)) {
+            $request->validate([
+                'password' => 'required|min:8|max:30'
+            ]);
             $user->password = Hash::make($request->password);
         } else {
+            $request->validate([
+                'name' => 'required',
+                'email' => 'required|email',
+                'department_id' => 'required'
+            ]);
             $user->name = $request->name;
             $user->email = $request->email;
             $user->department_id = $request->department_id;

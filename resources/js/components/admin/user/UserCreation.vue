@@ -49,6 +49,7 @@ export default {
             text: "Select the department",
             input: "select",
             inputOptions: this.directions_form,
+            // TODO: Directions_form does not work.
             inputPlaceholder: "Select",
             showCancelButton: true,
             inputValidator: (value) => {

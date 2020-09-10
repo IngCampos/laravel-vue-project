@@ -30,6 +30,10 @@ class MachineStateController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $request->validate([
+            'machine_state_id' => 'size:1'
+        ]);
+
         $machine = Machine::find($id);
         $machine->machine_state_id = $request->machine_state_id;
         $machine->update();

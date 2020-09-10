@@ -47,6 +47,11 @@ class PermissionController extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate([
+            'user_id' => 'required',
+            'permission_id' => 'required'
+        ]);
+
         $permissions = Permission::find($request->permission_id);
         if (count($permissions->users->where('pivot.user_id', $request->user_id)) == 0) {
             $permissions->users()->attach($request->user_id);
