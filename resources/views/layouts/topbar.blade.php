@@ -12,7 +12,7 @@
                 <i class="fas fa-caret-down rounded-circle"></i>
             </a>
             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
-                <a class="dropdown-item" href="{{ route('settings') }}">
+                <a class="dropdown-item" href="{{ route('password.index') }}">
                     <i class="fas fa-cog fa-sm fa-fw mr-2 text-gray-400"></i>
                     {{ __('Settings') }}
                 </a>

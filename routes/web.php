@@ -27,8 +27,8 @@ Auth::routes();
 Route::prefix('admin')->middleware(['auth', 'is.enabled'])->group(
     function () {
         // Routes in general for any user authenticated
-        Route::view('settings', 'settings')->name('settings');
-        Route::post('api/update_password', 'UserConfigController@updatepassword')->name('update_password');
+        Route::get('/settings', 'SettingController@index')->name('password.index');
+        Route::post('/update_password', 'SettingController@update')->name('password.update');
 
         //Routes for data in forms
         Route::get('api/data_user', 'DataFormController@data_user');
@@ -101,5 +101,3 @@ Route::prefix('admin')->middleware(['auth', 'is.enabled'])->group(
 );
 
 Route::view('user_disabled', 'user_disabled')->middleware(['auth', 'is.not.enable']);
-Route::post('/update_password', 'UserConfigController@updatepassword')->name('update_password')
-    ->middleware(['auth', 'is.enable']);

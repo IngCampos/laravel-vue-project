@@ -12,11 +12,11 @@
                     Basic Information.
                 </div>
                 <p class="card-body text-justify">
-                    <strong>Name</strong>: {{Auth::user()->name}}.<br />
-                    <strong>Email(s)</strong>: {{Auth::user()->email}}.<br />
-                    <strong>Department</strong>: {{Auth::user()->department->name}}.<br />
-                    <strong>Created at</strong>: {{FormatDate(Auth::user()->created_at)}}.<br />
-                    <strong>Updated at</strong>: {{FormatDate(Auth::user()->updated_at)}}.<br />
+                    <strong>Name</strong>: {{$user->name}}.<br />
+                    <strong>Email(s)</strong>: {{$user->email}}.<br />
+                    <strong>Department</strong>: {{$user->department->name}}.<br />
+                    <strong>Created at</strong>: {{FormatDate($user->created_at)}}.<br />
+                    <strong>Updated at</strong>: {{FormatDate($user->updated_at)}}.<br />
                 </p>
             </div>
         </div>
@@ -26,13 +26,13 @@
                     Permissions.
                 </div>
                 <ul class="list-group text-justify">
-                    @foreach (Auth::user()->permissions as $permission)
+                    @foreach ($permissions as $permission)
                     <li class="list-group-item">
                         <strong>{{$permission->name}}</strong>: {{$permission->description}}
                     </li>
                     @endforeach
                 </ul>
-                @if(Auth::user()->permissions=="[]")
+                @if($permissions=="[]")
                 There are not permissions.
                 @endif
             </div>
@@ -43,7 +43,20 @@
                     Update password.
                 </div>
                 <div class="card-body">
-                    <update-password></update-password>
+                    <form action="{{route('password.update')}}" method="POST" style="text-align:justify" class="row">
+                        @csrf
+                        <div class="form-group col-12 col-lg-6 row">
+                            <label for="password" class="col-md-5 col-form-label">New password:</label>
+                            <input class="form-control col-md-7" type="password" name="password" required minlength="8" maxlength="30" />
+                        </div>
+                        <div class="form-group col-12 col-lg-6 row">
+                            <label for="password2" class="col-md-5 col-form-label">Repeat password:</label>
+                            <input class="form-control col-md-7" type="password" name="password2" required minlength="8" maxlength="30" />
+                        </div>
+                        <center class="col-12">
+                            <input type="submit" value="Update" class="btn btn-success" onclick="return confirm('Are you sure to update the password?')" />
+                        </center>
+                    </form>
                 </div>
             </div>
         </div>
