@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Permission;
-use Illuminate\Http\Request;
+use App\Http\Requests\PermissionRequest;
 
 class PermissionController extends Controller
 {
@@ -42,16 +42,11 @@ class PermissionController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \Illuminate\Http\PermissionRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(PermissionRequest $request)
     {
-        $request->validate([
-            'user_id' => 'required',
-            'permission_id' => 'required'
-        ]);
-
         $permissions = Permission::find($request->permission_id);
         if (count($permissions->users->where('pivot.user_id', $request->user_id)) == 0) {
             $permissions->users()->attach($request->user_id);
@@ -66,7 +61,7 @@ class PermissionController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \Illuminate\Http\PermissionRequest  $request
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */

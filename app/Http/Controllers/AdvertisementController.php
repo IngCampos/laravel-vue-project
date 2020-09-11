@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Advertisement;
-use Illuminate\Http\Request;
+use App\Http\Requests\AdvertisementRequest;
 use Illuminate\Support\Facades\Storage;
 
 class AdvertisementController extends Controller
@@ -23,14 +23,13 @@ class AdvertisementController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \Illuminate\Http\AdvertisementRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(AdvertisementRequest $request)
     {
         $request->validate([
-            'order' => 'size:1|unique:advertisements',
-            'link' => 'active_url|nullable',
+            'order' => 'unique:advertisements'
         ]);
 
         // TODO: Use the functions all() as possible in order to have clean code
@@ -46,16 +45,12 @@ class AdvertisementController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \Illuminate\Http\AdvertisementRequest  $request
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(AdvertisementRequest $request, $id)
     {
-        $request->validate([
-            'order' => 'size:1'
-        ]);
-
         // TODO: Improve the PHP code
         //The function just update one value, the link or the order
         $advertisement = Advertisement::find($id);
@@ -74,9 +69,6 @@ class AdvertisementController extends Controller
             $advertisement->order = $request->order;
             $advertisement->update();
         } else {
-            $request->validate([
-                'link' => 'active_url|nullable'
-            ]);
             $advertisement->update($request->all());
         }
         return $advertisement;

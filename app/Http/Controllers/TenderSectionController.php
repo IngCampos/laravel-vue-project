@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Tender_section;
-use Illuminate\Http\Request;
+use App\Http\Requests\TenderSectionRequest;
 use Illuminate\Support\Facades\Storage;
 
 
@@ -28,17 +28,12 @@ class TenderSectionController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \Illuminate\Http\TenderSectionRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(TenderSectionRequest $request)
     {
         // TODO: Error in store a section
-        $request->validate([
-            'isInternational' => 'required|boolean',
-            'year' => 'required|size:4'
-        ]);
-
         $tender_section = new Tender_section();
         $tender_section->isInternational = ($request->isInternational == 'true' ? true : false);
         $tender_sections = Tender_section::where('year', $request->year)->orderBy('number', 'asc')->get();
@@ -63,17 +58,12 @@ class TenderSectionController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \Illuminate\Http\TenderSectionRequest  $request
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(TenderSectionRequest $request, $id)
     {
-        $request->validate([
-            'isInternational' => 'required|boolean',
-            'year' => 'required|size:4'
-        ]);
-
         // return $request;
         $tender_section = Tender_section::find($id);
         $tender_section->year = $request->year;

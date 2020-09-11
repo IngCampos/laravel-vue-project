@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\User;
-use Illuminate\Http\Request;
+use App\Http\Requests\UserRequest;
 use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
@@ -13,7 +13,7 @@ class UserController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Request $request)
+    public function index()
     {
         $users = User::orderBy('name', 'asc')->paginate(15);
         for ($i = 0; $i < count($users); $i++) {
@@ -35,17 +35,11 @@ class UserController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \Illuminate\Http\UserRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(UserRequest $request)
     {
-        $request->validate([
-            'name' => 'required|min:3|max:255',
-            'email' => 'required|email',
-            'department_id' => 'required'
-        ]);
-
         $user = new User();
         $user->name = $request->name;
         $user->email = $request->email;
@@ -60,26 +54,17 @@ class UserController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \Illuminate\Http\UserRequest  $request
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(UserRequest $request, $id)
     {
         $user = User::find($id);
         //The function just update password or the others values(together)
         if (isset($request->password)) {
-            $request->validate([
-                'password' => 'required|min:8|max:30'
-            ]);
             $user->password = Hash::make($request->password);
         } else {
-            $request->validate([
-                'name' => 'required|min:3|max:255|regex:/^([A-Z]{1}[a-zñáéíóú]+[\s]*)+$/',
-                // TODO: Use more the regular expressions
-                'email' => 'required|email',
-                'department_id' => 'required'
-            ]);
             $user->name = $request->name;
             $user->email = $request->email;
             $user->department_id = $request->department_id;
@@ -97,6 +82,7 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
+        // TODO: Create other function for deleting the user
         $user = User::find($id);
         $user->isEnabled = !$user->isEnabled;
         $user->update();

@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Complaint;
-use Illuminate\Http\Request;
+use App\Http\Requests\ComplaintRequest;
 
 class ComplaintController extends Controller
 {
@@ -12,7 +12,7 @@ class ComplaintController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Request $request)
+    public function index()
     {
         $complaints = Complaint::orderBy('created_at', 'desc')->paginate(10);
         for ($i = 0; $i < count($complaints); $i++) {

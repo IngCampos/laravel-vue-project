@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Machine;
-use Illuminate\Http\Request;
+use App\Http\Requests\MachineRequest;
 
 class MachineStateController extends Controller
 {
@@ -24,16 +24,12 @@ class MachineStateController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \Illuminate\Http\MachineRequest  $request
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(MachineRequest $request, $id)
     {
-        $request->validate([
-            'machine_state_id' => 'size:1'
-        ]);
-
         $machine = Machine::find($id);
         $machine->machine_state_id = $request->machine_state_id;
         $machine->update();
