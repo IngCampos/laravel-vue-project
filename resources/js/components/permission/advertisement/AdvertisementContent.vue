@@ -1,4 +1,3 @@
-  
 <template>
   <div style="overflow-x:auto;">
     <table style="width:100%" class="table">
@@ -18,9 +17,9 @@
         v-for="(element, index) in elements"
         :key="element.order"
         :element="element"
-        @delete="Delete(index,...arguments)"
-        @update="Update(index,...arguments)"
-        @create="Create(index,...arguments)"
+        @delete="Delete(index, ...arguments)"
+        @update="Update(index, ...arguments)"
+        @create="Create(index, ...arguments)"
       ></advertisement-element>
     </table>
   </div>

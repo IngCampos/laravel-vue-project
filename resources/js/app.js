@@ -115,10 +115,15 @@ const app = new Vue({
             });
         },
         ErrorMessage(text, error) {
+            var list_errors = "";
+            for (const key in error.response.data.errors) {
+                list_errors += '<b>' + key + '</b>' + ': ' + error.response.data.errors[key] + '<br>'
+            }
             this.$swal.fire({
                 icon: "error",
                 title: "Oops...",
                 text: text,
+                html: list_errors,
                 footer: error
             });
         },

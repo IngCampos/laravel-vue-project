@@ -10,7 +10,7 @@
 
 <script>
 export default {
-  props: ["directions_form"],
+  props: ["department_form"],
   methods: {
     Create_user() {
       this.$swal
@@ -48,8 +48,8 @@ export default {
             title: "Add user",
             text: "Select the department",
             input: "select",
-            inputOptions: this.directions_form,
-            // TODO: Directions_form does not work.
+            inputOptions: this.department_form,
+            // TODO: department_form does not work.
             inputPlaceholder: "Select",
             showCancelButton: true,
             inputValidator: (value) => {

@@ -15,6 +15,7 @@ class DataFormController extends Controller
 
     // TODO: Use the resource edit in each Controller instead of using this Controller.
 
+    // TODO: Delete Request $request, it is not used.
     public function data_user(Request $request)
     {
         // Data for sweetalert

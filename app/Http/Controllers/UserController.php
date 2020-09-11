@@ -41,7 +41,7 @@ class UserController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'name' => 'required',
+            'name' => 'required|min:3|max:255',
             'email' => 'required|email',
             'department_id' => 'required'
         ]);
@@ -75,7 +75,8 @@ class UserController extends Controller
             $user->password = Hash::make($request->password);
         } else {
             $request->validate([
-                'name' => 'required',
+                'name' => 'required|min:3|max:255|regex:/^([A-Z]{1}[a-zñáéíóú]+[\s]*)+$/',
+                // TODO: Use more the regular expressions
                 'email' => 'required|email',
                 'department_id' => 'required'
             ]);
