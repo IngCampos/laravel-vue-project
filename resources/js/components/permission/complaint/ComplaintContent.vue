@@ -9,7 +9,7 @@
             <i class="fas fa-sort-numeric-down"></i>
           </th>
           <th>Name / Email</th>
-          <th class="text-center">Tipo</th>
+          <th class="text-center">Type</th>
           <th style="min-width:215px" class="text-right">Actions</th>
         </tr>
       </thead>
@@ -75,7 +75,7 @@ export default {
   methods: {
     getComplaints(page) {
       axios.get("api/complaint?page=" + page).then((response) => {
-        this.complaints = response.data.complaints.data;
+        this.complaints = response.data.complaints;
         this.pagination = response.data.pagination;
       });
     },

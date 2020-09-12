@@ -16,9 +16,6 @@ class UserController extends Controller
     public function index()
     {
         $users = User::orderBy('name', 'asc')->paginate(15);
-        for ($i = 0; $i < count($users); $i++) {
-            $users[$i]->department;
-        }
         return [
             'pagination' => [
                 'total' => $users->total(),
@@ -28,7 +25,7 @@ class UserController extends Controller
                 'from' => $users->firstItem(),
                 'to' => $users->lastItem(),
             ],
-            'users' => $users
+            'users' => $users->load('department')
         ];
     }
 

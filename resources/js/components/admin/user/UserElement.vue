@@ -7,7 +7,9 @@
       {{user.name}}
     </td>
     <td>{{user.email}}</td>
-    <td class="align-middle text-center">{{user.department.name}}</td>
+    <td class="align-middle text-center">
+      <span :class="'badge badge-'+$root.colors[user.department.id-1]">{{user.department.name}}</span>
+    </td>
     <td class="dropdown no-arrow align-middle">
       <a
         class="dropdown-toggle"

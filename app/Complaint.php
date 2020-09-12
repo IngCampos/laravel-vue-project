@@ -16,6 +16,6 @@ class Complaint extends Model
     ];
 
     protected $hidden = [
-        'updated_at'
+        'complaint_type_id', 'updated_at'
     ];
 }

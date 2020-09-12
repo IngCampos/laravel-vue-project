@@ -17,11 +17,8 @@ class TenderSectionController extends Controller
     public function index()
     {
         $tender_sections = Tender_section::orderBy('year', 'desc')->orderBy('number', 'asc')->get();
-        for ($i = 0; $i < count($tender_sections); $i++) {
-            $tender_sections[$i]->tenders = Tender_section::find($tender_sections[$i]->id)->tenders;
-        }
         return view('permission.tender', [
-            'tender_sections' =>  $tender_sections
+            'tender_sections' =>  $tender_sections->load('tenders')
         ]);
     }
 

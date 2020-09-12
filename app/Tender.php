@@ -10,4 +10,8 @@ class Tender extends Model
     {
         return $this->belongsTo(Tender_section::class);
     }
+
+    protected $hidden = [
+        'tender_section_id'
+    ];
 }

@@ -14,11 +14,7 @@ class MachineStateController extends Controller
      */
     public function index()
     {
-        $machines = Machine::orderBy('user_agent', 'asc')->get();;
-        for ($i = 0; $i < count($machines); $i++) {
-            $machines[$i]->machine_state;
-        }
-        return $machines;
+        return Machine::orderBy('user_agent', 'asc')->get()->load('machine_state');
     }
 
     /**

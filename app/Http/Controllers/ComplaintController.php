@@ -15,9 +15,6 @@ class ComplaintController extends Controller
     public function index()
     {
         $complaints = Complaint::orderBy('created_at', 'desc')->paginate(10);
-        for ($i = 0; $i < count($complaints); $i++) {
-            $complaints[$i]->complaint_type;
-        }
         return [
             'pagination' => [
                 'total' => $complaints->total(),
@@ -27,7 +24,7 @@ class ComplaintController extends Controller
                 'from' => $complaints->firstItem(),
                 'to' => $complaints->lastItem(),
             ],
-            'complaints' => $complaints
+            'complaints' => $complaints->load('complaint_type')
         ];
     }
 

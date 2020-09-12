@@ -9,16 +9,8 @@
     </td>
     <td class="align-middle text-center">
       <span
-        v-if="complaint.complaint_type_id=='1'"
-        class="badge badge-danger"
-      >{{complaint.complaint_type.name}}</span>
-      <span
-        v-else-if="complaint.complaint_type_id=='2'"
-        class="badge badge-success"
-      >{{complaint.complaint_type.name}}</span>
-      <span
-        v-else-if="complaint.complaint_type_id=='3'"
-        class="badge badge-info"
+        :class="'badge badge-'+(complaint.complaint_type.id == 1 ? 'success' 
+        : (complaint.complaint_type.id == 2 ? 'danger' : 'info'))"
       >{{complaint.complaint_type.name}}</span>
     </td>
     <td class="align-middle text-right">

@@ -84,7 +84,7 @@ export default {
   methods: {
     getUsers(page) {
       axios.get("api/user?page=" + page).then((response) => {
-        this.users = response.data.users.data;
+        this.users = response.data.users;
         this.pagination = response.data.pagination;
       });
     },

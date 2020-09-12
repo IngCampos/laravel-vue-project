@@ -10,7 +10,7 @@ $factory->define(Complaint::class, function (Faker $faker) {
     return [
         'name' => $faker->name,
         'email' => $faker->unique()->safeEmail,
-        'complaint_type_id' => $faker->numberBetween($min = 1, $max = 3),
+        'complaint_type_id' => rand(1, 3),
         'content' => $faker->text,
         'created_at' => $date,
         'updated_at' => $date

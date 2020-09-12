@@ -14,4 +14,8 @@ class Machine extends Model
     protected $casts = [
         'common_failures' => 'array'
     ];
+
+    protected $hidden = [
+        'machine_state_id'
+    ];
 }

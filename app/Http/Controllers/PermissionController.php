@@ -16,10 +16,7 @@ class PermissionController extends Controller
     {
         $data = [];
         foreach (Permission::get() as $permission) {
-            $users = $permission->users()->get();
-            for ($i = 0; $i < count($users); $i++) {
-                $users[$i]->department;
-            }
+            $users = $permission->users()->get()->load('department');
             array_push($data, (object) [
                 'info' => $permission,
                 'users' => $users,
