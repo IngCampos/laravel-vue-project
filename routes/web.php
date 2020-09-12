@@ -17,9 +17,6 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
-Route::get('/home', function () {
-    return view('home');
-})->middleware(['auth', 'is.enabled']);
 
 Auth::routes();
 
@@ -27,6 +24,7 @@ Auth::routes();
 Route::prefix('admin')->middleware(['auth', 'is.enabled'])->group(
     function () {
         // Routes in general for any user authenticated
+        Route::view('/home', 'home')->name('home');
         Route::get('/settings', 'SettingController@index')->name('password.index');
         Route::post('/update_password', 'SettingController@update')->name('password.update');
 
