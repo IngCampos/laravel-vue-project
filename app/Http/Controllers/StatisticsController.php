@@ -63,8 +63,7 @@ class StatisticsController extends Controller
         $tenders['total'] = Tender::all()->count();
         $tenders['types'] = [];
         foreach (Tender_section::orderBy('year', 'desc')->orderBy('number', 'asc')->get() as $tender_section) {
-            $tenders['types']["Public tender " . ($tender_section->isInternational ? "International" : "National") . " 00" .
-                $tender_section->number . "-" . $tender_section->year] = Tender_section::find($tender_section->id)->tenders()->count();
+            $tenders['types'][$tender_section->get_name] = Tender_section::find($tender_section->id)->tenders()->count();
         }
 
         return view('admin/statistic/business', [

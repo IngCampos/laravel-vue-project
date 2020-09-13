@@ -204,13 +204,7 @@ export default {
     Create_section(data) {
       this.sections.push(data);
       this.sections.orderByNumber("year", -1);
-      this.name_sections[data.id] =
-        "Public tender " +
-        (data.isInternational ? "International" : "National") +
-        " 00" +
-        data.number +
-        "-" +
-        data.year;
+      this.name_sections[data.id] = data.name;
       this.$forceUpdate();
     },
     Update_section(index, data) {
@@ -223,15 +217,7 @@ export default {
       this.$swal
         .fire(
           this.$root.ConfirmMessageValue(
-            "Are you sure to delete the Public tender " +
-              (this.sections[index].isInternational
-                ? "International"
-                : "National") +
-              " 00" +
-              this.sections[index].number +
-              "-" +
-              this.sections[index].year +
-              "''?",
+            "Are you sure to delete the " + this.sections[index].name,
             "The tenders of this sections are also deleted."
             //TODO: Show how many files are deleted
           )

@@ -3,7 +3,7 @@
   <tbody>
     <td colspan="3" class="table-active">
       <center>
-        <strong>{{nametender}}</strong>
+        <strong>{{section.name}}</strong>
         <button v-on:click="Edit_section()" class="btn btn-secondary badge">
           <i class="far fa-edit"></i> Edit
         </button>
@@ -108,18 +108,6 @@ export default {
           });
         },
       });
-    },
-  },
-  computed: {
-    nametender: function () {
-      return (
-        "Public tender " +
-        (this.section.isInternational == 1 ? "International" : "National") +
-        " 00" +
-        this.section.number +
-        "-" +
-        this.section.year
-      );
     },
   },
 };
