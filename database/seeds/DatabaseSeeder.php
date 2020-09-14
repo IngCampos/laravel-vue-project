@@ -19,5 +19,7 @@ class DatabaseSeeder extends Seeder
         $this->call(TenderSectionSeeder::class);
         $this->call(TenderSeeder::class);
         $this->call(PermissionSeeder::class);
+
+        factory(App\Post::class, 10)->create();
     }
 }

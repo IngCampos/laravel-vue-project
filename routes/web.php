@@ -18,6 +18,9 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('blog/{post}', 'PageController@post')->name('blog');
+Route::get('blog', 'PageController@posts')->name('blogs');
+
 Auth::routes();
 
 // Routes that need authentication
