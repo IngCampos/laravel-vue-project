@@ -6,6 +6,11 @@ use Illuminate\Database\Eloquent\Model;
 
 class Complaint extends Model
 {
+    public function setContentAttribute($value)
+    {
+        $this->attributes['content'] = ucfirst($value);
+    }
+
     public function complaint_type()
     {
         return $this->belongsTo(Complaint_type::class);

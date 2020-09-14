@@ -37,6 +37,16 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
+    public function getFirstNameAttribute()
+    {
+        return  ucfirst(explode(' ', $this->name)[0]);
+    }
+
+    public function setNameAttribute($value)
+    {
+        $this->attributes['name'] = strtolower($value);
+    }
+
     public function department()
     {
         return $this->belongsTo(Department::class);
