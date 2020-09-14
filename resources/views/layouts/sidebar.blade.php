@@ -44,6 +44,12 @@
                     <span>{{ __('Tenders') }}</span>
                 </a>
                 @endif
+                @if(Auth::user()->permissions->where('pivot.permission_id','6')!="[]")
+                <a class="collapse-item" href="{{route('posts.index')}}">
+                    <i class="fas fa-th-list"></i>
+                    <span>{{ __('Posts') }}</span>
+                </a>
+                @endif
             </div>
         </div>
     </li>

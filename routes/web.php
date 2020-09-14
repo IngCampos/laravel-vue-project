@@ -98,6 +98,12 @@ Route::prefix('admin')->middleware(['auth', 'is.enabled'])->group(
                 ]);
             }
         );
+        // Routes for Post Administrator.
+        Route::middleware(['has.permission:6'])->group(
+            function () {
+                Route::resource('posts', 'Backend\PostController')->except('show');
+            }
+        );
     }
 );
 
