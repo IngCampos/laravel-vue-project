@@ -9,6 +9,11 @@
                 <a href="{{route('posts.create')}}" class="btn btn-sm btn-primary float-right">Create</a>
             </div>
             <div class="card-body">
+                @if (session('status'))
+                <div class="alert alert-success" role="alert">
+                    {{ session('status') }}
+                </div>
+                @endif
                 <table class="table">
                     <thead>
                         <tr>
@@ -26,7 +31,7 @@
                                 <a href="{{route('posts.edit', $post)}}" class="btn btn-primary btn-sm">Edit</a>
                             </td>
                             <td>
-                                <form action="POST" action="{{route('posts.destroy', $post)}}">
+                                <form method="POST" action="{{route('posts.destroy', $post)}}">
                                     @csrf
                                     @method('DELETE')
                                     <input type="submit" value="Delete" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure to delete the post id {{$post->id}}')">
@@ -36,6 +41,7 @@
                         @endforeach
                     </tbody>
                 </table>
+                {{ $posts->links() }}
             </div>
         </div>
     </div>

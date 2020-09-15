@@ -35,6 +35,11 @@ class Post extends Model
         ];
     }
 
+    public function getRouteKeyName()
+    {
+        return 'slug';
+    }
+
     public function user()
     {
         return $this->belongsTo(User::class);
@@ -44,5 +49,11 @@ class Post extends Model
     {
         // return substr($this->body, 0, 140); //PHP function
         return Str::limit($this->body, 140); // Laravel function
+    }
+
+    public function getGetImageAttribute($key)
+    {
+        if ($this->image)
+            return url("storage/$this->image");
     }
 }

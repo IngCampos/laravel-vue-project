@@ -5,7 +5,7 @@
     <div class="col-md-8">
         <div class="card">
             <div class="card-header">
-                Create article
+                Edit article
                 <a href="{{route('posts.index')}}" class="btn btn-sm btn-primary float-right">Back</a>
             </div>
             <div class="card-body">
@@ -14,11 +14,12 @@
                     {{ session('status') }}
                 </div>
                 @endif
-                <form action="{{route('posts.store')}}" method="POST" enctype="multipart/form-data">
+                <form action="{{route('posts.update', $post)}}" method="POST" enctype="multipart/form-data">
                     @csrf
+                    @method('PUT')
                     <div class="form-group">
                         <label>Title*</label>
-                        <input type="text" name="title" class="form-control" required>
+                        <input type="text" name="title" class="form-control" required value="{{old('title', $post->title)}}">
                     </div>
                     <div class="form-group">
                         <label>Image</label>
@@ -26,14 +27,14 @@
                     </div>
                     <div class="form-group">
                         <label>Content*</label>
-                        <textarea name="body" rows="6" class="form-control" required></textarea>
+                        <textarea name="body" rows="6" class="form-control" required>{{old('body', $post->body)}}</textarea>
                     </div>
                     <div class="form-group">
                         <label>Embbebed content</label>
-                        <textarea name="iframe" class="form-control"></textarea>
+                        <textarea name="iframe" class="form-control" value="{{old('iframe', $post->iframe)}}"></textarea>
                     </div>
                     <div class="form-group">
-                        <input type="submit" value="Save" class="btn btn-sm btn-primary">
+                        <input type="submit" value="Update" class="btn btn-sm btn-primary">
                     </div>
                 </form>
             </div>
