@@ -38,6 +38,7 @@ class PostController extends Controller
      */
     public function store(PostRequest $request)
     {
+        // TODO: Just allow file or embeb content
         $post = Post::create([
             'user_id' => auth()->user()->id
         ] + $request->all());

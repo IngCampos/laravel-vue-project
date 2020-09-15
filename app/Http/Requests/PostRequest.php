@@ -23,6 +23,7 @@ class PostRequest extends FormRequest
      */
     public function rules()
     {
+        // TODO: Add more validations
         return [
             'title' => 'required',
             'body' => 'required',
