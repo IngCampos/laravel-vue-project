@@ -22,7 +22,11 @@ class AlertController extends Controller
      */
     public function index()
     {
-        //
+        return response()->json($this->alert->paginate());
+        // status 200 is by default
+
+        // return dd($this->alert->paginate());
+        // dd() shows the data in the test
     }
 
     /**
@@ -45,7 +49,7 @@ class AlertController extends Controller
      */
     public function show(Alert $alert)
     {
-        //
+        return response()->json($alert);
     }
 
     /**
@@ -57,7 +61,9 @@ class AlertController extends Controller
      */
     public function update(AlertRequest $request, Alert $alert)
     {
-        //
+        $alert->update($request->all());
+
+        return response()->json($alert);
     }
 
     /**
@@ -68,6 +74,8 @@ class AlertController extends Controller
      */
     public function destroy(Alert $alert)
     {
-        //
+        $alert->delete();
+
+        return response()->json(null, 204);
     }
 }

@@ -7,6 +7,6 @@ use Faker\Generator as Faker;
 
 $factory->define(Alert::class, function (Faker $faker) {
     return [
-        //
+        'title' => $faker->sentence
     ];
 });
