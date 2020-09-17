@@ -21,8 +21,6 @@ Route::get('/', function () {
 Route::get('blog/{post}', 'PageController@post')->name('blog');
 Route::get('blog', 'PageController@posts')->name('blogs');
 
-Route::apiResource('alerts', 'Api\AlertController');
-
 Auth::routes();
 
 // Routes that need authentication
