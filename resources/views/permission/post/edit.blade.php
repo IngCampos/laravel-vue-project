@@ -7,7 +7,12 @@
 <div class="card">
     <div class="card-header">
         Edit article
-        <a href="{{route('posts.index')}}" class="btn btn-sm btn-primary float-right">Back</a>
+        <a href="{{route('posts.index')}}" class="btn btn-sm btn-secondary float-right btn-icon-split">
+            <span class="icon text-white-50">
+                <i class="fas fa-arrow-left"></i>
+            </span>
+            <span class="text">Back</span>
+        </a>
     </div>
     <div class="card-body">
         @if (session('status'))
@@ -38,7 +43,12 @@
                 <textarea name="iframe" class="form-control" value="{{old('iframe', $post->iframe)}}"></textarea>
             </div>
             <div class="form-group">
-                <input type="submit" value="Update" class="btn btn-sm btn-primary">
+                <button type="submit" class="btn btn-sm btn-primary btn-icon-split">
+                    <span class="icon text-white-50">
+                        <i class="fas fa-save"></i>
+                    </span>
+                    <span class="text">Update</span>
+                </button>
             </div>
         </form>
     </div>

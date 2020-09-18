@@ -57,8 +57,10 @@
         </div>
         <hr>
         <div class="text-center">
-            <a class="small" href="{{ url('/') }}">
-                {{ __('Go to the home') }}
+            <a href="{{ url('/') }}">
+                <strong>
+                    {{ __('Go to the home') }}
+                </strong>
             </a>
         </div>
         <div class="text-center">

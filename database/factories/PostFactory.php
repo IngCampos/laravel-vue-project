@@ -4,11 +4,20 @@
 
 use App\Post;
 use Faker\Generator as Faker;
+use Faker\Provider\Youtube as Youtube;
 
 $factory->define(Post::class, function (Faker $faker) {
+    $faker = \Faker\Factory::create();
+    $faker->addProvider(new Youtube($faker));
+    $content_amount = rand(0, 3);
+    // 0 there are not content, 1 with image,
+    // 2 with iframe and 3 with image and iframe
     return [
         'user_id' => rand(1, 100), //number of users
         'title' => $faker->sentence,
-        'body' => $faker->text(800)
+        'image' => (($content_amount == 1 || $content_amount == 3) ?  '/posts/' .
+            $faker->image('public/storage/posts', 560, 315, 'cats', null, false, 'Faker') : ''),
+        'body' => $faker->text(800),
+        'iframe' => (($content_amount == 2 || $content_amount == 3) ? $faker->youtubeEmbedCode() : '')
     ];
 });

@@ -7,7 +7,12 @@
 <div class="card">
     <div class="card-header">
         Articles
-        <a href="{{route('posts.create')}}" class="btn btn-sm btn-primary float-right">Create</a>
+        <a href="{{route('posts.create')}}" class="btn btn-sm btn-primary float-right btn-icon-split">
+            <span class="icon text-white-50">
+                <i class="fas fa-plus-square"></i>
+            </span>
+            <span class="text">Create</span>
+        </a>
     </div>
     <div class="card-body">
         @if (session('status'))

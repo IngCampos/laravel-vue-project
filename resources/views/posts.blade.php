@@ -2,9 +2,9 @@
 
 @section('content')
 <h3 class="col-12 text-center">Blog</h3>
-<div class="col-md-8">
+<div class="row">
     @foreach($posts as $post)
-    <div class="card mb-4">
+    <div class="card bg-light col-md-6">
         <div class="card-body">
             @if ($post->image)
             <img src="{{ $post->get_image}}" alt="" class="card-img-top">
@@ -13,7 +13,7 @@
                 {!! $post->iframe !!}
             </div>
             @endif
-            <h5 class="card-title">{{ $post->title }}</h5>
+            <h5 class="card-title text-dark">{{ $post->title }}</h5>
             <p class="card-text">
                 {{ $post->get_excerpt }}
                 <a href="{{route('blog', $post)}}">Read more</a>
@@ -27,6 +27,6 @@
         </div>
     </div>
     @endforeach
-    {{ $posts->links() }}
 </div>
+{{ $posts->links() }}
 @endsection

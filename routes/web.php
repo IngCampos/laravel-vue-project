@@ -16,7 +16,7 @@ use Illuminate\Support\Facades\Route;
 // Routes for people in general
 Route::get('/', function () {
     return view('welcome');
-});
+})->name('welcome');
 
 Route::get('blog/{post}', 'PageController@post')->name('blog');
 Route::get('blog', 'PageController@posts')->name('blogs');
