@@ -72,6 +72,16 @@ class UserController extends Controller
     }
 
     /**
+     * Function to disable and enable
+     */
+    public function disabled($id)
+    {
+        $user = User::find($id);
+        $user->isEnabled = !$user->isEnabled;
+        $user->update();
+    }
+
+    /**
      * Remove the specified resource from storage.
      *
      * @param  int  $id
@@ -79,9 +89,7 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
-        // TODO: Create other function for deleting the user
         $user = User::find($id);
-        $user->isEnabled = !$user->isEnabled;
-        $user->update();
+        $user->delete();
     }
 }

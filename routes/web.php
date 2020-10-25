@@ -54,6 +54,8 @@ Route::prefix('admin')->middleware(['auth', 'is.enabled'])->group(
                 Route::resource('api/user', 'UserController')->except([
                     'show', 'edit', 'create'
                 ]);
+                Route::delete('/api/user/{id}/disable', 'UserController@disabled');
+                // Route to disable and enable
                 Route::resource('api/permission', 'PermissionController')->except([
                     'index', 'update', 'edit'
                 ]);

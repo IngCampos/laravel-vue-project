@@ -20,6 +20,7 @@
             :key="index"
             :user="user"
             @enable="Enable(index)"
+            @delete="Delete(index)"
             @justupdate="justUpdate(index,...arguments)"
             @update="changePage(pagination.current_page)"
             :department_form="department_form"
@@ -58,7 +59,7 @@
     ></user-creation>
   </div>
 </template>
-
+// TODO: Create a view for watching the deleted users.
 <script>
 export default {
   computed: {
@@ -90,6 +91,9 @@ export default {
     },
     Enable(index) {
       this.users[index].isEnabled = !this.users[index].isEnabled;
+    },
+    Delete(index) {              
+      this.users.splice(index, 1);
     },
     justUpdate(index, data) {
       this.users[index] = data;
