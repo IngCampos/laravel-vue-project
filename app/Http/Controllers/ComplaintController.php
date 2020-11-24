@@ -7,11 +7,6 @@ use App\Http\Requests\ComplaintRequest;
 
 class ComplaintController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
     {
         $complaints = Complaint::orderBy('created_at', 'desc')->paginate(10);
@@ -28,13 +23,6 @@ class ComplaintController extends Controller
         ];
     }
 
-    // TODO: Delete unnecessary comments like below
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function destroy(Complaint $complaint)
     {
         $complaint->delete();

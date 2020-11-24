@@ -9,12 +9,6 @@ use Illuminate\Support\Facades\Storage;
 
 class TenderController extends Controller
 {
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\TenderRequest  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(TenderRequest $request)
     {
         $tender = new Tender();
@@ -31,43 +25,21 @@ class TenderController extends Controller
         return $tender;
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Tender  $tender
-     * @return \Illuminate\Http\Response
-     */
     public function show(Tender $tender)
     {
-        $tender_section = Tender_section::find($tender->id);
-        return $tender_section->tenders;
+        return $tender->tender_section->tenders;
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\TenderRequest  $request
-     * @param  \App\Tender  $tender
-     * @return \Illuminate\Http\Response
-     */
     public function update(TenderRequest $request, Tender $tender)
     {
         // TODO: Use $tender parameters insted of Tender::find(id)
-        $tender = Tender::find($tender->id);
         $tender->name = $request->name;
         $tender->update();
         return $tender;
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Tender  $tender
-     * @return \Illuminate\Http\Response
-     */
     public function destroy(Tender $tender)
     {
-        $tender = Tender::find($tender->id);
         // if the tender has a internal file, it must be deleted.
         if ($tender->internal_file = 1)
             $this->delete_file($tender->link);
@@ -76,7 +48,7 @@ class TenderController extends Controller
 
     /* Functions for the storage files */
 
-    protected function upload_file($file, $name)
+    private function upload_file($file, $name)
     {
         // the array is split, the second place is the base64 code for saving well.
         $exploded = explode(',', $file);
@@ -84,7 +56,7 @@ class TenderController extends Controller
         Storage::disk('public')->put('/tenders/' . $name, $decoded, 'public');
     }
 
-    protected function delete_file($link)
+    private function delete_file($link)
     {
         // array to get just the name file, not the path.
         $exploded = explode('/', $link);
