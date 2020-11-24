@@ -86,7 +86,7 @@ export default {
             "Are you sure to delete the complaint of " +
               this.complaints[index].name +
               "?",
-            "The complaint could not be recovered."
+            "Delete an important complaint could be sanctioned."
           )
         )
         .then((result) => {

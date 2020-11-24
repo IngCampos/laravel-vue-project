@@ -28,16 +28,19 @@
       >
         <div class="dropdown-header">Options:</div>
         <a v-on:click="Change_data()" class="btn btn-primary dropdown-item">
-          <i class="fas fa-user-edit"></i> Edit
+          <i class="fas fa-user-edit text-primary"></i> Edit
         </a>
         <a v-on:click="Change_password()" class="btn btn-warning dropdown-item">
-          <i class="fa fa-key"></i> Change password
+          <i class="fa fa-key text-secondary"></i> Change password
         </a>
         <a v-on:click="Enable()" class="btn dropdown-item">
           <i v-if="!user.isEnabled" class="fas fa-user-check text-success"></i>
-          <i v-else class="fas fa-user-times text-danger"></i>
+          <i v-else class="fas fa-user-times text-warning"></i>
           <span v-if="!user.isEnabled">Enable</span>
           <span v-else>Disable</span>
+        </a>
+        <a v-on:click="Delete()" class="btn btn-warning dropdown-item">
+          <i class="fas fa-user-slash text-danger"></i> Delete
         </a>
         <div class="dropdown-divider"></div>
         <a class="btn btn-info dropdown-item" v-on:click="Show_info()">More information</a>
@@ -171,7 +174,35 @@ export default {
               (this.user.isEnabled ? "disable " : "enable ") +
               this.user.name +
               "?",
-            ""
+            "The user will "+(this.user.isEnabled ? "not" : "") +" be able to use the system."
+          )
+        )
+        .then((result) => {
+          if (result.value) {
+            this.$root.BasicLoading();
+            axios.delete(`api/user/${this.user.id}/disable`).then(
+              (response) => {
+                this.$emit("enable");
+                this.$forceUpdate();
+                this.$root.SuccessMessage(
+                  "User " + (this.user.isEnable ? "enabled" : "disabled")
+                );
+              },
+              (error) => {
+                this.$root.ErrorMessage("", error);
+              }
+            );
+          }
+        });
+    },
+    Delete() {
+      this.$swal
+        .fire(
+          this.$root.ConfirmMessageValue(
+            "Are you sure to delete " +
+              this.user.name +
+              "?",
+            "The user is saved yet in the database but he is not going to appear in the system."
           )
         )
         .then((result) => {
@@ -179,10 +210,10 @@ export default {
             this.$root.BasicLoading();
             axios.delete(`api/user/${this.user.id}`).then(
               (response) => {
-                this.$emit("enable");
+                this.$emit("delete");
                 this.$forceUpdate();
                 this.$root.SuccessMessage(
-                  "User " + (this.user.isEnable ? "enabled" : "disabled")
+                  "User deleted!"
                 );
               },
               (error) => {

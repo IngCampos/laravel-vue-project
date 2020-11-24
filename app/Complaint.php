@@ -3,9 +3,11 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Complaint extends Model
 {
+    use SoftDeletes;
     public function setContentAttribute($value)
     {
         $this->attributes['content'] = ucfirst($value);
