@@ -41,10 +41,10 @@
       ></date-picker>
     </td>
     <td class="align-middle text-right" style="width:130px">
-      <button v-on:click="Show_info()" class="btn btn-info">
+      <button v-on:click="Show_info()" class="btn btn-info btn-circle">
         <i class="fas fa-info-circle"></i>
       </button>
-      <button v-on:click="$emit('delete', element.id)" class="btn btn-danger">
+      <button v-on:click="$emit('delete', element.id)" class="btn btn-danger btn-circle">
         <i class="far fa-trash-alt"></i>
       </button>
     </td>

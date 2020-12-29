@@ -13,10 +13,10 @@
       <span v-else-if="tender.internal_file==0" class="badge badge-success">External</span>
     </td>
     <td class="align-middle text-right">
-      <button v-on:click="Show_info()" class="btn btn-info">
+      <button v-on:click="Show_info()" class="btn btn-info btn-circle">
         <i class="fas fa-info-circle"></i>
       </button>
-      <button v-on:click="$emit('delete')" class="btn btn-danger">
+      <button v-on:click="$emit('delete')" class="btn btn-danger btn-circle">
         <i class="far fa-trash-alt"></i>
       </button>
     </td>

@@ -14,16 +14,16 @@
       >{{complaint.complaint_type.name}}</span>
     </td>
     <td class="align-middle text-right">
-      <button v-on:click="Show_info()" class="btn btn-info">
+      <button v-on:click="Show_info()" class="btn btn-info btn-circle">
         <i class="fas fa-info-circle"></i>
       </button>
       <a
-        class="btn btn-success"
         :href="'mailto:'+complaint.email+'?Subject=Contestación%20de%20'+complaint.complaint_type.name+':'"
+        class="btn btn-success btn-circle"
       >
         <i class="fas fa-envelope"></i>
       </a>
-      <button v-on:click="$emit('delete', complaint.id)" class="btn btn-danger">
+      <button v-on:click="$emit('delete', complaint.id)" class="btn btn-danger btn-circle">
         <i class="far fa-trash-alt"></i>
       </button>
     </td>
