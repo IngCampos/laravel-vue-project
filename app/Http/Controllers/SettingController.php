@@ -11,7 +11,7 @@ class SettingController extends Controller
 {
     public function index()
     {
-        return view('settings', [
+        return view('app.settings', [
             'user' => Auth::user(),
             'permissions' => Auth::user()->permissions
         ]);

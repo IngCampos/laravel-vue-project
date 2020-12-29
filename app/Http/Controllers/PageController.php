@@ -9,13 +9,13 @@ class PageController extends Controller
 {
     public function posts()
     {
-        return view('posts', [
+        return view('public.posts', [
             'posts' => Post::with('user')->latest()->paginate('6')
         ]);
     }
 
     public function post(Post $post)
     {
-        return view('post', ['post' => $post]);
+        return view('public.post', ['post' => $post]);
     }
 }

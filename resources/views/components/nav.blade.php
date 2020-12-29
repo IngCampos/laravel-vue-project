@@ -4,13 +4,13 @@
     </button>
     <div class="sidebar-brand-text navbar-brand mx-3">
         <strong>
-            <a class="navbar-brand" href="{{ route('welcome') }}"> {{ config('app.name', 'Laravel') }}</a>
+            <a class="navbar-brand" href="{{ route('index') }}"> {{ config('app.name', 'Laravel') }}</a>
         </strong>
     </div>
     <ul class=" navbar-nav ml-auto">
         <div class="topbar-divider d-none d-sm-block"></div>
         <li class="nav-item dropdown no-arrow">
-            <a class="navbar-brand" href="{{ route('welcome') }}">Index</a>
+            <a class="navbar-brand" href="{{ route('index') }}">Index</a>
             <a class="navbar-brand" href="{{ route('blogs') }}">Blog</a>
             @if(Route::has('login'))
                 @auth

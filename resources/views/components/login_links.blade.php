@@ -32,7 +32,7 @@ $route = Request::route()->getName();
 @endif
 
 <div class="text-center">
-    <a href="{{ url('/') }}">
+    <a href="{{ route('index') }}">
         <strong>
             {{ __('Go to the home') }}
         </strong>

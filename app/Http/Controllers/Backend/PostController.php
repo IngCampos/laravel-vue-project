@@ -12,12 +12,12 @@ class PostController extends Controller
     public function index()
     {
         $posts = Post::latest()->paginate('10');
-        return view('permission/post/index', compact('posts'));
+        return view('app/post/index', compact('posts'));
     }
 
     public function create()
     {
-        return view('permission/post/create');
+        return view('app/post/create');
     }
 
     public function store(PostRequest $request)
@@ -37,7 +37,7 @@ class PostController extends Controller
 
     public function edit(Post $post)
     {
-        return view('permission/post/edit', compact('post'));
+        return view('app/post/edit', compact('post'));
     }
 
     public function update(PostRequest $request, Post $post)

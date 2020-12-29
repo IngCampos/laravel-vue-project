@@ -10,7 +10,7 @@ class AdvertisementController extends Controller
 {
     public function index()
     {
-        return view('permission.advertisement', [
+        return view('app.advertisement', [
             'advertisements' =>  Advertisement::orderBy('order', 'asc')->get()
         ]);
     }

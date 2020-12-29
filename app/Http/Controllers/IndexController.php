@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Advertisement;
 
-class WelcomeController extends Controller
+class IndexController extends Controller
 {
     public function index()
     {
@@ -12,6 +12,6 @@ class WelcomeController extends Controller
             $query->whereDate('expiration', '>=', now())
               ->orWhere('expiration', '=', null);
           })->orderBy('order', 'asc')->get();
-        return view('welcome', compact('adds'));
+        return view('public.index', compact('adds'));
     }
 }

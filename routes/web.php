@@ -14,7 +14,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 // Routes for people in general
-Route::get('/','WelcomeController@index' )->name('welcome');
+Route::get('/','IndexController@index' )->name('index');
 
 Route::get('blog/{post}', 'PageController@post')->name('blog');
 Route::get('blog', 'PageController@posts')->name('blogs');
@@ -25,7 +25,7 @@ Auth::routes(['register' => false]);
 Route::prefix('admin')->middleware(['auth', 'is.enabled'])->group(
     function () {
         // Routes in general for any user authenticated
-        Route::view('/home', 'home')->name('home');
+        Route::view('/home', 'app.home')->name('home');
         Route::get('/settings', 'SettingController@index')->name('password.index');
         Route::post('/update_password', 'SettingController@update')->name('password.update');
 
@@ -62,7 +62,7 @@ Route::prefix('admin')->middleware(['auth', 'is.enabled'])->group(
         // Routes for Complaint Administrator.
         Route::middleware(['has.permission:2'])->group(
             function () {
-                Route::view('complaints', 'permission/complaint')->name('complaints');
+                Route::view('complaints', 'app/complaint')->name('complaints');
                 Route::resource('api/complaint', 'ComplaintController')->only([
                     'index', 'destroy'
                 ]);
@@ -80,7 +80,7 @@ Route::prefix('admin')->middleware(['auth', 'is.enabled'])->group(
         // Routes for Machine Monitor.
         Route::middleware(['has.permission:4'])->group(
             function () {
-                Route::view('machine_state', 'permission/machine_state')->name('machine_state');
+                Route::view('machine_state', 'app/machine_state')->name('machine_state');
                 Route::resource('api/machine_state', 'MachineStateController')->only([
                     'index', 'update'
                 ]);

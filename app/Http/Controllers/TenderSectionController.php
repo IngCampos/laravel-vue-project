@@ -15,7 +15,7 @@ class TenderSectionController extends Controller
         for ($i = 0; $i < count($tender_sections); $i++) {
             $tender_sections[$i]->name = $tender_sections[$i]->get_name;
         }
-        return view('permission.tender', [
+        return view('app.tender', [
             'tender_sections' =>  $tender_sections->load('tenders')
         ]);
     }
