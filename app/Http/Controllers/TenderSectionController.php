@@ -9,11 +9,6 @@ use Illuminate\Support\Facades\Storage;
 
 class TenderSectionController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
     {
         $tender_sections = Tender_section::orderBy('year', 'desc')->orderBy('number', 'asc')->get();
@@ -25,12 +20,6 @@ class TenderSectionController extends Controller
         ]);
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\TenderSectionRequest  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(TenderSectionRequest $request)
     {
         // TODO: Error in store a section
@@ -56,17 +45,8 @@ class TenderSectionController extends Controller
         return $tender_section;
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\TenderSectionRequest  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(TenderSectionRequest $request, $id)
+    public function update(TenderSectionRequest $request, Tender_section $tender_section)
     {
-        // return $request;
-        $tender_section = Tender_section::find($id);
         $tender_section->year = $request->year;
         $tender_section->isInternational = $request->isInternational;
         $tender_section->update();
@@ -74,15 +54,8 @@ class TenderSectionController extends Controller
         return $tender_section;
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
+    public function destroy(Tender_section $tender_section)
     {
-        $tender_section = Tender_section::find($id);
         $tenders = $tender_section->tenders;
         for ($i = 0; $i < count($tenders); $i++) {
             // all the files from this section are deleting

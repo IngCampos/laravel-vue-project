@@ -8,11 +8,6 @@ use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
     {
         $users = User::orderBy('name', 'asc')->paginate(15);
@@ -29,12 +24,6 @@ class UserController extends Controller
         ];
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\UserRequest  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(UserRequest $request)
     {
         $user = new User();
@@ -48,16 +37,8 @@ class UserController extends Controller
         return $user;
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\UserRequest  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(UserRequest $request, $id)
+    public function update(UserRequest $request, User $user)
     {
-        $user = User::find($id);
         //The function just update password or the others values(together)
         if (isset($request->password)) {
             $user->password = Hash::make($request->password);
@@ -71,25 +52,14 @@ class UserController extends Controller
         return $user;
     }
 
-    /**
-     * Function to disable and enable
-     */
-    public function disabled($id)
+    public function disabled(User $user)
     {
-        $user = User::find($id);
         $user->isEnabled = !$user->isEnabled;
         $user->update();
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
+    public function destroy(User $user)
     {
-        $user = User::find($id);
         $user->delete();
     }
 }

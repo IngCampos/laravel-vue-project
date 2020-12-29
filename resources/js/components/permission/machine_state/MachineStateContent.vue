@@ -1,5 +1,6 @@
   
 <template>
+<!-- TODO: create the table as other component and use the slots-->
   <div style="overflow-x:auto;">
     <table style="width:100%" class="table table-striped">
       <thead>

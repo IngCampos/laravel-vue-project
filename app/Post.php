@@ -8,12 +8,6 @@ use Illuminate\Support\Str;
 
 class Post extends Model
 {
-
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array
-     */
     protected $fillable = [
         'title', 'body', 'iframe', 'image', 'user_id',
     ];

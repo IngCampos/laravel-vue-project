@@ -8,11 +8,6 @@ use Illuminate\Support\Facades\Storage;
 
 class AdvertisementController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
     {
         return view('permission.advertisement', [
@@ -20,12 +15,6 @@ class AdvertisementController extends Controller
         ]);
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\AdvertisementRequest  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(AdvertisementRequest $request)
     {
         $request->validate([
@@ -42,18 +31,10 @@ class AdvertisementController extends Controller
         return $advertisement;
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\AdvertisementRequest  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(AdvertisementRequest $request, $id)
+    public function update(AdvertisementRequest $request, Advertisement $advertisement)
     {
         // TODO: Improve the PHP code
         //The function just update one value, the link or the order
-        $advertisement = Advertisement::find($id);
         if (isset($request->order)) {
             // The element that has the order it is obtained
             $auxiliar = Advertisement::where('order', $request->order)->first();
@@ -74,29 +55,24 @@ class AdvertisementController extends Controller
         return $advertisement;
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
+    public function destroy(Advertisement $advertisement)
     {
-        $advertisement = Advertisement::find($id);
         $this->delete_file($advertisement->image_source);
         $advertisement->delete();
     }
 
     /* Functions for the storage files */
 
-    protected function delete_file($image_source)
+    // TODO: create just one function for all controllers
+    private function delete_file($image_source)
     {
         // array to get just the name file, not the path.
         $exploded = explode('/', $image_source);
         Storage::disk('public')->delete('/ads/' . end($exploded));
     }
 
-    protected function upload_file($file, $image_source)
+    // TODO: create just one function for all controllers
+    private function upload_file($file, $image_source)
     {
         // the array is split, the second place is the base64 code for saving well.
         $exploded = explode(',', $file);
