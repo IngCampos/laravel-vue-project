@@ -23,7 +23,6 @@ Then I take some courses of Laravel and I improve my skills by using:
 - Optimize some views by getting the data in the view(not by HTTP client).
 - Backend validation in the request (app/Http/Request).
 - Dynamic views with slug in the url.
-- Get fake images in some factories.
 - Cleaning and optimizing the code.
 
 ## Getting Started :rocket:
@@ -134,3 +133,9 @@ You're free to contribute to this project by submitting [issues](https://github.
 ## License
 
 This project is licensed under the [MIT License](https://choosealicense.com/licenses/mit/).
+
+## References :books:
+
+- [PHP with Laravel](https://platzi.com/clases/php-avanzado/)
+- [Vue.js basic course](https://platzi.com/clases/vuejs/)
+- [Laravel introduction course](https://platzi.com/clases/curso-php-laravel/)

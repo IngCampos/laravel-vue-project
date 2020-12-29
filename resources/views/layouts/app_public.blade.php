@@ -25,17 +25,18 @@
         <ul class=" navbar-nav ml-auto">
             <div class="topbar-divider d-none d-sm-block"></div>
             <li class="nav-item dropdown no-arrow">
-                @if(Route::has('login'))
-                @auth
-                <a class="navbar-brand" href="{{ route('home') }}">Home</a>
-                @else
-                <a class="navbar-brand" href="{{ route('login') }}">Login</a>
-                @if(Route::has('register'))
-                <a class="navbar-brand" href="{{ route('register') }}">Register</a>
-                @endif
-                @endauth
-                @endif
+                <a class="navbar-brand" href="{{ route('welcome') }}">Index</a>
                 <a class="navbar-brand" href="{{ route('blogs') }}">Blog</a>
+                @if(Route::has('login'))
+                    @auth
+                    <a class="navbar-brand" href="{{ route('home') }}">Home</a>
+                    @else
+                    <a class="navbar-brand" href="{{ route('login') }}">Login</a>
+                        @if(Route::has('register'))
+                        <a class="navbar-brand" href="{{ route('register') }}">Register</a>
+                        @endif
+                    @endauth
+                @endif
             </li>
         </ul>
     </nav>

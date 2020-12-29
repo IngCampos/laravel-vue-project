@@ -32,6 +32,7 @@
         </form>
 
         <hr>
+        @if(Route::has('register'))
         <div class="text-center">
             <a class="small" href="{{ route('login') }}">
                 {{ __('Already have an account? Login!') }}
@@ -42,6 +43,7 @@
                 {{ __('Create an Account!') }}
             </a>
         </div>
+        @endif
         <hr>
         <div class="text-center">
             <a href="{{ url('/') }}">

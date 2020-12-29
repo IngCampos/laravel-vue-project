@@ -14,14 +14,12 @@ use Illuminate\Support\Facades\Route;
 */
 
 // Routes for people in general
-Route::get('/', function () {
-    return view('welcome');
-})->name('welcome');
+Route::get('/','WelcomeController@index' )->name('welcome');
 
 Route::get('blog/{post}', 'PageController@post')->name('blog');
 Route::get('blog', 'PageController@posts')->name('blogs');
 
-Auth::routes();
+Auth::routes(['register' => false]);
 
 // Routes that need authentication
 Route::prefix('admin')->middleware(['auth', 'is.enabled'])->group(

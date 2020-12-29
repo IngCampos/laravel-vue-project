@@ -18,13 +18,23 @@ class AdvertisementSeeder extends Seeder
                 'image_source' => 'https://loremflickr.com/320/240/cat',
                 'link' => 'https://loremflickr.com/320/240/cat',
                 'expiration' => $faker->date($format = 'Y-m-d', $max  = 'now', $timezone = null)
-            ], [
+            ],
+            [
                 'order' => 2,
-                'image_source' => 'https://loremflickr.com/320/240/cat',
+                'image_source' => 'https://loremflickr.com/320/240/dog',
                 'link' => 'https://loremflickr.com/320/240/cat',
                 'expiration' => (date("Y") + 1) . '-' . $faker->date($format = 'm-d', $max  = 'now', $timezone = null)
-            ], [
+            ],
+            [
+                'order' => 3,
+                'image_source' => 'https://loremflickr.com/320/240/cat',
+            ],
+            [
                 'order' => 4,
+                'image_source' => 'https://loremflickr.com/320/240/dog',
+            ],
+            [
+                'order' => 5,
                 'image_source' => 'https://loremflickr.com/320/240/cat',
             ]
         ];
