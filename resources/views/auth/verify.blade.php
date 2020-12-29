@@ -1,27 +1,30 @@
-@extends('layouts.app')
+@extends('layouts.auth')
 
-@section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ __('Verify Your Email Address') }}</div>
+@section('image')
+    <div class="col-lg-6 d-none d-lg-block bg-login-image"></div>
+@endsection
 
-                <div class="card-body">
-                    @if (session('resent'))
-                    <div class="alert alert-success" role="alert">
-                        {{ __('A fresh verification link has been sent to your email address.') }}
-                    </div>
-                    @endif
+@section('title')
+    {{ __('Verify Your Email Address') }}
+@endsection
 
-                    {{ __('Before proceeding, please check your email for a verification link.') }}
-                    {{ __('If you did not receive the email') }},
-                    <form class="d-inline" method="POST" action="{{ route('verification.resend') }}">
-                        @csrf
-                        <button type="submit" class="btn btn-link p-0 m-0 align-baseline">{{ __('click here to request another') }}</button>.
-                    </form>
-                </div>
+@section('form')
+<!-- TODO: Check the functionality and view -->
+    <div class="card">
+        <div class="card-header"></div>
+        <div class="card-body">
+            @if (session('resent'))
+            <div class="alert alert-success" role="alert">
+                {{ __('A fresh verification link has been sent to your email address.') }}
             </div>
+            @endif
+
+            {{ __('Before proceeding, please check your email for a verification link.') }}
+            {{ __('If you did not receive the email') }},
+            <form class="d-inline" method="POST" action="{{ route('verification.resend') }}">
+                @csrf
+                <button type="submit" class="btn btn-link p-0 m-0 align-baseline">{{ __('click here to request another') }}</button>.
+            </form>
         </div>
     </div>
 </div>
