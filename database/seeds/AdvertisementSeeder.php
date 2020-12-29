@@ -15,18 +15,17 @@ class AdvertisementSeeder extends Seeder
         $advertisements = [
             [
                 'order' => 1,
-                'image_source' => '/storage/ads/' . $faker->image('public/storage/ads', 1000, 333, 'cats', null, false, 'Faker'),
-                'link' => $faker->imageUrl(800, 600, 'business'),
+                'image_source' => 'https://loremflickr.com/320/240/cat',
+                'link' => 'https://loremflickr.com/320/240/cat',
                 'expiration' => $faker->date($format = 'Y-m-d', $max  = 'now', $timezone = null)
             ], [
                 'order' => 2,
-                'image_source' => '/storage/ads/' . $faker->image('public/storage/ads', 1000, 333, 'cats', null, false, 'Faker'),
-                'link' => $faker->imageUrl(800, 600, 'business'),
+                'image_source' => 'https://loremflickr.com/320/240/cat',
+                'link' => 'https://loremflickr.com/320/240/cat',
                 'expiration' => (date("Y") + 1) . '-' . $faker->date($format = 'm-d', $max  = 'now', $timezone = null)
             ], [
                 'order' => 4,
-                'image_source' => '/storage/ads/' . $faker->image('public/storage/ads', 1000, 333, 'cats', null, false, 'Faker'),
-                'link' => ''
+                'image_source' => 'https://loremflickr.com/320/240/cat',
             ]
         ];
 
