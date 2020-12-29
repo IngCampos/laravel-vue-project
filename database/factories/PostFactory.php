@@ -15,8 +15,7 @@ $factory->define(Post::class, function (Faker $faker) {
     return [
         'user_id' => rand(1, 100), //number of users
         'title' => $faker->sentence,
-        'image' => (($content_amount == 1 || $content_amount == 3) ?  '/posts/' .
-            $faker->image('public/storage/posts', 560, 315, 'cats', null, false, 'Faker') : ''),
+        'image' => (($content_amount == 1 || $content_amount == 3) ? 'https://loremflickr.com/320/240/cat' : ''),
         'body' => $faker->text(800),
         'iframe' => (($content_amount == 2 || $content_amount == 3) ? $faker->youtubeEmbedCode() : '')
     ];

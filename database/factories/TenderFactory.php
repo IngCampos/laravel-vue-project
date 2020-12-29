@@ -6,11 +6,8 @@ use App\Tender;
 use Faker\Generator as Faker;
 
 $factory->define(Tender::class, function (Faker $faker) {
-    $internal_file = rand(0, 1);
-    if ($internal_file)
-        $link = '/storage/tenders/' . $faker->image('public/storage/tenders', 640, 480, 'cats', null, false, 'Faker');
-    else
-        $link = $faker->imageUrl($width = 640, $height = 480, 'cats');
+    $internal_file = 0;
+    $link = 'https://picsum.photos/500/320/?image=' . rand(1, 1084);
     return [
         'internal_file' => $internal_file,
         'name' => $faker->catchPhrase,
