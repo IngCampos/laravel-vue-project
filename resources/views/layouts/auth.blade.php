@@ -7,7 +7,7 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <!-- Styles -->
-    <link href="{{ asset('css/app.login.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/auth.css') }}" rel="stylesheet">
 @endsection
 
 @section('body-attr') class="bg-gradient-primary" @endsection

@@ -136,6 +136,6 @@ This project is licensed under the [MIT License](https://choosealicense.com/lice
 
 ## References :books:
 
-- [PHP with Laravel](https://platzi.com/clases/php-avanzado/)
+- [PHP with Laravel](https://platzi.com/clases/curso-php-laravel/)
 - [Vue.js basic course](https://platzi.com/clases/vuejs/)
 - [Laravel introduction course](https://platzi.com/clases/curso-php-laravel/)
