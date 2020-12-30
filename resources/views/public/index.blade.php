@@ -1,5 +1,7 @@
 @extends('layouts.public')
 
+@section('title') Index @endsection
+
 @section('content')
 
 <h3 class="col-12 text-center">Advertisements</h3>

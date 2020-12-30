@@ -5,7 +5,7 @@
 @endsection
 
 @section('title')
-    {{ config('app.name', 'Laravel') }}
+    Login
 @endsection
 
 @section('form')

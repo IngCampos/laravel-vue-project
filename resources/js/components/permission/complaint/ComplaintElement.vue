@@ -19,7 +19,7 @@
       </button>
       <a
         class="btn btn-success btn-circle"
-        :href="'mailto:'+complaint.email+'?Subject=Answer%20de%20'+complaint.complaint_type.name+':'"
+        :href="'mailto:'+complaint.email+'?Subject=Answer%20of%20'+complaint.complaint_type.name+':'"
       >
         <i class="fas fa-envelope"></i>
       </a>

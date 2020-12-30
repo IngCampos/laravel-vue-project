@@ -2,7 +2,7 @@
     <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
         <i class="fa fa-bars"></i>
     </button>
-    <div class="sidebar-brand-text mx-3"><strong>{{ config('app.name', 'Laravel') }}</strong></div>
+    <div class="sidebar-brand-text mx-3"><strong>@yield('title')</strong></div>
     <ul class="navbar-nav ml-auto">
         <div class="topbar-divider d-none d-sm-block"></div>
         <li class="nav-item dropdown no-arrow">

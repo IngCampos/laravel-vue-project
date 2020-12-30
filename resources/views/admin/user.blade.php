@@ -1,12 +1,7 @@
 @extends('layouts.app')
 
+@section('title') Users @endsection
+
 @section('content')
-<div class="d-sm-flex align-items-center justify-content-between mb-4">
-    <h1 class="h3 mb-0 text-gray-800">Users</h1>
-</div>
-<div class="card">
-    <div class="card-body">
-        <user-content></user-content>
-    </div>
-</div>
+    <user-content class="card col-lg-9"></user-content>
 @endsection

@@ -1,20 +1,9 @@
 @extends('layouts.app')
 
+@section('title') Posts @endsection
+
 @section('content')
-<div class="d-sm-flex align-items-center justify-content-between mb-4">
-    <h1 class="h3 mb-0 text-gray-800">Posts</h1>
-</div>
-<div class="card">
-    <div class="card-header">
-        Articles
-        <a href="{{route('posts.create')}}" class="btn btn-sm btn-primary float-right btn-icon-split">
-            <span class="icon text-white-50">
-                <i class="fas fa-plus-square"></i>
-            </span>
-            <span class="text">Create</span>
-        </a>
-    </div>
-    <div class="card-body">
+    <div class="card col-12">
         @if (session('status'))
         <div class="alert alert-success" role="alert">
             {{ session('status') }}
@@ -43,10 +32,10 @@
                         </td>
                         <td class="text-right">
                             <!-- TODO: Add the show function and its view, function, etc-->
-                            <a href="{{route('posts.edit', $post)}}" class="btn btn-secondary">
+                            <a href="{{route('posts.edit', $post)}}" class="btn btn-secondary btn-circle">
                                 <i class="far fa-edit"></i>
                             </a>
-                            <button form="delete" type="submit" class="btn btn-danger" onclick="return confirm('Are you sure to delete the post id {{$post->id}}')">
+                            <button form="delete" type="submit" class="btn btn-danger btn-circle" onclick="return confirm('Are you sure to delete the post id {{$post->id}}')">
                                 <i class="far fa-trash-alt"></i>
                             </button>
                             <form method="POST" action="{{route('posts.destroy', $post)}}" id="delete">
@@ -59,8 +48,14 @@
                 </tbody>
             </table>
         </div>
-        </table>
         {{ $posts->links() }}
+        <div class="form-group">
+            <a href="{{route('posts.create')}}" class="btn btn-sm btn-primary btn-icon-split">
+                <span class="icon text-white-50">
+                    <i class="fas fa-plus-square"></i>
+                </span>
+                <span class="text">Create post</span>
+            </a>
+        </div>
     </div>
-</div>
 @endsection

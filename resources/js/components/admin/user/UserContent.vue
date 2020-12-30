@@ -53,10 +53,12 @@
         </ul>
       </nav>
     </div>
-    <user-creation
-      :department_form="department_form"
-      @creation="changePage(pagination.current_page)"
-    ></user-creation>
+    <div class="form-group">
+      <user-creation
+        :department_form="department_form"
+        @creation="changePage(pagination.current_page)"
+      ></user-creation>
+    </div>
   </div>
 </template>
 // TODO: Create a view for watching the deleted users.

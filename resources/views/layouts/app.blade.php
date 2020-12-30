@@ -1,5 +1,7 @@
 @extends('layouts.base')
 
+@section('layout-name') LV Intranet @endsection
+
 @section('head')
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
@@ -16,8 +18,10 @@
         <div id="content-wrapper" class="d-flex flex-column">
             <div id="content">
                 @include('components.topbar')
-                <main class="container-fluid" id="app">
+                <main class="container-fluid">
+                <div class="row justify-content-center" id="app">
                     @yield('content')
+                </div>
                 </main>
             </div>
             @include('components.footer')

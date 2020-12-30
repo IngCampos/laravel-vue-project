@@ -1,15 +1,7 @@
 @extends('layouts.app')
 
+@section('title') Complaints @endsection
+
 @section('content')
-<div class="d-sm-flex align-items-center justify-content-between mb-4">
-    <h1 class="h3 mb-0 text-gray-800">Complaints</h1>
-</div>
-<div class="card">
-    <div class="card-body">
-        <complaint-content></complaint-content>
-    </div>
-    <center>
-        <small>To answer it is necessary to have an email client.</small>
-    </center>
-</div>
+    <complaint-content class="card col-lg-9"></complaint-content>
 @endsection

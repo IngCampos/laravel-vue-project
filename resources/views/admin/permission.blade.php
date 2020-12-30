@@ -1,12 +1,7 @@
 @extends('layouts.app')
 
+@section('title') Permissions @endsection
+
 @section('content')
-<div class="d-sm-flex align-items-center justify-content-between mb-4">
-    <h1 class="h3 mb-0 text-gray-800">Permissions</h1>
-</div>
-<div class="card">
-    <div class="card-body">
-        <permission-content data="{{$permissions}}"></permission-content>
-    </div>
-</div>
+    <permission-content class="card col-xl-6 col-lg-8 col-md-10" data="{{$permissions}}"></permission-content>
 @endsection

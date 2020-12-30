@@ -1,5 +1,7 @@
 @extends('layouts.public')
 
+@section('title') Blog - {{ $post->title }} @endsection
+
 @section('content')
 
 <div class="card mb-4">

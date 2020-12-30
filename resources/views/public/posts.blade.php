@@ -1,5 +1,7 @@
 @extends('layouts.public')
 
+@section('title') Blog @endsection
+
 @section('content')
 <h3 class="col-12 text-center">Blog</h3>
 <div class="row">

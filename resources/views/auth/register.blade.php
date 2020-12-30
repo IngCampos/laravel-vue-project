@@ -1,5 +1,7 @@
 @extends('layouts.auth')
 
+@section('title') Register @endsection
+
 @section('image')
     <div class="col-lg-6 d-none d-lg-block bg-register-image"></div>
 @endsection

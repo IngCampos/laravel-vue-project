@@ -1,5 +1,7 @@
 @extends('layouts.base')
 
+@section('layout-name') LV Authentication @endsection
+
 @section('head')
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
@@ -23,7 +25,7 @@
                                     <div class="text-center">
                                         <h1 class="h4 text-gray-900 mb-4">
                                             <strong>
-                                                @yield('title')
+                                            {{ config('app.name', 'Laravel') }} - @yield('title')
                                             </strong>
                                         </h1>
                                         @yield('info')
