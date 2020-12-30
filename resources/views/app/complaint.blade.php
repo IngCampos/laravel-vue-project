@@ -3,5 +3,5 @@
 @section('title') Complaints @endsection
 
 @section('content')
-    <complaint-content class="card col-lg-9"></complaint-content>
+    <complaints class="card col-lg-9"></complaints>
 @endsection

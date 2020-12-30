@@ -14,12 +14,12 @@
         </tr>
       </thead>
       <tbody>
-        <complaint-element
+        <complaint-row
           v-for="(complaint, index) in complaints"
           :key="complaint.id"
           :complaint="complaint"
           @delete="Delete(index,...arguments)"
-        ></complaint-element>
+        ></complaint-row>
       </tbody>
     </table>
     <nav aria-label="Page navigation">

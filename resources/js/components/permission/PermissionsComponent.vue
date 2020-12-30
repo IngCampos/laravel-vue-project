@@ -11,15 +11,15 @@
           <th style="min-width:170px" class="text-center">Created_at</th>
           <th style="min-width:130px" class="text-right">Actions</th>
         </thead>
-        <permission-section
+        <permission-container
           v-for="permission in permissions"
           :key="permission.info.id"
           :permission="permission"
-        ></permission-section>
+        ></permission-container>
       </table>
     </div>
     <div>
-      <permission-creation @creation="Creation(...arguments)"></permission-creation>
+      <permission-create @creation="Creation(...arguments)"></permission-create>
     </div>
   </div>
 </template>

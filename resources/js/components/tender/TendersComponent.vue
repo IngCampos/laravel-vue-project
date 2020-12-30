@@ -11,13 +11,13 @@
           <th class="text-center">Source</th>
           <th style="min-width:125px" class="text-right">Actions</th>
         </thead>
-        <tender-section
+        <tender-container
           v-for="(section, index) in sections"
           :key="index"
           :section="section"
           @update="Update_section(index, ...arguments)"
           @delete_section="Delete_section(index)"
-        ></tender-section>
+        ></tender-container>
       </table>
       <!-- TODO: Special pagination -->
     </div>
@@ -34,7 +34,7 @@
         </span>
         <span class="text">Add external file</span>
       </button>
-      <tender-creation-section @create="Create_section(...arguments)"></tender-creation-section>
+      <tender-container-create @create="Create_section(...arguments)"></tender-container-create>
     </div>
   </div>
 </template>

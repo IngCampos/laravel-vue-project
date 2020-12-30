@@ -13,14 +13,14 @@
         <th class="text-center">Expiration</th>
         <th style="min-width:125px" class="text-right">Actions</th>
       </tr>
-      <advertisement-element
+      <advertisement-row
         v-for="(element, index) in elements"
         :key="element.order"
         :element="element"
         @delete="Delete(index, ...arguments)"
         @update="Update(index, ...arguments)"
         @create="Create(index, ...arguments)"
-      ></advertisement-element>
+      ></advertisement-row>
     </table>
   </div>
 </template>

@@ -15,7 +15,7 @@
           </th>
         </thead>
         <tbody>
-          <user-element
+          <user-row
             v-for="(user, index) in users"
             :key="index"
             :user="user"
@@ -24,7 +24,7 @@
             @justupdate="justUpdate(index,...arguments)"
             @update="changePage(pagination.current_page)"
             :department_form="department_form"
-          ></user-element>
+          ></user-row>
         </tbody>
       </table>
       <nav aria-label="Page navigation">
@@ -54,10 +54,10 @@
       </nav>
     </div>
     <div class="form-group">
-      <user-creation
+      <user-create
         :department_form="department_form"
         @creation="changePage(pagination.current_page)"
-      ></user-creation>
+      ></user-create>
     </div>
   </div>
 </template>

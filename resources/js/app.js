@@ -59,41 +59,39 @@ Vue.component('datePicker', DatePicker)
  */
 
 // Components for user panel
-var a = './components/admin/'
-Vue.component('user-element', require(a + 'user/UserElement.vue').default);
-Vue.component('user-content', require(a + 'user/UserContent.vue').default);
-Vue.component('user-creation', require(a + 'user/UserCreation.vue').default);
+Vue.component('user-row', require('./components/user/UserRowComponent.vue').default);
+Vue.component('users', require('./components/user/UsersComponent.vue').default);
+Vue.component('user-create', require('./components/user/UserCreateComponent.vue').default);
 
 // Components for statistics panel
-Vue.component('detail-complaint', require(a + 'statistic/Complaint.vue').default);
+Vue.component('detail-complaint', require('./components/statistic/ComplaintStatisticComponent.vue').default);
 
 // templates for statistics panel
-Vue.component('basic-statistic', require('./components/BasicStatistic.vue').default);
-Vue.component('basic-statistic-download', require('./components/BasicStatisticDownload.vue').default);
-Vue.component('card-statistic', require('./components/CardStatistic.vue').default);
-Vue.component('progress-bar', require('./components/ProgressBar.vue').default);
+Vue.component('basic-statistic', require('./utilities/BasicStatisticUtility.vue').default);
+Vue.component('basic-statistic-download', require('./utilities/BasicStatisticDownloadUtility.vue').default);
+Vue.component('card-statistic', require('./utilities/CardStatisticUtility.vue').default);
+Vue.component('progress-bar', require('./utilities/ProgressBarUtility.vue').default);
 
 // Components for permission(for users) panel
-Vue.component('permission-element', require(a + 'permission/PermissionElement.vue').default);
-Vue.component('permission-section', require(a + 'permission/PermissionSection.vue').default);
-Vue.component('permission-content', require(a + 'permission/PermissionContent.vue').default);
-Vue.component('permission-creation', require(a + 'permission/PermissionCreation.vue').default);
+Vue.component('permission-row', require('./components/permission/PermissionRowComponent.vue').default);
+Vue.component('permission-container', require('./components/permission/PermissionContainerComponent.vue').default);
+Vue.component('permissions', require('./components/permission/PermissionsComponent.vue').default);
+Vue.component('permission-create', require('./components/permission/PermissionCreateComponent.vue').default);
 
-var p = './components/permission/'
 // Components for complaint panel
-Vue.component('complaint-element', require(p + 'complaint/ComplaintElement.vue').default);
-Vue.component('complaint-content', require(p + 'complaint/ComplaintContent.vue').default);
+Vue.component('complaint-row', require('./components/complaint/ComplaintRowComponent.vue').default);
+Vue.component('complaints', require('./components/complaint/ComplaintsComponent.vue').default);
 // Components for advertisement panel
-Vue.component('advertisement-element', require(p + 'advertisement/AdvertisementElement.vue').default);
-Vue.component('advertisement-content', require(p + 'advertisement/AdvertisementContent.vue').default);
+Vue.component('advertisement-row', require('./components/advertisement/AdvertisementRowComponent.vue').default);
+Vue.component('advertisements', require('./components/advertisement/AdvertisementsComponent.vue').default);
 // Components for machine panel - status
-Vue.component('machine-state-element', require(p + 'machine_state/MachineStateElement.vue').default);
-Vue.component('machine-state-content', require(p + 'machine_state/MachineStateContent.vue').default);
+Vue.component('machine-row', require('./components/machine_state/MachineRowComponent.vue').default);
+Vue.component('machines', require('./components/machine_state/MachinesComponent.vue').default);
 // Components for tenders panel
-Vue.component('tender-element', require(p + 'tender/TenderElement.vue').default);
-Vue.component('tender-section', require(p + 'tender/TenderSection.vue').default);
-Vue.component('tender-content', require(p + 'tender/TenderContent.vue').default);
-Vue.component('tender-creation-section', require(p + 'tender/TenderCreationSection.vue').default);
+Vue.component('tender-row', require('./components/tender/TenderRowComponent.vue').default);
+Vue.component('tender-container', require('./components/tender/TenderContainerComponent.vue').default);
+Vue.component('tenders', require('./components/tender/TendersComponent.vue').default);
+Vue.component('tender-container-create', require('./components/tender/TenderContainerCreateComponent.vue').default);
 
 //TODO: rename the name of the components for a simple name instead. With the folder is not necessary specific the section.
 

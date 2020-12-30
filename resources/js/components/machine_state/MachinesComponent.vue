@@ -15,12 +15,12 @@
         </tr>
       </thead>
       <tbody>
-        <machine-state-element
+        <machine-row
           v-for="(machine, index) in machines"
           :key="machine.id"
           :machine="machine"
           @update="Update(index, machine.id, ...arguments)"
-        ></machine-state-element>
+        ></machine-row>
         <!-- TODO: Create a special component for the pagination -->
       </tbody>
     </table>

@@ -12,12 +12,12 @@
         </button>
       </center>
     </td>
-    <permission-element
+    <permission-row
       v-for="(user, index) in permission.users"
       :key="user.id"
       @delete="Delete(index)"
       :user="user"
-    ></permission-element>
+    ></permission-row>
   </tbody>
 </template>
 

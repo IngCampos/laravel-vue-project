@@ -12,13 +12,13 @@
         </button>
       </center>
     </td>
-    <tender-element
+    <tender-row
       v-for="(tender, index) in section.tenders"
       :key="index"
       @delete="Delete(index)"
       @save="Save(index,...arguments)"
       :tender="tender"
-    ></tender-element>
+    ></tender-row>
   </tbody>
 </template>
 
