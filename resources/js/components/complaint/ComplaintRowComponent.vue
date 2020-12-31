@@ -1,19 +1,19 @@
   
 <template>
   <tr>
-    <td class="align-middle">{{complaint.created_at | date}}</td>
+    <td>{{complaint.created_at | date}}</td>
     <td>
       <strong>{{complaint.name}}</strong>
       <br />
       {{complaint.email}}
     </td>
-    <td class="align-middle text-center">
+    <td class="text-center">
       <span
         :class="'badge badge-'+(complaint.complaint_type.id == 1 ? 'success' 
         : (complaint.complaint_type.id == 2 ? 'danger' : 'info'))"
       >{{complaint.complaint_type.name}}</span>
     </td>
-    <td class="align-middle text-right">
+    <td class="col-action-3">
       <button v-on:click="Show_info()" class="btn btn-info btn-circle">
         <i class="fas fa-info-circle"></i>
       </button>

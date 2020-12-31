@@ -1,17 +1,19 @@
   
 <template>
   <tbody>
-    <td colspan="3" class="table-active">
-      <center>
-        <strong>{{section.name}}</strong>
-        <button v-on:click="Edit_section()" class="btn btn-secondary badge">
-          <i class="far fa-edit"></i> Edit
+    <tr class="section-row">
+      <td colspan="2" class="text-center">
+        <span class="badge section-badge">{{section.name}}</span>
+      </td>
+      <td class="col-action-2">
+        <button v-on:click="Edit_section()" class="btn btn-secondary btn-circle">
+          <i class="far fa-edit"></i>
         </button>
-        <button v-on:click="$emit('delete_section')" class="btn btn-danger badge">
-          <i class="far fa-trash-alt"></i> Delete
+        <button v-on:click="$emit('delete_section')" class="btn btn-danger btn-circle">
+          <i class="far fa-trash-alt"></i>
         </button>
-      </center>
-    </td>
+      </td>
+    </tr>
     <tender-row
       v-for="(tender, index) in section.tenders"
       :key="index"

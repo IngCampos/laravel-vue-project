@@ -1,14 +1,14 @@
   
 <template>
   <tr>
-    <td class="align-middle">{{user.name}}</td>
-    <td class="align-middle text-center">{{user.pivot.created_at | date}}</td>
-    <td class="align-middle text-right">
+    <td>{{user.name}}</td>
+    <td class="text-center">{{user.pivot.created_at | date}}</td>
+    <td class="col-action-2">
       <button v-on:click="Show_info()" class="btn btn-info btn-circle">
-        <i class="fas fa-info-circle"></i>
+        <i class="fas fa-info-circle"/>
       </button>
       <button v-on:click="$emit('delete')" class="btn btn-danger btn-circle">
-        <i class="far fa-trash-alt"></i>
+        <i class="far fa-trash-alt"/>
       </button>
     </td>
   </tr>

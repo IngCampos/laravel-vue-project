@@ -1,14 +1,14 @@
   
 <template>
   <tr>
-    <td class="align-middle">{{machine.user_agent}}</td>
-    <td class="align-middle text-center">
+    <td>{{machine.user_agent}}</td>
+    <td class="text-center">
       <span
         :class="'badge badge-'+$root.colors[machine.machine_state.id-1]"
       >{{machine.machine_state.name}}</span>
     </td>
-    <td class="align-middle text-center">{{machine.updated_at | date}}</td>
-    <td class="align-middle text-right">
+    <td>{{machine.updated_at | date}}</td>
+    <td>
       <button
         v-if="machine.machine_state.id!=1"
         v-on:click="$emit('update', 1)"

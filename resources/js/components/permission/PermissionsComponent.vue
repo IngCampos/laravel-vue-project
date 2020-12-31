@@ -1,27 +1,22 @@
   
 <template>
-  <div>
-    <div style="overflow-x:auto;">
-      <table style="width:100%" class="table">
-        <thead>
-          <th>
-            Name
-            <i class="fas fa-sort-alpha-down"></i>
-          </th>
-          <th style="min-width:170px" class="text-center">Created_at</th>
-          <th style="min-width:130px" class="text-right">Actions</th>
-        </thead>
-        <permission-container
-          v-for="permission in permissions"
-          :key="permission.info.id"
-          :permission="permission"
-        ></permission-container>
-      </table>
-    </div>
-    <div>
+  <table-container>
+    <template v-slot:head>
+      <th class="col-name">Name <i class="fas fa-sort-alpha-down"/></th>
+      <th class="col-date">Created_at</th>
+      <th class="col-action-2">Actions</th>
+    </template>
+    <template v-slot:tbody>
+      <permission-container
+        v-for="permission in permissions"
+        :key="permission.info.id"
+        :permission="permission"
+      ></permission-container>
+    </template>
+    <template v-slot:footer>
       <permission-create @creation="Creation(...arguments)"></permission-create>
-    </div>
-  </div>
+    </template>
+  </table-container>
 </template>
 
 <script>

@@ -1,32 +1,30 @@
   
 <template>
   <tr v-if="element.id!=undefined">
-    <td class="align-middle">
+    <td>
       {{element.order}}
       <button v-on:click="Edit_order()" class="btn badge btn-secondary">
         <i class="far fa-edit"></i> Change
       </button>
     </td>
-    <td>
-      <center>
-        <a :href="element.image_source" target="_blank" rel="noopener noreferrer">
-          <img
-            style="width:183px;"
-            class="border border-primary rounded"
-            :src="element.image_source"
-            :alt="element.image_source"
-          />
-        </a>
-      </center>
+    <td class="text-center">
+      <a :href="element.image_source" target="_blank" rel="noopener noreferrer">
+        <img
+          style="width:13rem;"
+          class="border border-primary rounded"
+          :src="element.image_source"
+          :alt="element.image_source"
+        />
+      </a>
     </td>
-    <td class="align-middle" style="max-width:240px">
+    <td class="col-name">
       <a v-if="element.link!=null" :href="element.link" target="_blank">{{element.link}}</a>
       <a v-else>No link</a>
       <button v-on:click="Edit_link()" class="btn badge btn-secondary">
         <i class="far fa-edit"></i> Edit
       </button>
     </td>
-    <td class="align-middle text-center">
+    <td>
       <date-picker
         :class="'badge btn-'+(this.expiration ? (ParseDataDate(expiration) < today?'danger': 'success') : 'secondary')"
         style="width:135px"
@@ -40,7 +38,7 @@
         placeholder="Select"
       ></date-picker>
     </td>
-    <td class="align-middle text-right" style="width:130px">
+    <td class="col-action-2">
       <button v-on:click="Show_info()" class="btn btn-info btn-circle">
         <i class="fas fa-info-circle"></i>
       </button>
@@ -49,17 +47,15 @@
       </button>
     </td>
   </tr>
-  <tr v-else style="background:#f2f2f2">
-    <td class="align-middle">{{element.order}}</td>
-    <td class="align-middle">
-      <center>
-        <button v-on:click="Create_element()" class="btn btn-primary btn-icon-split">
-          <span class="icon text-white-50">
-            <i class="fas fa-image"></i>
-          </span>
-          <span class="text">Add element</span>
-        </button>
-      </center>
+  <tr v-else>
+    <td>{{element.order}}</td>
+    <td class="text-center">
+      <button v-on:click="Create_element()" class="btn btn-primary btn-icon-split">
+        <span class="icon text-white-50">
+          <i class="fas fa-image"></i>
+        </span>
+        <span class="text">Add element</span>
+      </button>
     </td>
     <td colspan="3"></td>
   </tr>

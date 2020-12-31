@@ -2,6 +2,7 @@
 
 @section('title') Blog @endsection
 
+<!-- TODO: Create a Vue component with PaginationUtility.vue here -->
 @section('content')
 <h3 class="col-12 text-center">Blog</h3>
 <div class="row">

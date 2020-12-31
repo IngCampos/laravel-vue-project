@@ -3,5 +3,5 @@
 @section('title') Advertisements @endsection
 
 @section('content')
-    <advertisements class="card col-lg-11" data="{{$advertisements}}"></advertisements>
+    <advertisements class="col-lg-11" data="{{$advertisements}}"></advertisements>
 @endsection

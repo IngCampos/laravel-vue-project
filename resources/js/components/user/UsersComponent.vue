@@ -1,89 +1,41 @@
   
 <template>
-  <div>
-    <div style="overflow-x:auto;">
-      <table style="width:100%" class="table table-striped">
-        <thead>
-          <th style="min-width:90px">
-            Status | Name
-            <i class="fas fa-sort-alpha-down"></i>
-          </th>
-          <th style="min-width:125px">Email</th>
-          <th class="text-center">Department</th>
-          <th style="width:30px">
-            <i class="fas fa-user-cog float-right"></i>
-          </th>
-        </thead>
-        <tbody>
-          <user-row
-            v-for="(user, index) in users"
-            :key="index"
-            :user="user"
-            @enable="Enable(index)"
-            @delete="Delete(index)"
-            @justupdate="justUpdate(index,...arguments)"
-            @update="changePage(pagination.current_page)"
-            :department_form="department_form"
-          ></user-row>
-        </tbody>
-      </table>
-      <nav aria-label="Page navigation">
-        <ul class="pagination justify-content-center">
-          <li class="page-item" v-bind:class="[ pagination.current_page > 1 ? '' : 'disabled' ]">
-            <a class="page-link" href="#" @click.prevent="changePage(pagination.current_page - 1)">
-              <span>Previous</span>
-            </a>
-          </li>
-          <li
-            v-for="page in pagesNumber"
-            v-bind:class="[ page == isActive ? 'active' : '' ]"
-            :key="page"
-            class="page-item"
-          >
-            <a class="page-link" href="#" @click.prevent="changePage(page)">{{page}}</a>
-          </li>
-          <li
-            class="page-item"
-            v-bind:class="[ pagination.current_page < pagination.last_page ? '' : 'disabled' ]"
-          >
-            <a class="page-link" href="#" @click.prevent="changePage(pagination.current_page + 1)">
-              <span>Next</span>
-            </a>
-          </li>
-        </ul>
-      </nav>
-    </div>
-    <div class="form-group">
-      <user-create
+  <table-container>
+    <template v-slot:head>
+      <th class="col-name">Status | Name <i class="fas fa-sort-alpha-down"/></th>
+      <th>Email</th>
+      <th>Department</th>
+      <th><i class="fas fa-user-cog"/></th>
+    </template>
+    <template v-slot:body>
+      <user-row
+        v-for="(user, index) in users"
+        :key="index"
+        :user="user"
+        @enable="Enable(index)"
+        @delete="Delete(index)"
+        @justupdate="justUpdate(index,...arguments)"
+        @update="changePage(pagination.current_page)"
         :department_form="department_form"
-        @creation="changePage(pagination.current_page)"
-      ></user-create>
-    </div>
-  </div>
+      ></user-row>    
+    </template>
+    <template v-slot:footer>
+      <pagination
+       :pagination="pagination" 
+       :offset="offset"
+       @changePage="getUsers(...arguments)"/>
+      <div class="form-group">
+        <user-create
+          :department_form="department_form"
+          @creation="changePage(pagination.current_page)"
+        ></user-create>
+      </div>
+    </template>
+  </table-container>
 </template>
 // TODO: Create a view for watching the deleted users.
 <script>
 export default {
-  computed: {
-    isActive: function () {
-      return this.pagination.current_page;
-    },
-    pagesNumber: function () {
-      if (!this.pagination.to) {
-        return [];
-      }
-      var from = this.pagination.current_page - this.offset;
-      if (from < 1) from = 1;
-      var to = from + this.offset * 2;
-      if (to >= this.pagination.last_page) to = this.pagination.last_page;
-      var pagesArray = [];
-      while (from <= to) {
-        pagesArray.push(from);
-        from++;
-      }
-      return pagesArray;
-    },
-  },
   methods: {
     getUsers(page) {
       axios.get("api/user?page=" + page).then((response) => {
@@ -100,11 +52,7 @@ export default {
     justUpdate(index, data) {
       this.users[index] = data;
       this.$forceUpdate();
-    },
-    changePage(page) {
-      this.pagination.current_page = page;
-      this.getUsers(page);
-    },
+    }
   },
   created() {
     axios.get("api/data_department").then((response) => {

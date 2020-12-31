@@ -2,7 +2,7 @@
 <template>
   <button v-on:click="Create_permission()" class="btn btn-primary btn-icon-split">
     <span class="icon text-white-50">
-      <i class="fa fa-key"></i>
+      <i class="fa fa-key"/>
     </span>
     <span class="text">Add permission</span>
   </button>
