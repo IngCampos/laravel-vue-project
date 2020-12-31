@@ -2,9 +2,7 @@
 <template>
   <table-container>
     <template v-slot:head>
-      <th class="col-date">
-        Date <i class="fas fa-sort-numeric-down"></i>
-      </th>
+      <th class="col-date">Date <i class="fas fa-sort-numeric-down"/></th>
       <th>Name / Email</th>
       <th>Type</th>
       <th>Actions</th>

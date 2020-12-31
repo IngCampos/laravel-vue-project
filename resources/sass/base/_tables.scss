@@ -1,4 +1,6 @@
 .table-container {
+    background-color: $white;
+    padding: 0rem;
     overflow-x:auto;
     th {
         text-align: center;
@@ -10,11 +12,12 @@
     
     // Columns with 2 or 3 buttons at the final of any table
     .col-action {
-        text-align: center;
         &-2 {
+            text-align: center;
             min-width: 7rem;
         }
         &-3 {
+            text-align: center;
             min-width: 10rem;
         }
     }
@@ -32,6 +35,17 @@
         }
         &-name-long {
             min-width: 18rem;
+        }
+    }
+    // Rows that means section (like permissions and tenders)
+    .section {
+        &-row {
+            background-color: $gray-200 !important;
+        }    
+        &-badge {
+            font-size: 1rem;
+            background-color: lighten($primary, 5);
+            color: $gray-200;
         }
     }
 }

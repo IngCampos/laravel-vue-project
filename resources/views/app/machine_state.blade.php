@@ -3,5 +3,5 @@
 @section('title') Machine state @endsection
 
 @section('content')
-    <machines class="card col-12"></machines>
+    <machines class="col-11"></machines>
 @endsection

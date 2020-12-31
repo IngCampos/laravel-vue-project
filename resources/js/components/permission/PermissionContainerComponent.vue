@@ -1,17 +1,18 @@
   
 <template>
   <tbody>
-    <td colspan="4" class="table-active">
-      <center>
-        <strong>{{permission.info.name}}</strong>
-        <button
-          v-on:click="$root.InfoMessage('Permiso: '+permission.info.name, permission.info.description)"
-          class="btn btn-info badge"
-        >
-          <i class="fas fa-info-circle"></i> Info
+    <tr class="section-row">
+      <td colspan="2" class="text-center">
+        <span class="badge section-badge">{{permission.info.name}}</span>
+      </td>
+      <td class="col-action-2">
+        <button 
+        v-on:click="$root.InfoMessage('Permiso: '+permission.info.name, permission.info.description)"
+        class="btn btn-secondary btn-circle">
+          <i class="fas fa-info-circle"></i>
         </button>
-      </center>
-    </td>
+      </td>
+    </tr>
     <permission-row
       v-for="(user, index) in permission.users"
       :key="user.id"

@@ -3,7 +3,7 @@
 @section('title') Posts @endsection
 
 @section('content')
-    <div class="card col-12">
+    <div class="col-12">
         @if (session('status'))
         <div class="alert alert-success" role="alert">
             {{ session('status') }}
@@ -47,15 +47,15 @@
             </template>
             <template v-slot:footer>
                 {{ $posts->links() }}
+                <div class="form-group">
+                    <a href="{{route('posts.create')}}" class="btn btn-sm btn-primary btn-icon-split">
+                        <span class="icon text-white-50">
+                            <i class="fas fa-plus-square"></i>
+                        </span>
+                        <span class="text">Create post</span>
+                    </a>
+                </div>
             </template>
         </table-container>
-        <div class="form-group">
-            <a href="{{route('posts.create')}}" class="btn btn-sm btn-primary btn-icon-split">
-                <span class="icon text-white-50">
-                    <i class="fas fa-plus-square"></i>
-                </span>
-                <span class="text">Create post</span>
-            </a>
-        </div>
     </div>
 @endsection

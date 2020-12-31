@@ -2,14 +2,10 @@
 <template>
   <table-container>
     <template v-slot:head>
-      <th class="col-name">
-        Status | Name <i class="fas fa-sort-alpha-down"></i>
-      </th>
+      <th class="col-name">Status | Name <i class="fas fa-sort-alpha-down"/></th>
       <th>Email</th>
       <th>Department</th>
-      <th>
-        <i class="fas fa-user-cog float-right"></i>
-      </th>
+      <th><i class="fas fa-user-cog"/></th>
     </template>
     <template v-slot:body>
       <user-row

@@ -1,6 +1,6 @@
 <template>
   <div class="table-container">
-      <table style="width:100%" class="table table-striped">
+      <table style="width:100%" class="table table-striped table-bordered">
         <thead>
           <tr>
             <slot name="head"/>
@@ -11,7 +11,9 @@
             <slot name="body"/>
         </tbody>
       </table>
-      <slot name="footer"/>
+      <div class="text-center">
+        <slot name="footer"/>
+      </div>
   </div>
 </template>
 

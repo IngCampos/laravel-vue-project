@@ -1,12 +1,8 @@
 <template>
   <table-container>
     <template v-slot:head>
-      <th>
-        Order <i class="fas fa-sort-numeric-down"></i>
-      </th>
-      <th>
-        <center>Image</center>
-      </th>
+      <th>Order <i class="fas fa-sort-numeric-down"/></th>
+      <th>Image</th>
       <th>Link</th>
       <th>Expiration</th>
       <th class="col-action-2">Actions</th>

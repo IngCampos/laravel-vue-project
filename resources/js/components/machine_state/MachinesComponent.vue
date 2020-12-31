@@ -2,9 +2,7 @@
 <template>
   <table-container>
     <template v-slot:head>
-      <th class="col-name-long">
-        User Agent <i class="fas fa-sort-alpha-down"></i>
-      </th>
+      <th class="col-name-long">User Agent <i class="fas fa-sort-alpha-down"/></th>
       <th>State</th>
       <th class="col-date">Updated at</th>
       <th class="col-action-2">Actions</th>

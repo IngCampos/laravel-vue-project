@@ -2,9 +2,7 @@
 <template>
   <table-container>
     <template v-slot:head>
-      <th class="col-name-long">
-        Name(link)<i class="fas fa-sort-alpha-down"></i>
-      </th>
+      <th class="col-name-long">Name(link) <i class="fas fa-sort-alpha-down"/></th>
       <th>Source</th>
       <th>Actions</th>
     </template>
@@ -18,21 +16,19 @@
       ></tender-container>
     </template>
     <template v-slot:footer>
-      <div>
-        <button v-on:click="Create_internal_file()" class="btn btn-primary btn-icon-split">
-          <span class="icon text-white-50">
-            <i class="fas fa-file-upload"></i>
-          </span>
-          <span class="text">Add internal file</span>
-        </button>
-        <button v-on:click="Create_external_file()" class="btn btn-success btn-icon-split">
-          <span class="icon text-white-50">
-            <i class="fas fa-link"></i>
-          </span>
-          <span class="text">Add external file</span>
-        </button>
-        <tender-container-create @create="Create_section(...arguments)"></tender-container-create>
-      </div>
+      <button v-on:click="Create_internal_file()" class="btn btn-primary btn-icon-split">
+        <span class="icon text-white-50">
+          <i class="fas fa-file-upload"></i>
+        </span>
+        <span class="text">Add internal file</span>
+      </button>
+      <button v-on:click="Create_external_file()" class="btn btn-success btn-icon-split">
+        <span class="icon text-white-50">
+          <i class="fas fa-link"></i>
+        </span>
+        <span class="text">Add external file</span>
+      </button>
+      <tender-container-create @create="Create_section(...arguments)"></tender-container-create>
     </template>
   </table-container>
 </template>

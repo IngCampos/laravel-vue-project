@@ -2,9 +2,7 @@
 <template>
   <table-container>
     <template v-slot:head>
-      <th class="col-name">
-        Name <i class="fas fa-sort-alpha-down"></i>
-      </th>
+      <th class="col-name">Name <i class="fas fa-sort-alpha-down"/></th>
       <th class="col-date">Created_at</th>
       <th class="col-action-2">Actions</th>
     </template>
@@ -16,9 +14,7 @@
       ></permission-container>
     </template>
     <template v-slot:footer>
-      <div>
-        <permission-create @creation="Creation(...arguments)"></permission-create>
-      </div>
+      <permission-create @creation="Creation(...arguments)"></permission-create>
     </template>
   </table-container>
 </template>
