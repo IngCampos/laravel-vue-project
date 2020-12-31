@@ -1,32 +1,29 @@
   
 <template>
-  <div>
-    <div style="overflow-x:auto;">
-      <table style="width:100%" class="table table-striped">
-        <thead>
-          <th style="min-width:90px">
-            Status | Name
-            <i class="fas fa-sort-alpha-down"></i>
-          </th>
-          <th style="min-width:125px">Email</th>
-          <th class="text-center">Department</th>
-          <th style="width:30px">
-            <i class="fas fa-user-cog float-right"></i>
-          </th>
-        </thead>
-        <tbody>
-          <user-row
-            v-for="(user, index) in users"
-            :key="index"
-            :user="user"
-            @enable="Enable(index)"
-            @delete="Delete(index)"
-            @justupdate="justUpdate(index,...arguments)"
-            @update="changePage(pagination.current_page)"
-            :department_form="department_form"
-          ></user-row>
-        </tbody>
-      </table>
+  <table-container>
+    <template v-slot:head>
+      <th style="min-width:90px">
+        Status | Name <i class="fas fa-sort-alpha-down"></i>
+      </th>
+      <th style="min-width:125px">Email</th>
+      <th class="text-center">Department</th>
+      <th style="width:30px">
+        <i class="fas fa-user-cog float-right"></i>
+      </th>
+    </template>
+    <template v-slot:body>
+      <user-row
+        v-for="(user, index) in users"
+        :key="index"
+        :user="user"
+        @enable="Enable(index)"
+        @delete="Delete(index)"
+        @justupdate="justUpdate(index,...arguments)"
+        @update="changePage(pagination.current_page)"
+        :department_form="department_form"
+      ></user-row>    
+    </template>
+    <template v-slot:footer>
       <nav aria-label="Page navigation">
         <ul class="pagination justify-content-center">
           <li class="page-item" v-bind:class="[ pagination.current_page > 1 ? '' : 'disabled' ]">
@@ -52,14 +49,14 @@
           </li>
         </ul>
       </nav>
-    </div>
-    <div class="form-group">
-      <user-create
-        :department_form="department_form"
-        @creation="changePage(pagination.current_page)"
-      ></user-create>
-    </div>
-  </div>
+      <div class="form-group">
+        <user-create
+          :department_form="department_form"
+          @creation="changePage(pagination.current_page)"
+        ></user-create>
+      </div>
+    </template>
+  </table-container>
 </template>
 // TODO: Create a view for watching the deleted users.
 <script>

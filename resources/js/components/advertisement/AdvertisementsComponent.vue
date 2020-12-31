@@ -1,18 +1,17 @@
 <template>
-  <div style="overflow-x:auto;">
-    <table style="width:100%" class="table">
-      <tr>
-        <th>
-          Order
-          <i class="fas fa-sort-numeric-down"></i>
-        </th>
-        <th>
-          <center>Image</center>
-        </th>
-        <th>Link</th>
-        <th class="text-center">Expiration</th>
-        <th style="min-width:125px" class="text-right">Actions</th>
-      </tr>
+  <table-container>
+    <template v-slot:head>
+      <th>
+        Order <i class="fas fa-sort-numeric-down"></i>
+      </th>
+      <th>
+        <center>Image</center>
+      </th>
+      <th>Link</th>
+      <th class="text-center">Expiration</th>
+      <th style="min-width:125px" class="text-right">Actions</th>
+    </template>
+    <template v-slot:body>
       <advertisement-row
         v-for="(element, index) in elements"
         :key="element.order"
@@ -21,8 +20,8 @@
         @update="Update(index, ...arguments)"
         @create="Create(index, ...arguments)"
       ></advertisement-row>
-    </table>
-  </div>
+    </template>
+  </table-container>
 </template>
 
 <script>

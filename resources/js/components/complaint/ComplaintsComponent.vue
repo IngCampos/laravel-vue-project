@@ -1,53 +1,50 @@
   
 <template>
-  <div style="overflow-x:auto;">
-    <table style="width:100%" class="table table-striped">
-      <thead>
-        <tr>
-          <th style="min-width:90px">
-            Date
-            <i class="fas fa-sort-numeric-down"></i>
-          </th>
-          <th>Name / Email</th>
-          <th class="text-center">Type</th>
-          <th style="min-width:215px" class="text-right">Actions</th>
-        </tr>
-      </thead>
-      <tbody>
-        <complaint-row
-          v-for="(complaint, index) in complaints"
-          :key="complaint.id"
-          :complaint="complaint"
-          @delete="Delete(index,...arguments)"
-        ></complaint-row>
-      </tbody>
-    </table>
-    <nav aria-label="Page navigation">
-      <ul class="pagination justify-content-center">
-        <li class="page-item" v-bind:class="[ pagination.current_page > 1 ? '' : 'disabled' ]">
-          <a class="page-link" href="#" @click.prevent="changePage(pagination.current_page - 1)">
-            <span>Previous</span>
-          </a>
-        </li>
-        <li
-          v-for="page in pagesNumber"
-          v-bind:class="[ page == isActive ? 'active' : '' ]"
-          :key="page"
-          class="page-item"
-        >
-          <a class="page-link" href="#" @click.prevent="changePage(page)">{{page}}</a>
-        </li>
-        <li
-          class="page-item"
-          v-bind:class="[ pagination.current_page < pagination.last_page ? '' : 'disabled' ]"
-        >
-          <a class="page-link" href="#" @click.prevent="changePage(pagination.current_page + 1)">
-            <span>Next</span>
-          </a>
-        </li>
-      </ul>
-    </nav>
-  </div>
+  <table-container>
+    <template v-slot:head>
+      <th style="min-width:90px">
+        Date <i class="fas fa-sort-numeric-down"></i>
+      </th>
+      <th>Name / Email</th>
+      <th class="text-center">Type</th>
+      <th class="text-right">Actions</th>
+    </template>
+    <template v-slot:body>
+      <complaint-row
+        v-for="(complaint, index) in complaints"
+        :key="complaint.id"
+        :complaint="complaint"
+        @delete="Delete(index,...arguments)"
+      ></complaint-row>
+    </template>
+    <template v-slot:footer>
+      <nav aria-label="Page navigation">
+        <ul class="pagination justify-content-center">
+          <li class="page-item" v-bind:class="[ pagination.current_page > 1 ? '' : 'disabled' ]">
+            <a class="page-link" href="#" @click.prevent="changePage(pagination.current_page - 1)">
+              <span>Previous</span>
+            </a>
+          </li>
+          <li
+            v-for="page in pagesNumber"
+            v-bind:class="[ page == isActive ? 'active' : '' ]"
+            :key="page"
+            class="page-item"
+          >
+            <a class="page-link" href="#" @click.prevent="changePage(page)">{{page}}</a>
+          </li>
+          <li
+            class="page-item"
+            v-bind:class="[ pagination.current_page < pagination.last_page ? '' : 'disabled' ]"
+          >
+            <a class="page-link" href="#" @click.prevent="changePage(pagination.current_page + 1)">
+              <span>Next</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </template>
+  </table-container>
 </template>
 
 <script>

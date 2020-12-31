@@ -1,42 +1,40 @@
   
 <template>
-  <div>
-    <div style="overflow-x:auto;">
-      <table style="width:100%" class="table">
-        <thead>
-          <th style="min-width:270px">
-            Name(link)
-            <i class="fas fa-sort-alpha-down"></i>
-          </th>
-          <th class="text-center">Source</th>
-          <th style="min-width:125px" class="text-right">Actions</th>
-        </thead>
-        <tender-container
-          v-for="(section, index) in sections"
-          :key="index"
-          :section="section"
-          @update="Update_section(index, ...arguments)"
-          @delete_section="Delete_section(index)"
-        ></tender-container>
-      </table>
-      <!-- TODO: Special pagination -->
-    </div>
-    <div>
-      <button v-on:click="Create_internal_file()" class="btn btn-primary btn-icon-split">
-        <span class="icon text-white-50">
-          <i class="fas fa-file-upload"></i>
-        </span>
-        <span class="text">Add internal file</span>
-      </button>
-      <button v-on:click="Create_external_file()" class="btn btn-success btn-icon-split">
-        <span class="icon text-white-50">
-          <i class="fas fa-link"></i>
-        </span>
-        <span class="text">Add external file</span>
-      </button>
-      <tender-container-create @create="Create_section(...arguments)"></tender-container-create>
-    </div>
-  </div>
+  <table-container>
+    <template v-slot:head>
+      <th style="min-width:270px">
+        Name(link)<i class="fas fa-sort-alpha-down"></i>
+      </th>
+      <th class="text-center">Source</th>
+      <th style="min-width:125px" class="text-right">Actions</th>
+    </template>
+    <template v-slot:tbody>
+      <tender-container
+        v-for="(section, index) in sections"
+        :key="index"
+        :section="section"
+        @update="Update_section(index, ...arguments)"
+        @delete_section="Delete_section(index)"
+      ></tender-container>
+    </template>
+    <template v-slot:footer>
+      <div>
+        <button v-on:click="Create_internal_file()" class="btn btn-primary btn-icon-split">
+          <span class="icon text-white-50">
+            <i class="fas fa-file-upload"></i>
+          </span>
+          <span class="text">Add internal file</span>
+        </button>
+        <button v-on:click="Create_external_file()" class="btn btn-success btn-icon-split">
+          <span class="icon text-white-50">
+            <i class="fas fa-link"></i>
+          </span>
+          <span class="text">Add external file</span>
+        </button>
+        <tender-container-create @create="Create_section(...arguments)"></tender-container-create>
+      </div>
+    </template>
+  </table-container>
 </template>
 
 <script>

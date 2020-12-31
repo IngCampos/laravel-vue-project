@@ -1,30 +1,24 @@
   
 <template>
-<!-- TODO: create the table as other component and use the slots-->
-  <div style="overflow-x:auto;">
-    <table style="width:100%" class="table table-striped">
-      <thead>
-        <tr>
-          <th style="min-width:195px">
-            User Agent
-            <i class="fas fa-sort-alpha-down"></i>
-          </th>
-          <th class="text-center">State</th>
-          <th style="min-width:145px" class="text-center">Updated at</th>
-          <th style="min-width:115px" class="text-right">Actions</th>
-        </tr>
-      </thead>
-      <tbody>
-        <machine-row
-          v-for="(machine, index) in machines"
-          :key="machine.id"
-          :machine="machine"
-          @update="Update(index, machine.id, ...arguments)"
-        ></machine-row>
-        <!-- TODO: Create a special component for the pagination -->
-      </tbody>
-    </table>
-  </div>
+  <table-container>
+    <template v-slot:head>
+      <th style="min-width:195px">
+        User Agent <i class="fas fa-sort-alpha-down"></i>
+      </th>
+      <th class="text-center">State</th>
+      <th style="min-width:145px" class="text-center">Updated at</th>
+      <th style="min-width:115px" class="text-right">Actions</th>
+    </template>
+    <template v-slot:body>
+      <machine-row
+        v-for="(machine, index) in machines"
+        :key="machine.id"
+        :machine="machine"
+        @update="Update(index, machine.id, ...arguments)"
+      ></machine-row>
+    </template>
+  </table-container>
+  <!-- TODO: Create a special component for the pagination -->
 </template>
 
 <script>
