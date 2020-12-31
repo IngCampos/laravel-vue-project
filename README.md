@@ -17,7 +17,7 @@ The challenge was create a professional project, where I achieved.
 - Manage the security, views, routes, model, controllers, etc as Laravel works.
 - Use third party packages like vue-json-csv, vue-sweetalert2 and vue2-datepicker.
 
-Then I take some courses of Laravel and I improve my skills by using:
+Then I take some courses and I improve the project with:
 
 - Fix an admin template, where styles and some html elements are defined.
 - Optimize some views by getting the data in the view(not by HTTP client).
@@ -118,8 +118,11 @@ APP_ENV=production
 
 ## Built With 🛠️
 
--   [Laravel 7](https://laravel.com/) - Framework PHP.
--   [Vue 2](https://vuejs.org/) - Framework JavaScript.
+-   [PHP 7.2.19](https://www.php.net/releases/7_2_19.php) - Backend language.
+-   [Laravel 7](https://laravel.com/) - PHP framework.
+-   [Vue 2](https://vuejs.org/) - JavaScript framework.
+-   [Bootstrap 4](https://getbootstrap.com/docs/4.0/getting-started/introduction/) - CSS framework.
+-   [SASS](https://sass-lang.com/) - CSS preprocessor. 
 -   [SB Admin 2](https://startbootstrap.com/themes/sb-admin-2/) - Admin theme.
 
 ## Authors
@@ -136,6 +139,7 @@ This project is licensed under the [MIT License](https://choosealicense.com/lice
 
 ## References :books:
 
+- [SASS course](https://platzi.com/clases/sass/)
 - [PHP with Laravel](https://platzi.com/clases/curso-php-laravel/)
 - [Vue.js basic course](https://platzi.com/clases/vuejs/)
 - [Laravel introduction course](https://platzi.com/clases/curso-php-laravel/)
