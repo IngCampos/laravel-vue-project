@@ -1,18 +1,18 @@
   
 <template>
   <tr>
-    <td class="align-middle">
+    <td>
       <a :href="tender.link" target="_blank" rel="noopener noreferrer">{{tender.name}}</a>
       <button v-on:click="Edit(tender.name)" class="btn btn-secondary badge">
         <i class="far fa-edit"></i> Edit
       </button>
       <br />
     </td>
-    <td class="align-middle text-center">
+    <td class="text-center">
       <span v-if="tender.internal_file==1" class="badge badge-primary">Internal</span>
       <span v-else-if="tender.internal_file==0" class="badge badge-success">External</span>
     </td>
-    <td class="align-middle text-right">
+    <td class="col-action-2">
       <button v-on:click="Show_info()" class="btn btn-info btn-circle">
         <i class="fas fa-info-circle"></i>
       </button>

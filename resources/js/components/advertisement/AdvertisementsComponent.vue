@@ -8,8 +8,8 @@
         <center>Image</center>
       </th>
       <th>Link</th>
-      <th class="text-center">Expiration</th>
-      <th style="min-width:125px" class="text-right">Actions</th>
+      <th>Expiration</th>
+      <th class="col-action-2">Actions</th>
     </template>
     <template v-slot:body>
       <advertisement-row

@@ -2,11 +2,11 @@
 <template>
   <table-container>
     <template v-slot:head>
-      <th>
+      <th class="col-name">
         Name <i class="fas fa-sort-alpha-down"></i>
       </th>
-      <th style="min-width:170px" class="text-center">Created_at</th>
-      <th style="min-width:130px" class="text-right">Actions</th>
+      <th class="col-date">Created_at</th>
+      <th class="col-action-2">Actions</th>
     </template>
     <template v-slot:tbody>
       <permission-container

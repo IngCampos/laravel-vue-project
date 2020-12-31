@@ -2,12 +2,12 @@
 <template>
   <table-container>
     <template v-slot:head>
-      <th style="min-width:195px">
+      <th class="col-name-long">
         User Agent <i class="fas fa-sort-alpha-down"></i>
       </th>
-      <th class="text-center">State</th>
-      <th style="min-width:145px" class="text-center">Updated at</th>
-      <th style="min-width:115px" class="text-right">Actions</th>
+      <th>State</th>
+      <th class="col-date">Updated at</th>
+      <th class="col-action-2">Actions</th>
     </template>
     <template v-slot:body>
       <machine-row

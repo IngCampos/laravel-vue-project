@@ -2,11 +2,11 @@
 <template>
   <table-container>
     <template v-slot:head>
-      <th style="min-width:270px">
+      <th class="col-name-long">
         Name(link)<i class="fas fa-sort-alpha-down"></i>
       </th>
-      <th class="text-center">Source</th>
-      <th style="min-width:125px" class="text-right">Actions</th>
+      <th>Source</th>
+      <th>Actions</th>
     </template>
     <template v-slot:tbody>
       <tender-container

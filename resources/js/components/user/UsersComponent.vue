@@ -2,12 +2,12 @@
 <template>
   <table-container>
     <template v-slot:head>
-      <th style="min-width:90px">
+      <th class="col-name">
         Status | Name <i class="fas fa-sort-alpha-down"></i>
       </th>
-      <th style="min-width:125px">Email</th>
-      <th class="text-center">Department</th>
-      <th style="width:30px">
+      <th>Email</th>
+      <th>Department</th>
+      <th>
         <i class="fas fa-user-cog float-right"></i>
       </th>
     </template>

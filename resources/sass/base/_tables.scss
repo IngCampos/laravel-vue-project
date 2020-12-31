@@ -1,3 +1,37 @@
 .table-container {
     overflow-x:auto;
+    th {
+        text-align: center;
+        vertical-align: middle;
+    }
+    td {
+        vertical-align: middle;
+    }
+    
+    // Columns with 2 or 3 buttons at the final of any table
+    .col-action {
+        text-align: center;
+        &-2 {
+            min-width: 7rem;
+        }
+        &-3 {
+            min-width: 10rem;
+        }
+    }
+
+    // Columns with specific content
+    .col {
+        &-date {
+            min-width: 9rem;
+        }
+        &-id {
+            min-width: 4rem;
+        }
+        &-name {
+            min-width: 12rem;
+        }
+        &-name-long {
+            min-width: 18rem;
+        }
+    }
 }

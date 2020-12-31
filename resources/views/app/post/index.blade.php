@@ -11,25 +11,25 @@
         @endif
         <table-container>
             <template v-slot:head>
-                <th>Id <i class="fas fa-sort-numeric-down"></i></th>
-                <th>Title</th>
+                <th class="col-id">Id <i class="fas fa-sort-numeric-down"></i></th>
+                <th class="col-name-long">Title / Extraction</th>
                 <th>Updated_at</th>
                 <!-- TODO: Create a field that with a icon show that the post has image, embed content or nothing -->
-                <th style="min-width:125px" class="text-right">Actions</th>
+                <th>Actions</th>
             </template>
             <template v-slot:body>
                 @foreach($posts as $post)
                 <tr>
-                    <td class="align-middle">{{$post->id}}</td>
+                    <td>{{$post->id}}</td>
                     <td>
                         <strong>{{$post->title}}</strong>
                         <br>
                         {{ $post->get_excerpt }}
                     </td>
-                    <td class="align-middle">
+                    <td>
                         {{ $post->updated_at->format('d M y') }}
                     </td>
-                    <td class="text-right">
+                    <td class="col-action-2">
                         <!-- TODO: Add the show function and its view, function, etc-->
                         <a href="{{route('posts.edit', $post)}}" class="btn btn-secondary btn-circle">
                             <i class="far fa-edit"></i>

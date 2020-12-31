@@ -2,12 +2,12 @@
 <template>
   <table-container>
     <template v-slot:head>
-      <th style="min-width:90px">
+      <th class="col-date">
         Date <i class="fas fa-sort-numeric-down"></i>
       </th>
       <th>Name / Email</th>
-      <th class="text-center">Type</th>
-      <th class="text-right">Actions</th>
+      <th>Type</th>
+      <th>Actions</th>
     </template>
     <template v-slot:body>
       <complaint-row
