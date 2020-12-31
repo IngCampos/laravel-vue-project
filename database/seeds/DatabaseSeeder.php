@@ -20,6 +20,6 @@ class DatabaseSeeder extends Seeder
         $this->call(TenderSeeder::class);
         $this->call(PermissionSeeder::class);
 
-        factory(App\Post::class, 10)->create();
+        factory(App\Post::class, 30)->create();
     }
 }

@@ -9,7 +9,18 @@ class MachineStateController extends Controller
 {
     public function index()
     {
-        return Machine::orderBy('user_agent', 'asc')->get()->load('machine_state');
+        $machines = Machine::orderBy('user_agent', 'asc')->paginate(10);
+        return [
+            'pagination' => [
+                'total' => $machines->total(),
+                'current_page' => $machines->currentPage(),
+                'per_page' => $machines->perPage(),
+                'last_page' => $machines->lastPage(),
+                'from' => $machines->firstItem(),
+                'to' => $machines->lastItem(),
+            ],
+            'machines' => $machines->load('machine_state')
+        ];
     }
 
     public function update(MachineRequest $request, $id)

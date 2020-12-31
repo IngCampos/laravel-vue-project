@@ -15,13 +15,24 @@
         @update="Update(index, machine.id, ...arguments)"
       ></machine-row>
     </template>
+    <template v-slot:footer>
+      <pagination
+       :pagination="pagination" 
+       :offset="offset"
+       @changePage="getMachines(...arguments)"/>
+    </template>
   </table-container>
-  <!-- TODO: Create a special component for the pagination -->
 </template>
 
 <script>
 export default {
   methods: {
+    getMachines(page) {
+      axios.get("api/machine_state?page=" + page).then((response) => {
+        this.machines = response.data.machines;
+        this.pagination = response.data.pagination;
+      });
+    },
     Update(index, id, newstate) {
       this.$swal
         .fire(
@@ -61,13 +72,20 @@ export default {
     },
   },
   created() {
-    axios.get("api/machine_state").then((response) => {
-      this.machines = response.data;
-    });
+    this.getMachines(1);
   },
   data() {
     return {
       machines: [],
+      pagination: {
+        total: 0,
+        current_page: 0,
+        per_page: 0,
+        last_page: 0,
+        from: 0,
+        to: 0,
+      },
+      offset: 4
     };
   },
 };

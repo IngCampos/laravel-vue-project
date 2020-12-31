@@ -71,6 +71,7 @@ Vue.component('basic-statistic', require('./utilities/BasicStatisticUtility.vue'
 Vue.component('basic-statistic-download', require('./utilities/BasicStatisticDownloadUtility.vue').default);
 Vue.component('card-statistic', require('./utilities/CardStatisticUtility.vue').default);
 Vue.component('table-container', require('./utilities/TableContainerUtility.vue').default);
+Vue.component('pagination', require('./utilities/PaginationUtility.vue').default);
 Vue.component('progress-bar', require('./utilities/ProgressBarUtility.vue').default);
 
 // Components for permission(for users) panel

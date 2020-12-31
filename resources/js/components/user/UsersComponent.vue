@@ -20,31 +20,10 @@
       ></user-row>    
     </template>
     <template v-slot:footer>
-      <nav aria-label="Page navigation">
-        <ul class="pagination justify-content-center">
-          <li class="page-item" v-bind:class="[ pagination.current_page > 1 ? '' : 'disabled' ]">
-            <a class="page-link" href="#" @click.prevent="changePage(pagination.current_page - 1)">
-              <span>Previous</span>
-            </a>
-          </li>
-          <li
-            v-for="page in pagesNumber"
-            v-bind:class="[ page == isActive ? 'active' : '' ]"
-            :key="page"
-            class="page-item"
-          >
-            <a class="page-link" href="#" @click.prevent="changePage(page)">{{page}}</a>
-          </li>
-          <li
-            class="page-item"
-            v-bind:class="[ pagination.current_page < pagination.last_page ? '' : 'disabled' ]"
-          >
-            <a class="page-link" href="#" @click.prevent="changePage(pagination.current_page + 1)">
-              <span>Next</span>
-            </a>
-          </li>
-        </ul>
-      </nav>
+      <pagination
+       :pagination="pagination" 
+       :offset="offset"
+       @changePage="getUsers(...arguments)"/>
       <div class="form-group">
         <user-create
           :department_form="department_form"
@@ -57,26 +36,6 @@
 // TODO: Create a view for watching the deleted users.
 <script>
 export default {
-  computed: {
-    isActive: function () {
-      return this.pagination.current_page;
-    },
-    pagesNumber: function () {
-      if (!this.pagination.to) {
-        return [];
-      }
-      var from = this.pagination.current_page - this.offset;
-      if (from < 1) from = 1;
-      var to = from + this.offset * 2;
-      if (to >= this.pagination.last_page) to = this.pagination.last_page;
-      var pagesArray = [];
-      while (from <= to) {
-        pagesArray.push(from);
-        from++;
-      }
-      return pagesArray;
-    },
-  },
   methods: {
     getUsers(page) {
       axios.get("api/user?page=" + page).then((response) => {
@@ -93,11 +52,7 @@ export default {
     justUpdate(index, data) {
       this.users[index] = data;
       this.$forceUpdate();
-    },
-    changePage(page) {
-      this.pagination.current_page = page;
-      this.getUsers(page);
-    },
+    }
   },
   created() {
     axios.get("api/data_department").then((response) => {
