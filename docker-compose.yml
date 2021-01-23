@@ -21,6 +21,8 @@ services:
       - ./:/var/www
       - /var/www/vendor
       - /var/www/node_modules
+      - /var/www/public/storage
+    command: npm run dev
     networks:
       - lvintranet
 
@@ -55,8 +57,6 @@ services:
       SERVICE_NAME: mysql
     depends_on: 
       - app # because of app has the environment values
-    volumes:
-      - ./docker-compose/mysql:/docker-entrypoint-initdb.d
     networks:
       - lvintranet
 

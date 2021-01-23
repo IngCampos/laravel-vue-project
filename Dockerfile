@@ -35,13 +35,14 @@ RUN mkdir -p /home/$user/.composer && \
 # Set working directory
 WORKDIR /var/www
 
-# Install Javascript and PHP dependences
+# Install Javascript dependences
 COPY ["package.json", "package-lock.json", "/var/www/"]
 RUN npm i
 
+# Install PHP dependences
 COPY [".", "/var/www/"]
 RUN composer i
-RUN php artisan key:generate
+# Create the symbolic link (from public/storage to storage/app/public)
 RUN php artisan storage:link
 
 USER $user

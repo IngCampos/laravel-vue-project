@@ -47,19 +47,19 @@ cp .env.example .env
 
 Note: You could change some values, anyway docker-compose create the database according to the defined values.
 
-Then create the docker image.
-
-```
-docker-compose build app
-```
-
-Run the environment (php, nginx, mysql, its configurations and the network) and wait a little moment while the processes are installing. 
+Create the image and run the environment (php, nginx, mysql and its configurations):
 
 ```
 docker-compose up
 ```
 
-Note: The commands `npm install`, `composer install`, `php artisan key:generate` and `php artisan storage:link` are executed when the image is created, so there are the composer and node_modules folders with PHP and Javascript dependences. The application key and the symbolic link (from public/storage to storage/app/public) are generated.
+Note: The image created (php:7.4-lvintranet) has the PHP and Javascript dependences. 
+
+Then generate the application key.
+
+```
+docker-compose exec app php artisan key:generate
+```
 
 Finally generate the database with fake data:
 
@@ -71,19 +71,19 @@ Note: You could refresh the database any time with migrate:refresh.
 
 ## Running the project :computer:
 
-First generate the public files with
+Each time SASS and JavaScript files are updated you need to run:
 
 ```
 docker-compose exec app npm run dev
 ```
 
-Note: Each time SASS and JavaScript files are updated you need to run the past command, to make it automated run:
+To make it automated run:
 
 ```
 docker-compose exec app npm run watch
 ```
 
-Note: `php artisan serve` is not neccessary due to nginx server.
+And now you have all the environment, to open the website open the port 8000 in your local (e.g http://127.0.0.1:8000/).
 
 ## Deployment 📦
 
