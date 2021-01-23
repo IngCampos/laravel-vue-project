@@ -27,21 +27,12 @@ RUN docker-php-ext-install pdo_mysql mbstring exif pcntl bcmath gd
 # Get latest Composer
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 
-# Create system user to run Composer and Artisan Commands
+# Create system user to run Composer, Artisan and NPM Commands
 RUN useradd -G www-data,root -u $uid -d /home/$user $user
 RUN mkdir -p /home/$user/.composer && \
     chown -R $user:$user /home/$user
 
 # Set working directory
 WORKDIR /var/www
-
-# Install Javascript and PHP dependences
-COPY ["package.json", "package-lock.json", "/var/www/"]
-RUN npm i
-
-COPY [".", "/var/www/"]
-RUN composer i
-RUN php artisan key:generate
-RUN php artisan storage:link
 
 USER $user

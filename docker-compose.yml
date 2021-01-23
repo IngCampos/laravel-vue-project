@@ -9,7 +9,7 @@ services:
         uid: 1000
       context: .
       dockerfile: Dockerfile
-    image: php:7.4-lvintranet
+    image: php:7.4-fpm-composer-npm
     container_name: lvintranet-app
     restart: unless-stopped
     tty: true
@@ -19,8 +19,6 @@ services:
     working_dir: /var/www
     volumes:
       - ./:/var/www
-      - /var/www/vendor
-      - /var/www/node_modules
     networks:
       - lvintranet
 
@@ -55,8 +53,6 @@ services:
       SERVICE_NAME: mysql
     depends_on: 
       - app # because of app has the environment values
-    volumes:
-      - ./docker-compose/mysql:/docker-entrypoint-initdb.d
     networks:
       - lvintranet
 
