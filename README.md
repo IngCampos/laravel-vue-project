@@ -45,47 +45,29 @@ First duplicate the file .env.example as .env.
 cp .env.example .env
 ```
 
+Note: You could change some values, anyway docker-compose create the database according to the defined values.
+
 Then create the docker image.
 
 ```
 docker-compose build app
 ```
 
-Run the image created. 
+Run the environment (php, nginx, mysql, its configurations and the network) and wait a little moment while the processes are installing. 
 
 ```
-docker-compose up -d
+docker-compose up
 ```
 
-Then install the PHP packages.
-
-```
-docker-compose exec app composer install
-```
-
-Generate the application key.
-
-```
-docker-compose exec app php artisan key:generate
-```
-
-Then create the symbolic link (from public/storage to storage/app/public).
-
-```
-docker-compose exec app php artisan storage:link
-```
-
-Then install the JavaScript packages with npm.
-
-```
-docker-compose exec app npm install
-```
+Note: The commands `npm install`, `composer install`, `php artisan key:generate` and `php artisan storage:link` are executed when the image is created, so there are the composer and node_modules folders with PHP and Javascript dependences. The application key and the symbolic link (from public/storage to storage/app/public) are generated.
 
 Finally generate the database with fake data:
 
 ```
 docker-compose exec app php artisan migrate --seed
 ```
+
+Note: You could refresh the database any time with migrate:refresh.
 
 ## Running the project :computer:
 
@@ -105,7 +87,7 @@ Note: `php artisan serve` is not neccessary due to nginx server.
 
 ## Deployment 📦
 
-For deployproduction environment you need extra configurations for optimization and security as:
+For production environment you need extra configurations for optimization and security as:
 
 Generate optimized JavaScript files.
 

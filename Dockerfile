@@ -15,6 +15,9 @@ RUN apt-get update && apt-get install -y \
     unzip \
     npm
 
+# Update npm
+RUN npm install -g npm@latest
+
 # Clear cache
 RUN apt-get clean && rm -rf /var/lib/apt/lists/*
 
@@ -31,5 +34,14 @@ RUN mkdir -p /home/$user/.composer && \
 
 # Set working directory
 WORKDIR /var/www
+
+# Install Javascript and PHP dependences
+COPY ["package.json", "package-lock.json", "/var/www/"]
+RUN npm i
+
+COPY [".", "/var/www/"]
+RUN composer i
+RUN php artisan key:generate
+RUN php artisan storage:link
 
 USER $user

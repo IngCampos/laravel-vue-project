@@ -5,12 +5,12 @@ services:
   app:
     build:
       args:
-        user: dev
+        user: lvintranet-user
         uid: 1000
       context: .
       dockerfile: Dockerfile
-    image: intranet
-    container_name: intranet-app
+    image: php:7.4-lvintranet
+    container_name: lvintranet-app
     restart: unless-stopped
     tty: true
     environment:
@@ -19,13 +19,15 @@ services:
     working_dir: /var/www
     volumes:
       - ./:/var/www
+      - /var/www/vendor
+      - /var/www/node_modules
     networks:
-      - intranet
+      - lvintranet
 
   #Nginx Service
   nginx:
     image: nginx:1.17-alpine
-    container_name: intranet-nginx
+    container_name: lvintranet-nginx
     restart: unless-stopped
     tty: true
     ports:
@@ -34,12 +36,12 @@ services:
       - ./:/var/www
       - ./docker-compose/nginx:/etc/nginx/conf.d
     networks:
-      - intranet
+      - lvintranet
 
   #MySQL Service
   db:
     image: mysql:5.7
-    container_name: intranet-db
+    container_name: lvintranet-db
     restart: unless-stopped
     tty: true
     ports:
@@ -51,12 +53,14 @@ services:
       MYSQL_USER: ${DB_USERNAME}
       SERVICE_TAGS: dev
       SERVICE_NAME: mysql
+    depends_on: 
+      - app # because of app has the environment values
     volumes:
       - ./docker-compose/mysql:/docker-entrypoint-initdb.d
     networks:
-      - intranet
+      - lvintranet
 
 #Docker Networks
 networks:
-  intranet:
+  lvintranet:
     driver: bridge
