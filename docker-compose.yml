@@ -1,0 +1,66 @@
+version: '3'
+
+services:
+  #PHP Service
+  app:
+    build:
+      args:
+        user: lvintranet-user
+        uid: 1000
+      context: .
+      dockerfile: Dockerfile
+    image: php:7.4-lvintranet
+    container_name: lvintranet-app
+    restart: unless-stopped
+    tty: true
+    environment:
+      SERVICE_NAME: app
+      SERVICE_TAGS: dev
+    working_dir: /var/www
+    volumes:
+      - ./:/var/www
+      - /var/www/vendor
+      - /var/www/node_modules
+    networks:
+      - lvintranet
+
+  #Nginx Service
+  nginx:
+    image: nginx:1.17-alpine
+    container_name: lvintranet-nginx
+    restart: unless-stopped
+    tty: true
+    ports:
+      - "8000:80"
+    volumes:
+      - ./:/var/www
+      - ./docker-compose/nginx:/etc/nginx/conf.d
+    networks:
+      - lvintranet
+
+  #MySQL Service
+  db:
+    image: mysql:5.7
+    container_name: lvintranet-db
+    restart: unless-stopped
+    tty: true
+    ports:
+      - "3306:3306"
+    environment:
+      MYSQL_DATABASE: ${DB_DATABASE}
+      MYSQL_ROOT_PASSWORD: ${DB_PASSWORD}
+      MYSQL_PASSWORD: ${DB_PASSWORD}
+      MYSQL_USER: ${DB_USERNAME}
+      SERVICE_TAGS: dev
+      SERVICE_NAME: mysql
+    depends_on: 
+      - app # because of app has the environment values
+    volumes:
+      - ./docker-compose/mysql:/docker-entrypoint-initdb.d
+    networks:
+      - lvintranet
+
+#Docker Networks
+networks:
+  lvintranet:
+    driver: bridge

@@ -24,6 +24,7 @@ Then I take some courses and I improve the project with:
 - Backend validation in the request (app/Http/Request).
 - Dynamic views with slug in the url.
 - Cleaning and optimizing the code.
+- Implement docker and docker compose for a better environment.
 
 ## Getting Started :rocket:
 
@@ -33,81 +34,65 @@ These instructions will get you a copy of the project up and running on your loc
 
 The programs you need are:
 
--   [Composer](https://getcomposer.org/download/).
--   [Node.js](https://nodejs.org/en/download/).
--   Database and a web server with PHP.
+-   [Docker](https://www.docker.com/get-started).
+-   [Docker compose](https://docs.docker.com/compose/install/).
 
 ### Installing 🔧
 
-Duplicate the file .env.example as .env and set your credential for the database in.
+First duplicate the file .env.example as .env.
 
 ```
-DB_CONNECTION=mysql
-DB_HOST=127.0.0.1
-DB_PORT=3306
-DB_DATABASE=database_name
-DB_USERNAME=root
-DB_PASSWORD=
+cp .env.example .env
 ```
 
-Then install the PHP packages.
+Note: You could change some values, anyway docker-compose create the database according to the defined values.
+
+Then create the docker image.
 
 ```
-composer install
+docker-compose build app
 ```
 
-Generate the application key.
+Run the environment (php, nginx, mysql, its configurations and the network) and wait a little moment while the processes are installing. 
 
 ```
-php artisan key:generate
+docker-compose up
 ```
 
-Then create the symbolic link (from public/storage to storage/app/public).
-
-```
-php artisan storage:link
-```
-
-Then install the JavaScript packages with npm.
-
-```
-npm install
-```
+Note: The commands `npm install`, `composer install`, `php artisan key:generate` and `php artisan storage:link` are executed when the image is created, so there are the composer and node_modules folders with PHP and Javascript dependences. The application key and the symbolic link (from public/storage to storage/app/public) are generated.
 
 Finally generate the database with fake data:
 
 ```
-php artisan migrate --seed
+docker-compose exec app php artisan migrate --seed
 ```
+
+Note: You could refresh the database any time with migrate:refresh.
 
 ## Running the project :computer:
 
 First generate the public files with
 
 ```
-npm run dev
+docker-compose exec app npm run dev
 ```
 
 Note: Each time SASS and JavaScript files are updated you need to run the past command, to make it automated run:
 
 ```
-npm run watch
+docker-compose exec app npm run watch
 ```
 
-Finally run the serve
-
-```
-php artisan serve
-```
+Note: `php artisan serve` is not neccessary due to nginx server.
 
 ## Deployment 📦
 
-To deploy the project you need extra configurations for optimization and security as:
+For production environment you need extra configurations for optimization and security as:
 
 Generate optimized JavaScript files.
 
 ```
-npm run production
+docker-compose exec app npm run production
 ```
 
 Set in the file .env the next configuration.
@@ -118,8 +103,8 @@ APP_ENV=production
 
 ## Built With 🛠️
 
--   [PHP 7.2.19](https://www.php.net/releases/7_2_19.php) - Backend language.
--   [Laravel 7](https://laravel.com/) - PHP framework.
+-   [PHP 7.4](https://www.php.net/releases/7_4_0.php) - Backend language.
+-   [Laravel 7](https://laravel.com/docs/7.x/releases/) - PHP framework.
 -   [Vue 2](https://vuejs.org/) - JavaScript framework.
 -   [Bootstrap 4](https://getbootstrap.com/docs/4.0/getting-started/introduction/) - CSS framework.
 -   [SASS](https://sass-lang.com/) - CSS preprocessor. 
@@ -139,6 +124,8 @@ This project is licensed under the [MIT License](https://choosealicense.com/lice
 
 ## References :books:
 
+- [Tutorial Laravel with Docker Compose](https://www.digitalocean.com/community/tutorials/how-to-install-and-set-up-laravel-with-docker-compose-on-ubuntu-20-04)
+- [Docker course](https://platzi.com/clases/docker/)
 - [SASS course](https://platzi.com/clases/sass/)
 - [PHP with Laravel](https://platzi.com/clases/curso-php-laravel/)
 - [Vue.js basic course](https://platzi.com/clases/vuejs/)
