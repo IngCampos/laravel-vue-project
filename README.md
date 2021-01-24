@@ -96,6 +96,14 @@ docker-compose exec app npm run watch
 
 And now you have all the environment, the nginx server is in the port 8000 (e.g http://127.0.0.1:8000/).
 
+## Testing ⚙️
+
+To test Vue components run.
+
+```
+docker-compose exec app npm run test
+```
+
 ## Deployment 📦
 
 For production environment you need extra configurations for optimization and security as:
