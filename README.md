@@ -53,6 +53,12 @@ Create the image (php:7.4-composer-npm) and run the services (php, nginx and mys
 docker-compose up
 ```
 
+Note: The next steps can be automated bu running
+
+```
+sh ./installation.sh
+```
+
 Then install the dependeces.
 
 ```
