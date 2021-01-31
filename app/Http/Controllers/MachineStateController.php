@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Machine;
+use App\Models\Machine;
 use App\Http\Requests\MachineRequest;
 
 class MachineStateController extends Controller

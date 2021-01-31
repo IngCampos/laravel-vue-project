@@ -2,16 +2,16 @@
 
 namespace App\Http\Controllers;
 
-use App\Advertisement;
-use App\User;
-use App\Department;
-use App\Complaint;
-use App\Complaint_type;
-use App\Permission;
-use App\Machine;
-use App\Machine_state;
-use App\Tender;
-use App\Tender_section;
+use App\Models\Advertisement;
+use App\Models\User;
+use App\Models\Department;
+use App\Models\Complaint;
+use App\Models\Complaint_type;
+use App\Models\Permission;
+use App\Models\Machine;
+use App\Models\Machine_state;
+use App\Models\Tender;
+use App\Models\Tender_section;
 use Carbon\Carbon;
 
 class StatisticsController extends Controller

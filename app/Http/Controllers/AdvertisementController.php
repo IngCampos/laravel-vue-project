@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Advertisement;
+use App\Models\Advertisement;
 use App\Http\Requests\AdvertisementRequest;
 use Illuminate\Support\Facades\Storage;
 

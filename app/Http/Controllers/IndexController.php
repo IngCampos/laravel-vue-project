@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Advertisement;
+use App\Models\Advertisement;
 
 class IndexController extends Controller
 {

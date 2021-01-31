@@ -13,7 +13,7 @@ class UserSeeder extends Seeder
      */
     public function run()
     {
-        App\User::create([
+        App\Models\User::create([
             'name' => 'Administrator',
             'email' => 'admin@laravel-vue.com',
             'department_id' => 1,
@@ -21,6 +21,6 @@ class UserSeeder extends Seeder
             'password' => Hash::make('laravel'),
             'remember_token' => Str::random(10),
         ]);
-        factory(App\User::class, 100)->create();
+        factory(App\Models\User::class, 100)->create();
     }
 }

@@ -11,9 +11,9 @@ class ComplaintSeeder extends Seeder
      */
     public function run()
     {
-        App\Complaint_type::create(['name' => 'Report']);
-        App\Complaint_type::create(['name' => 'Suggestion']);
-        App\Complaint_type::create(['name' => 'Other']);
-        factory(App\Complaint::class, 365)->create();
+        App\Models\Complaint_type::create(['name' => 'Report']);
+        App\Models\Complaint_type::create(['name' => 'Suggestion']);
+        App\Models\Complaint_type::create(['name' => 'Other']);
+        factory(App\Models\Complaint::class, 365)->create();
     }
 }

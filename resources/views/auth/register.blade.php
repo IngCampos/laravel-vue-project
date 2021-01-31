@@ -25,7 +25,7 @@
             <div class="col-sm-6">
                 <select id="department_id" type="text" class="form-control-user form-control @error('department_id') is-invalid @enderror" name="department_id" value="{{ old('department_id') }}" required autocomplete="department_id">
                     <option disabled>Select the department</option>
-                    @foreach (App\Department::orderBy('name')->get() as $department)
+                    @foreach (App\Models\Department::orderBy('name')->get() as $department)
                     <option value="{{ $department->id }}">{{$department->name}}</option>
                     @endforeach
                 </select>

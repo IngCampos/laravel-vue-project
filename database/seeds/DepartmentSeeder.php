@@ -11,7 +11,7 @@ class DepartmentSeeder extends Seeder
      */
     public function run()
     {
-        App\Department::create(['name' => 'System Administration']);
-        factory(App\Department::class, 9)->create();
+        App\Models\Department::create(['name' => 'System Administration']);
+        factory(App\Models\Department::class, 9)->create();
     }
 }
