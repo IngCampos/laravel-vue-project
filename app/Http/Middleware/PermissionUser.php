@@ -16,6 +16,7 @@ class PermissionUser
     public function handle($request, Closure $next, $permission_id)
     {
         // This middleware checks if the user has te permission
+        // TODO: create a better method to access to the permission
         foreach ($request->user()->permissions as $permission)
             if ($permission->id == $permission_id)
                 return $next($request);

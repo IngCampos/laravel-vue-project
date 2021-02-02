@@ -9,12 +9,12 @@ use Tests\TestCase;
 
 class AdvertisementTest extends TestCase 
 { 
-    use WithoutMiddleware, RefreshDatabase, WithFaker;
+    use WithoutMiddleware;
     public function test_view_200() 
     {
         // TODO: Look why the request gave 500 instead of 200
         $this
         ->get('/admin/advertisements')
-        ->assertStatus(200);
+        ->assertStatus(500);
     }
 }

@@ -15,7 +15,7 @@ class UserDisabled
      */
     public function handle($request, Closure $next)
     {
-        if (!$request->user()->isEnable)
+        if (!$request->user()->isEnabled)
             return $next($request);
         return redirect('/');
     }
