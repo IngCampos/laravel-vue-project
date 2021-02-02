@@ -25,7 +25,7 @@ Then I take some courses and I improve the project with:
 - Dynamic views with slug in the url.
 - Cleaning and optimizing the code.
 - Implement docker and docker compose for a better environment.
-- Implement testing with PHPUnit.
+- Implement some test with PHPUnit.
 
 ## Getting Started :rocket:
 

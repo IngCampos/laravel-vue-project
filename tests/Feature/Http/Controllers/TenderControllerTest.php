@@ -24,4 +24,18 @@ class TenderControllerTest extends TestCase
 
         $response->assertSessionHasErrors(['internal_file', 'name', 'tender_section_id']);
     }
+
+    public function test_update()
+    {
+        $response = $this->post(
+            'admin/api/tender',
+            [
+                'internal_file' => 'abcd',
+                'name' => 'ab',
+                'tender_section_id' => 'abcd',
+            ]
+        );
+
+        $response->assertSessionHasErrors(['internal_file', 'name', 'tender_section_id']);
+    }
 }
