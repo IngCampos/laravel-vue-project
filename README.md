@@ -4,7 +4,7 @@ _Intranet system to automate processes, show information, manage users and permi
 
 ### Project goal by martin-stepwolf :goal_net:
 
-Personal project to show the skills I developed in my internship by building a similar project and improve it with other courses and better practices. 
+Personal project to show the skills I developed in my internship by building a project and improve it with other courses and better practices. 
 
 ### Achievements :star2:
 
@@ -25,6 +25,7 @@ Then I take some courses and I improve the project with:
 - Dynamic views with slug in the url.
 - Cleaning and optimizing the code.
 - Implement docker and docker compose for a better environment.
+- Implement testing with PHPUnit.
 
 ## Getting Started :rocket:
 
@@ -56,10 +57,10 @@ docker-compose up
 Note: The next steps can be automated bu running
 
 ```
-sh ./installation.sh
+sh install.sh
 ```
 
-Then install the dependeces.
+Then install the dependencies.
 
 ```
 docker-compose exec app composer install
@@ -101,6 +102,14 @@ docker-compose exec app npm run watch
 ```
 
 And now you have all the environment, the nginx server is in the port 8000 (e.g http://127.0.0.1:8000/).
+
+## Running the tests
+
+To test the backend run:
+
+```
+docker-compose exec app php artisan test
+```
 
 ## Deployment 📦
 

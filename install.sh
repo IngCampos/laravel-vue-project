@@ -8,6 +8,8 @@ docker-compose exec app npm install
 docker-compose exec app php artisan key:generate
 # Create the symbolic link (from public/storage to storage/app/public).
 docker-compose exec app php artisan storage:link
+# Run the test in the backend
+docker-compose exec app php artisan test
 # Create the tables and fake data in the database
 docker-compose exec app php artisan migrate --seed
 # Generate the JavaScript and CSS files from Vue and SASS files
