@@ -6,9 +6,9 @@ use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
 
-use App\Department;
-use App\User;
-use App\Alert;
+use App\Models\Department;
+use App\Models\User;
+use App\Models\Alert;
 
 class AlertControllerTest extends TestCase
 {

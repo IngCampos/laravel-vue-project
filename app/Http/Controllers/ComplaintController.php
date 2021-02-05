@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Complaint;
+use App\Models\Complaint;
 use App\Http\Requests\ComplaintRequest;
 
 class ComplaintController extends Controller

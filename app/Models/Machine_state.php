@@ -1,11 +1,15 @@
 <?php
 
-namespace App;
+namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
 class Machine_state extends Model
 {
+    protected $fillable = [
+        'name'
+    ];
+
     public function machines()
     {
         return $this->hasMany(Machine::class);

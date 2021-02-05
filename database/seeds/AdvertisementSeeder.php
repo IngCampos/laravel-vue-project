@@ -39,6 +39,6 @@ class AdvertisementSeeder extends Seeder
             ]
         ];
 
-        foreach ($advertisements as $advertisement) App\Advertisement::create($advertisement);
+        foreach ($advertisements as $advertisement) App\Models\Advertisement::create($advertisement);
     }
 }

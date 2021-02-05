@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Complaint;
-use App\Department;
+use App\Models\Complaint;
+use App\Models\Department;
 use Illuminate\Http\Request;
-use App\User;
-use App\Tender_section;
+use App\Models\User;
+use App\Models\Tender_section;
 use Carbon\Carbon;
 
 class DataFormController extends Controller

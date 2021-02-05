@@ -11,9 +11,9 @@ class MachineSeeder extends Seeder
      */
     public function run()
     {
-        App\Machine_state::create(['name' => 'Active']);
-        App\Machine_state::create(['name' => 'No active']);
-        App\Machine_state::create(['name' => 'In maintenance']);
-        factory(App\Machine::class, 100)->create();
+        App\Models\Machine_state::create(['name' => 'Active']);
+        App\Models\Machine_state::create(['name' => 'No active']);
+        App\Models\Machine_state::create(['name' => 'In maintenance']);
+        factory(App\Models\Machine::class, 100)->create();
     }
 }

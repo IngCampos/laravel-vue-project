@@ -7,7 +7,7 @@
 $route = Request::route()->getName();
 @endphp
 
-@if(Route::has('register') && $route!='register')
+@if(Route::has('register') && $route!='register' && $route!='user_disabled')
 <div class="text-center">
     <a class="small" href="{{ route('register') }}">
         {{ __('Create an Account!') }}
@@ -15,7 +15,7 @@ $route = Request::route()->getName();
 </div>
 @endif
 
-@if(Route::has('password.request') && $route!="password.request")
+@if(Route::has('password.request') && $route!="password.request" && $route!='user_disabled')
 <div class="text-center">
     <a class="small" href="{{ route('password.request') }}">
         {{ __('Forgot Your Password?') }}
@@ -23,7 +23,7 @@ $route = Request::route()->getName();
 </div>
 @endif
 
-@if(Route::has('login') && $route!='login')
+@if(Route::has('login') && $route!='login' && $route!='user_disabled')
 <div class="text-center">
     <a class="small" href="{{ route('login') }}">
         {{ __('Already have an account? Login!') }}

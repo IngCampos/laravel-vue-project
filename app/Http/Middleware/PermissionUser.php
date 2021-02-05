@@ -16,9 +16,8 @@ class PermissionUser
     public function handle($request, Closure $next, $permission_id)
     {
         // This middleware checks if the user has te permission
-        foreach ($request->user()->permissions as $permission)
-            if ($permission->id == $permission_id)
-                return $next($request);
+        if ($request->user()->permissions->where('pivot.permission_id', $permission_id) != "[]")
+            return $next($request);
         \Log::alert('The user with ID ' . $request->user()->id . ' tried to access to section without permission(' . $permission_id . ').');
         return redirect('/');
     }

@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Tender;
-use App\Tender_section;
+use App\Models\Tender;
+use App\Models\Tender_section;
 use App\Http\Requests\TenderRequest;
 use Illuminate\Support\Facades\Storage;
 

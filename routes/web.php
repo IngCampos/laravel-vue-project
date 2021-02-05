@@ -107,4 +107,4 @@ Route::prefix('admin')->middleware(['auth', 'is.enabled'])->group(
     }
 );
 
-Route::view('user_disabled', 'user_disabled')->middleware(['auth', 'is.not.enable']);
+Route::view('user_disabled', 'auth/user_disabled')->middleware(['auth', 'is.not.enabled'])->name('user_disabled');

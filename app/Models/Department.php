@@ -1,20 +1,20 @@
 <?php
 
-namespace App;
+namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Complaint_type extends Model
+class Department extends Model
 {
-    public function complaints()
+    public function users()
     {
-        return $this->hasMany(Complaint::class);
+        return $this->hasMany(User::class);
     }
 
     protected $fillable = [
         'name'
     ];
-
+    
     protected $hidden = [
         'created_at', 'updated_at'
     ];
