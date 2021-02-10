@@ -32,7 +32,7 @@ services:
       - "8000:80"
     volumes:
       - ./:/var/www
-      - ./docker-compose/nginx:/etc/nginx/conf.d
+      - ./docker/nginx:/etc/nginx/conf.d
     networks:
       - lvintranet
 
@@ -51,6 +51,9 @@ services:
       MYSQL_USER: ${DB_USERNAME}
       SERVICE_TAGS: dev
       SERVICE_NAME: mysql
+    volumes:
+      - ./docker/mysql:/docker-entrypoint-initdb.d
+      - 'mysql:/var/lib/mysql'
     depends_on: 
       - app # because of app has the environment values
     networks:
@@ -60,3 +63,8 @@ services:
 networks:
   lvintranet:
     driver: bridge
+
+#Volumes to store system data
+volumes:
+  mysql:
+      driver: local
