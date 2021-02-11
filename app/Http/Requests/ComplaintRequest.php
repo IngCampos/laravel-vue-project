@@ -27,7 +27,7 @@ class ComplaintRequest extends FormRequest
             'name' => 'required|min:3|max:255|regex:/^([A-Z]{1}[a-zñáéíóú]+[\s]*)+$/',
             'email' => 'required|email',
             'complaint_type_id' => 'required|integer|min:1|max:3',
-            'content' => 'min:10|max:255',
+            'content' => 'required|min:10|max:255',
         ];
     }
 }

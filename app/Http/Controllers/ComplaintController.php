@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Complaint;
+use App\Models\Complaint_type;
 use App\Http\Requests\ComplaintRequest;
 
 class ComplaintController extends Controller
@@ -21,6 +22,20 @@ class ComplaintController extends Controller
             ],
             'complaints' => $complaints->load('complaint_type')
         ];
+    }
+    
+    public function create()
+    {
+        return view('public/contact', [
+            'complaint_types' =>  Complaint_type::get()
+        ]);
+    }
+
+    public function store(ComplaintRequest $request)
+    {
+        Complaint::create($request->all());
+
+        return redirect('/');
     }
 
     public function destroy(Complaint $complaint)

@@ -19,6 +19,9 @@ Route::get('/','IndexController@index' )->name('index');
 Route::get('blog/{post}', 'PageController@post')->name('blog');
 Route::get('blog', 'PageController@posts')->name('blogs');
 
+Route::get('/contact', 'ComplaintController@create')->name('complaint.create');
+Route::post('/contact', 'ComplaintController@store')->name('complaint.store');
+
 Auth::routes(['register' => false]);
 
 // Routes that need authentication
@@ -64,7 +67,7 @@ Route::prefix('admin')->middleware(['auth', 'is.enabled'])->group(
             function () {
                 Route::view('complaints', 'app/complaint')->name('complaints');
                 Route::resource('api/complaint', 'ComplaintController')->only([
-                    'index', 'destroy'
+                    'index', 'store', 'destroy'
                 ]);
             }
         );

@@ -12,6 +12,7 @@
         <li class="nav-item dropdown no-arrow">
             <a class="navbar-brand" href="{{ route('index') }}">Index</a>
             <a class="navbar-brand" href="{{ route('blogs') }}">Blog</a>
+            <a class="navbar-brand" href="{{ route('complaint.create') }}">Contact</a>
             @if(Route::has('login'))
                 @auth
                 <a class="navbar-brand" href="{{ route('home') }}">Home</a>

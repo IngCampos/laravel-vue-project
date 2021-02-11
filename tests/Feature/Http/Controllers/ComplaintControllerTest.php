@@ -5,8 +5,6 @@ namespace Tests\Feature\Http\Controllers;
 use App\Models\Complaint;
 use App\Models\Complaint_type;
 use Illuminate\Foundation\Testing\WithoutMiddleware;
-use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
 
 class ComplaintControllerTest extends TestCase
@@ -16,19 +14,19 @@ class ComplaintControllerTest extends TestCase
     public function test_request_data_validated()
     {
         // TODO: create the features to create complaints
-        // $response = $this->post(
-        //     'admin/api/complaint',
-        //     [
-        //         'name' => '',
-        //         'email' => '',
-        //         'complaint_type_id' => '',
-        //         'content' => ''
-        //     ]
-        // );
+        $response = $this->post(
+            'admin/api/complaint',
+            [
+                'name' => '',
+                'email' => '',
+                'complaint_type_id' => '',
+                'content' => ''
+            ]
+        );
 
-        // $response->assertSessionHasErrors(['name', 'email', 'complaint_type_id', 'content']);
+        $response->assertSessionHasErrors(['name', 'email', 'complaint_type_id', 'content']);
     }
-
+    
     public function test_destroy()
     {
         $complaint = factory(Complaint::class)->make([
