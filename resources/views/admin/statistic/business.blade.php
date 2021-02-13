@@ -20,14 +20,6 @@
             <basic-statistic :data="{{$advertisements}}"></basic-statistic>
         </div>
     </div>
-    <div class="card shadow">
-        <div class="card-header py-3">
-            <h6 class="m-0 font-weight-bold text-primary">Machine state.</h6>
-        </div>
-        <div class="card-body">
-            <basic-statistic-download :data="{{$machines}}" :file_name="'Machine State'" column_name_type="'State'"></basic-statistic-download>
-        </div>
-    </div>
 </div>
 <div class="col-12 col-md-6">
     <div class="card shadow">
