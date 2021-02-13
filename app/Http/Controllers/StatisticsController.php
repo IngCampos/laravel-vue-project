@@ -8,8 +8,6 @@ use App\Models\Department;
 use App\Models\Complaint;
 use App\Models\Complaint_type;
 use App\Models\Permission;
-use App\Models\Machine;
-use App\Models\Machine_state;
 use App\Models\Tender;
 use App\Models\Tender_section;
 use Carbon\Carbon;
@@ -49,12 +47,6 @@ class StatisticsController extends Controller
 
     public function business()
     {
-        $machines['total'] = Machine::all()->count();
-        $machines['types'] = [];
-        foreach (Machine_state::all() as $machine_state) {
-            $machines['types'][$machine_state->name] = Machine_state::find($machine_state->id)->machines()->count();
-        }
-
         $advertisements['total'] = Advertisement::all()->count();
         $advertisements['types'] = [];
         $advertisements['types']["With link"] = Advertisement::where('link', '!=', '')->count();
@@ -67,7 +59,6 @@ class StatisticsController extends Controller
         }
 
         return view('admin/statistic/business', [
-            'machines' => json_encode($machines),
             'advertisements' => json_encode($advertisements),
             'tenders' => json_encode($tenders)
         ]);

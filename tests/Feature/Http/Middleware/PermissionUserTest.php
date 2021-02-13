@@ -30,11 +30,7 @@ class PermissionUserTest extends TestCase
         $response_advertisements = $this->actingAs($user)->get('/admin/advertisements');
         $response_advertisements->assertStatus(302);
         $response_advertisements->assertRedirect('/');
-
-        $response_machine_state = $this->actingAs($user)->get('/admin/machine_state');
-        $response_machine_state->assertStatus(302);
-        $response_machine_state->assertRedirect('/');
-        
+       
         $response_tenders = $this->actingAs($user)->get('/admin/tenders');
         $response_tenders->assertStatus(302);
         $response_tenders->assertRedirect('/');

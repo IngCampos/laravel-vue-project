@@ -86,9 +86,6 @@ Vue.component('complaints', require('./components/complaint/ComplaintsComponent.
 // Components for advertisement panel
 Vue.component('advertisement-row', require('./components/advertisement/AdvertisementRowComponent.vue').default);
 Vue.component('advertisements', require('./components/advertisement/AdvertisementsComponent.vue').default);
-// Components for machine panel - status
-Vue.component('machine-row', require('./components/machine_state/MachineRowComponent.vue').default);
-Vue.component('machines', require('./components/machine_state/MachinesComponent.vue').default);
 // Components for tenders panel
 Vue.component('tender-row', require('./components/tender/TenderRowComponent.vue').default);
 Vue.component('tender-container', require('./components/tender/TenderContainerComponent.vue').default);

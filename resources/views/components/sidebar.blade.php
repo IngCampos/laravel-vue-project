@@ -39,18 +39,12 @@
                 </a>
                 @endif
                 @if(Auth::user()->permissions->where('pivot.permission_id','4')!="[]")
-                <a class="collapse-item" href="{{route('machine_state')}}">
-                    <i class="fas fa-cogs"></i>
-                    <span>{{ __('Machines state') }}</span>
-                </a>
-                @endif
-                @if(Auth::user()->permissions->where('pivot.permission_id','5')!="[]")
                 <a class="collapse-item" href="{{route('tenders')}}">
                     <i class="fas fa-file-alt"></i>
                     <span>{{ __('Tenders') }}</span>
                 </a>
                 @endif
-                @if(Auth::user()->permissions->where('pivot.permission_id','6')!="[]")
+                @if(Auth::user()->permissions->where('pivot.permission_id','5')!="[]")
                 <a class="collapse-item" href="{{route('posts.index')}}">
                     <i class="fas fa-th-list"></i>
                     <span>{{ __('Posts') }}</span>

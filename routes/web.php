@@ -80,17 +80,8 @@ Route::prefix('admin')->middleware(['auth', 'is.enabled'])->group(
                 ]);
             }
         );
-        // Routes for Machine Monitor.
-        Route::middleware(['has.permission:4'])->group(
-            function () {
-                Route::view('machine_state', 'app/machine_state')->name('machine_state');
-                Route::resource('api/machine_state', 'MachineStateController')->only([
-                    'index', 'update'
-                ]);
-            }
-        );
         // Routes for Tender Administrator.
-        Route::middleware(['has.permission:5'])->group(
+        Route::middleware(['has.permission:4'])->group(
             function () {
                 Route::get('tenders', 'TenderSectionController@index')->name('tenders');
                 Route::resource('api/tender', 'TenderController')->except([
@@ -102,7 +93,7 @@ Route::prefix('admin')->middleware(['auth', 'is.enabled'])->group(
             }
         );
         // Routes for Post Administrator.
-        Route::middleware(['has.permission:6'])->group(
+        Route::middleware(['has.permission:5'])->group(
             function () {
                 Route::resource('posts', 'Backend\PostController')->except('show');
             }
