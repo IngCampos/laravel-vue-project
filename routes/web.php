@@ -19,6 +19,9 @@ Route::get('/','IndexController@index' )->name('index');
 Route::get('blog/{post}', 'PageController@post')->name('blog');
 Route::get('blog', 'PageController@posts')->name('blogs');
 
+Route::get('/contact', 'ComplaintController@create')->name('complaint.create');
+Route::post('/contact', 'ComplaintController@store')->name('complaint.store');
+
 Auth::routes(['register' => false]);
 
 // Routes that need authentication

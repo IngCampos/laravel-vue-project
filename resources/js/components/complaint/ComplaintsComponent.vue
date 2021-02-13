@@ -48,8 +48,8 @@ export default {
             this.$root.BasicLoading();
             axios.delete(`api/complaint/${id}`).then(
               (response) => {
-                this.changePage(this.pagination.current_page);
                 this.$root.SuccessMessage("Complaint deleted!");
+                this.getComplaints(this.pagination.current_page);
               },
               (error) => {
                 this.$root.ErrorMessage(
