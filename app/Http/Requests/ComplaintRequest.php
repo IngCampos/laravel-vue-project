@@ -24,7 +24,7 @@ class ComplaintRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'required|min:3|max:255|regex:/^([A-Z]{1}[a-zñáéíóú]+[\s]*)+$/',
+            'name' => 'required|min:3|max:255|regex:/^[a-zA-Z\s]+$/',
             'email' => 'required|email',
             'complaint_type_id' => 'required|integer|min:1|max:3',
             'content' => 'required|min:10|max:255',

@@ -67,7 +67,7 @@ Route::prefix('admin')->middleware(['auth', 'is.enabled'])->group(
             function () {
                 Route::view('complaints', 'app/complaint')->name('complaints');
                 Route::resource('api/complaint', 'ComplaintController')->only([
-                    'index', 'store', 'destroy'
+                    'index', 'destroy'
                 ]);
             }
         );

@@ -13,9 +13,8 @@ class ComplaintControllerTest extends TestCase
 
     public function test_request_data_validated()
     {
-        // TODO: create the features to create complaints
         $response = $this->post(
-            'admin/api/complaint',
+            '/contact',
             [
                 'name' => '',
                 'email' => '',
@@ -25,6 +24,23 @@ class ComplaintControllerTest extends TestCase
         );
 
         $response->assertSessionHasErrors(['name', 'email', 'complaint_type_id', 'content']);
+    }
+
+    public function test_store()
+    {
+        $data = [
+            'name' => 'Anonymous User',
+            'email' => 'anonymous@mail.com',
+            'complaint_type_id' => '1',
+            'content' => 'complaint about the website'
+        ];
+
+        $response = $this->post('/contact', $data);
+        $response->assertStatus(302);
+        $response->assertRedirect('/contact');
+
+        $this->assertDatabaseHas('complaints', ['name' => 'Anonymous User']);
+
     }
     
     public function test_destroy()

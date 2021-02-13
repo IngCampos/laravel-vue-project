@@ -35,7 +35,7 @@ class ComplaintController extends Controller
     {
         Complaint::create($request->all());
 
-        return redirect('/');
+        return redirect('/contact')->with('status', 'Thanks for your message, it was stored successfully!!!');;
     }
 
     public function destroy(Complaint $complaint)
