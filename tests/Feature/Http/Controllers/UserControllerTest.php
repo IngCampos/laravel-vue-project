@@ -35,46 +35,46 @@ class UserControllerTest extends TestCase
         $response2->assertSessionHasErrors(['name', 'email', 'password']);
     }
 
-    // BUG: The controller does not work
-    // public function test_store()
-    // {
-    //     $department = factory(Department::class)->create();
-    //     $response = $this->post(
-    //         'admin/api/user',
-    //         [
-    //             'name' => 'Name',
-    //             'email' => 'name@mail.com',
-    //             'password' => 'passwords',
-    //             'department_id' => 1
-    //         ]
-    //     );
-    //     $response->assertStatus(201);
-    //     $this->assertDatabaseHas('users', ['name' => 'Name']);
-    // }
+    public function test_store()
+    {
+        $department = factory(Department::class)->create();
+        $data = [
+            'name' => 'Name',
+            'email' => rand(0,10000) . 'name@mail.com',
+            'department_id' => $department->id
+        ];
+
+        $response = $this->post('admin/api/user', $data);
+
+        $response->assertStatus(201);
+        $this->assertDatabaseHas('users', $data);
+    }
+
     // BUG: Many details in the controller
     // public function test_update()
     // {
     //     $user = factory(User::class)->make([
     //         'department_id' => factory(Department::class),
-    //         'isEnabled' => false
     //     ]);
 
-    //     $response = $this->put("admin/api/user/1", [
+    //     $data = [
     //         'name'=> 'new name',
-    //         'email'=> 'newemail@mail.com',
-    //         'department_id'=> 1,
-    //         'password'=> 'newpassword'
-    //         ]);
-    //     $response->assertStatus(200);
-    //     $this->assertDatabaseHas('users', ['name' => 'new name']);
+    //         'email'=> rand(0,10000) . 'newemail@mail.com',
+    //         'department_id'=> 1
+    //     ];
+
+    //     $response = $this->put("admin/api/user/$user->id", $data);
+
+    //     $response->assertStatus(201);
+    //     $this->assertDatabaseHas('users', $data);
     // }
+
     // BUG: Error 404
     // public function test_disabled()
     // {
     //     $user = factory(User::class)->make([
     //         'name' => 'User Disabled',
     //         'department_id' => factory(Department::class),
-    //         'isEnabled' => false
     //     ]);
 
     //     $response = $this->delete("/admin/api/user/$user->id/disable");
