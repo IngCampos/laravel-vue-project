@@ -11,7 +11,7 @@ class AdvertisementController extends Controller
     public function index()
     {
         return view('app.advertisement', [
-            'advertisements' =>  Advertisement::orderBy('order', 'asc')->get()
+            'advertisements' =>  Advertisement::orderBy('expiration', 'asc')->get()
         ]);
     }
 

@@ -58,7 +58,9 @@ Vue.component('datePicker', DatePicker)
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
-// Components for user panel
+// TODO: import the son components in the father and not here
+
+ // Components for user panel
 Vue.component('user-row', require('./components/user/UserRowComponent.vue').default);
 Vue.component('users', require('./components/user/UsersComponent.vue').default);
 Vue.component('user-create', require('./components/user/UserCreateComponent.vue').default);
@@ -83,9 +85,12 @@ Vue.component('permission-create', require('./components/permission/PermissionCr
 // Components for complaint panel
 Vue.component('complaint-row', require('./components/complaint/ComplaintRowComponent.vue').default);
 Vue.component('complaints', require('./components/complaint/ComplaintsComponent.vue').default);
+
 // Components for advertisement panel
 Vue.component('advertisement-row', require('./components/advertisement/AdvertisementRowComponent.vue').default);
 Vue.component('advertisements', require('./components/advertisement/AdvertisementsComponent.vue').default);
+Vue.component('advertisement-create', require('./components/advertisement/AdvertisementCreateComponent.vue').default);
+
 // Components for tenders panel
 Vue.component('tender-row', require('./components/tender/TenderRowComponent.vue').default);
 Vue.component('tender-container', require('./components/tender/TenderContainerComponent.vue').default);

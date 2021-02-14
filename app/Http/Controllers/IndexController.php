@@ -11,7 +11,8 @@ class IndexController extends Controller
         $adds = Advertisement::where(function ($query) {
             $query->whereDate('expiration', '>=', now())
               ->orWhere('expiration', '=', null);
-          })->orderBy('order', 'asc')->get();
+          })->orderBy('expiration', 'asc')->get();
+          
         return view('public.index', compact('adds'));
     }
 }

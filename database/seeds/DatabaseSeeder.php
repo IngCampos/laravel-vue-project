@@ -14,11 +14,11 @@ class DatabaseSeeder extends Seeder
         $this->call(DepartmentSeeder::class);
         $this->call(UserSeeder::class);
         $this->call(ComplaintSeeder::class);
-        $this->call(AdvertisementSeeder::class);
         $this->call(TenderSectionSeeder::class);
         $this->call(TenderSeeder::class);
         $this->call(PermissionSeeder::class);
 
         factory(App\Models\Post::class, 30)->create();
+        factory(App\Models\Advertisement::class, 4)->create();
     }
 }

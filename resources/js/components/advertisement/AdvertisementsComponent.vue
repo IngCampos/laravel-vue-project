@@ -1,21 +1,23 @@
 <template>
   <table-container>
     <template v-slot:head>
-      <th>Order <i class="fas fa-sort-numeric-down"/></th>
+      <th>Id</th>
       <th>Image</th>
       <th>Link</th>
-      <th>Expiration</th>
+      <th>Expiration <i class="fas fa-sort-numeric-down"/></th>
       <th class="col-action-2">Actions</th>
     </template>
     <template v-slot:body>
       <advertisement-row
-        v-for="(element, index) in elements"
-        :key="element.order"
-        :element="element"
+        v-for="(add, index) in adds"
+        :key="add.id"
+        :add="add"
         @delete="Delete(index, ...arguments)"
         @update="Update(index, ...arguments)"
-        @create="Create(index, ...arguments)"
       ></advertisement-row>
+    </template>
+    <template v-slot:footer>
+      <advertisement-create @create="Create(...arguments)"></advertisement-create>
     </template>
   </table-container>
 </template>
@@ -24,12 +26,15 @@
 export default {
   props: ["data"],
   methods: {
+    Create(new_add) {
+      this.adds.push(new_add);
+    },
     Delete(index, id) {
       this.$swal
         .fire(
           this.$root.ConfirmMessageValue(
-            "¿Are you sure to delete the element number " +
-              this.elements[index].order +
+            "¿Are you sure to delete the add id " +
+              this.adds[index].id +
               "?",
             "The image in the server is also deleted."
           )
@@ -39,10 +44,10 @@ export default {
             this.$root.BasicLoading();
             axios.delete(`api/advertisement/${id}`).then(
               (response) => {
-                this.elements[this.elements[index].order - 1] = {
-                  order: this.elements[index].order,
+                this.adds[this.adds[index].id - 1] = {
+                  id: this.adds[index].id,
                 };
-                this.$root.SuccessMessage("Element deleted!");
+                this.$root.SuccessMessage("add deleted!");
                 this.$forceUpdate();
               },
               (error) => {
@@ -52,43 +57,17 @@ export default {
           }
         });
     },
-    Create(index, data) {
-      this.elements[index] = data;
-      this.$forceUpdate();
-    },
     Update(index, data) {
-      if (data.order != index + 1) {
-        // if there is a change in the order, the element that is going to be replaced
-        //  is saved in the past order of the updated element.
-        this.elements[index] = this.elements[data.order - 1];
-        this.elements[index].order = index + 1;
-      }
-      this.elements[data.order - 1] = data;
+      this.adds[index] = data;
       this.$forceUpdate();
     },
   },
   created() {
-    var dataParseJson = JSON.parse(this.data);
-    var extraelements = 0;
-    this.$root.SetCurrentDate();
-    for (var i = 0; i < 7; i++) {
-      this.elements.push({ id: null, order: i + 1 });
-    }
-    for (var i = 0; i < dataParseJson.length; i++) {
-      if (dataParseJson[i].order < 8)
-        this.elements[dataParseJson[i].order - 1] = dataParseJson[i];
-      else extraelements++;
-    }
-    //if the database has elements with order attribute up to 7, those elements are going to be excluded
-    if (extraelements > 0)
-      this.$root.InfoMessage(
-        "Wrong data base.",
-        "There are many element that reach the limit."
-      );
+    this.adds = JSON.parse(this.data);
   },
   data() {
     return {
-      elements: [],
+      adds: [],
     };
   },
 };
