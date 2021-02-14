@@ -24,7 +24,6 @@ class AdvertisementRequest extends FormRequest
     public function rules()
     {
         return [
-            'order' => 'size:1',
             'link' => 'active_url|nullable',
         ];
     }

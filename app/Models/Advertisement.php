@@ -7,6 +7,11 @@ use Illuminate\Database\Eloquent\Model;
 class Advertisement extends Model
 {
     protected $fillable = [
-        'order', 'image_source', 'link', 'expiration'
+        'image_source', 'link', 'expiration'
     ];
+
+    public function setImageSourceAttribute($value)
+    {
+        $this->attributes['image_source'] = "/storage/ads/" . $value;
+    }
 }

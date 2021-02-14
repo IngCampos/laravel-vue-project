@@ -2,7 +2,7 @@
 <template>
   <button v-on:click="Create_add()" class="btn btn-primary btn-icon-split">
     <span class="icon text-white-50">
-      <i class="fa fa-key"/>
+      <i class="far fa-window-maximize"/>
     </span>
     <span class="text">Add Advertisement</span>
   </button>

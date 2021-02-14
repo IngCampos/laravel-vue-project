@@ -17,41 +17,18 @@ class AdvertisementController extends Controller
 
     public function store(AdvertisementRequest $request)
     {
-        $request->validate([
-            'order' => 'unique:advertisements'
-        ]);
-
-        // TODO: Use the functions all() as possible in order to have clean code
-        $advertisement = new Advertisement();
-        $advertisement->order = $request->order;
+        unset($request->file);
+        $advertisement = Advertisement::create($request->all());
         $this->upload_file($request->file, $request->image_source);
-        $advertisement->image_source = '/storage/ads/' . $request->image_source;
-        $advertisement->link = $request->link;
-        $advertisement->save();
+        
         return $advertisement;
     }
 
     public function update(AdvertisementRequest $request, Advertisement $advertisement)
     {
-        // TODO: Improve the PHP code
-        //The function just update one value, the link or the order
-        if (isset($request->order)) {
-            // The element that has the order it is obtained
-            $auxiliar = Advertisement::where('order', $request->order)->first();
-            if ($auxiliar != null) {
-                // we look if an exist element has the new order to update.
-                $auxiliar->order = $advertisement->order;
-                $advertisement->order = null;
-                $advertisement->update();
-                $auxiliar->update();
-                // the column of the element to update is set in null(unique column) and the element that has 
-                // the order to update is set with the last order of the element to update
-            }
-            $advertisement->order = $request->order;
-            $advertisement->update();
-        } else {
-            $advertisement->update($request->all());
-        }
+        $advertisement->update($request->all());
+        $advertisement->save();
+        
         return $advertisement;
     }
 

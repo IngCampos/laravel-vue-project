@@ -11,7 +11,7 @@ $factory->define(Advertisement::class, function (Faker $faker) {
         null,
         // status 2: advertisement with with expired expiration
         $faker->date($format = 'Y-m-d', $max  = 'now', $timezone = null),
-        // status 1: advertisement with with expiration
+        // status 3: advertisement with with expiration
         (date("Y") + 1) . '-' . $faker->date($format = 'm-d', $max  = 'now', $timezone = null)
     ];
 
