@@ -50,7 +50,7 @@ class UserController extends Controller
         return $user;
     }
 
-    public function disabled(User $user)
+    public function disable(User $user)
     {
         $user->isEnabled = !$user->isEnabled;
         $user->update();
