@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use Illuminate\Http\Request;
 use App\Http\Requests\UserRequest;
 use Illuminate\Support\Facades\Hash;
 
@@ -26,33 +27,30 @@ class UserController extends Controller
 
     public function store(UserRequest $request)
     {
-        $user = new User();
-        $user->name = $request->name;
-        $user->email = $request->email;
-        $user->department_id = $request->department_id;
-        $user->isEnabled = true;
-        $user->password = Hash::make($request->name);
+        $user = User::create([
+            'password' => Hash::make($request->name)
+        ] + $request->all());
         $user->save();
+
         $user->department;
         return $user;
+    }
+
+    public function update_password(Request $request, User $user)
+    {
+        $user->password = Hash::make($request->password);
+        $user->update();
     }
 
     public function update(UserRequest $request, User $user)
     {
-        //The function just update password or the others values(together)
-        if (isset($request->password)) {
-            $user->password = Hash::make($request->password);
-        } else {
-            $user->name = $request->name;
-            $user->email = $request->email;
-            $user->department_id = $request->department_id;
-        }
-        $user->update();
+        $user->update($request->all());
+
         $user->department;
         return $user;
     }
 
-    public function disabled(User $user)
+    public function disable(User $user)
     {
         $user->isEnabled = !$user->isEnabled;
         $user->update();

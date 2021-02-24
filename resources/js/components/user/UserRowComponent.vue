@@ -98,7 +98,7 @@ export default {
             name: document.getElementById("name").value,
             email: document.getElementById("email").value,
             department_id: document.getElementById("department_id").value,
-          });
+          }, `api/user/${this.user.id}`);
         },
       });
     },
@@ -142,15 +142,15 @@ export default {
             if (result.value[0] == result.value[1])
               this.Edit({
                 password: result.value[0],
-              });
+              }, `api/user/${this.user.id}/password`);
             else
               this.$root.ErrorMessage("Passwords do not match!!", "Try again");
           }
         });
     },
-    Edit(data) {
+    Edit(data, url) {
       this.$root.BasicLoading();
-      axios.put(`api/user/${this.user.id}`, data).then(
+      axios.put(url, data).then(
         (response) => {
           // the data is filtered by the name login
           // then the main component needs to do specific function if the filter value is changed

@@ -15,7 +15,7 @@
         @enable="Enable(index)"
         @delete="Delete(index)"
         @justupdate="justUpdate(index,...arguments)"
-        @update="changePage(pagination.current_page)"
+        @update="getUsers(pagination.current_page)"
         :department_form="department_form"
       ></user-row>    
     </template>
@@ -27,7 +27,7 @@
       <div class="form-group">
         <user-create
           :department_form="department_form"
-          @creation="changePage(pagination.current_page)"
+          @creation="getUsers(pagination.current_page)"
         ></user-create>
       </div>
     </template>
