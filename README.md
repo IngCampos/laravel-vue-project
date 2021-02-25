@@ -46,41 +46,43 @@ cp .env.example .env
 
 Note: You could change some values, anyway docker-compose create the database according to the defined values.
 
-Create the image (php:7.4-composer-npm) and run the services (php, nginx and mysql):
+Create the image (php:7.4-composer-npm), the volume for the database (laravel-vue-intranet_mysq) and run the services (php, nginx and mysql):
 
 ```
 docker-compose up
 ```
 
-Note: The next steps can be automated bu running
+Note: You can run the last command in the background with `docker-compose up -d`.
+
+Now you have all the environment ready, for the next commands you need to be inside of the app container with:
 
 ```
-sh install.sh
+docker-compose exec app /bin/bash
 ```
 
 Then install the dependencies.
 
 ```
-docker-compose exec app composer install
-docker-compose exec app npm install
+composer install
+npm install
 ```
 
 Then generate the application key.
 
 ```
-docker-compose exec app php artisan key:generate
+php artisan key:generate
 ```
 
 Create the symbolic link (from public/storage to storage/app/public).
 
 ```
-docker-compose exec app php artisan storage:link
+php artisan storage:link
 ```
 
 Finally generate the database with fake data:
 
 ```
-docker-compose exec app php artisan migrate --seed
+php artisan migrate --seed
 ```
 
 Note: You could refresh the database any time with `migrate:refresh`.
@@ -94,16 +96,18 @@ Note: You could refresh the database any time with `migrate:refresh`.
 Each time SASS and JavaScript files are updated you need to run:
 
 ```
-docker-compose exec app npm run dev
+npm run dev
 ```
 
 To make it automated run:
 
 ```
-docker-compose exec app npm run watch
+npm run watch
 ```
 
-And now you have all the environment, the nginx server is in the port 8000 (e.g http://127.0.0.1:8000/).
+And now you have all the environment in the port 8000.
+
+Note: Use `exit` command to exit from the container, `docker-compose down` to delete the containers and `docker volume rm laravel-vue-intranet_mysql` to delete the database volume.
 
 ---
 
@@ -114,7 +118,7 @@ And now you have all the environment, the nginx server is in the port 8000 (e.g 
 There are few testing in main controllers and models, you can run it with. 
 
 ```
-docker-compose exec app php artisan test
+php artisan test
 ```
 
 ## Built With 🛠️
