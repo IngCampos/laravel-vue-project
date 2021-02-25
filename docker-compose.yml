@@ -8,7 +8,7 @@ services:
         user: user
         uid: 1000
       context: .
-      dockerfile: Dockerfile
+      dockerfile: docker/app/Dockerfile
     image: php:7.4-fpm-composer-npm
     container_name: lvintranet-app
     restart: unless-stopped
